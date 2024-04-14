@@ -1,0 +1,82 @@
+[
+  {
+    "locationAddress": "123 Main Street",
+    "manager": "John Doe",
+    "seetsCapacity": 50,
+    "employeesNumber": 10,
+    "menuItems": ["Burger", "Pizza", "Salad", "French Fries", "Soft Drink"],
+    "restorantChain": "Delicious Eats"
+  },
+  {
+    "locationAddress": "1516 Maple Drive",
+    "manager": "Jessica Brown",
+    "seetsCapacity": 60,
+    "employeesNumber": 12,
+    "menuItems": ["Burger", "Pizza", "Salad", "Cheese Fries", "Lemonade"],
+    "restorantChain": "Delicious Eats"
+  },
+  {
+    "locationAddress": "1718 Walnut Lane",
+    "manager": "David Martinez",
+    "seetsCapacity": 60,
+    "employeesNumber": 12,
+    "menuItems": ["Curry", "Noodles", "Spring Rolls", "Jasmine Rice", "Thai Iced Tea"],
+    "restorantChain": "Asian Fusion"
+  },
+  {
+    "locationAddress": "1920 Elmwood Avenue",
+    "manager": "Amanda Lee",
+    "seetsCapacity": 65,
+    "employeesNumber": 15,
+    "menuItems": ["Curry", "Noodles", "Spring Rolls", "Vegetable Tempura", "Green Tea"],
+    "restorantChain": "Asian Fusion"
+  },
+  {
+    "locationAddress": "2122 Oakwood Boulevard",
+    "manager": "Ryan Taylor",
+    "seetsCapacity": 70,
+    "employeesNumber": 14,
+    "menuItems": ["Pho", "Banh Mi", "Vietnamese Spring Rolls", "Vietnamese Iced Coffee", "Fresh Spring Rolls"],
+    "restorantChain": "Savory Delights"
+  },
+  {
+    "locationAddress": "2324 Pinecrest Drive",
+    "manager": "Sarah Anderson",
+    "seetsCapacity": 75,
+    "employeesNumber": 15,
+    "menuItems": ["Pho", "Banh Mi", "Vietnamese Spring Rolls", "Beef Pho", "Vietnamese Coffee"],
+    "restorantChain": "Savory Delights"
+  },
+  {
+    "locationAddress": "456 Oak Avenue",
+    "manager": "Jane Smith",
+    "seetsCapacity": 45,
+    "employeesNumber": 9,
+    "menuItems": ["Steak", "Pasta", "Sandwich", "Caesar Salad", "Iced Tea"],
+    "restorantChain": "Tasty Bites"
+  },
+  {
+    "locationAddress": "789 Elm Street",
+    "manager": "Michael Johnson",
+    "seetsCapacity": 40,
+    "employeesNumber": 8,
+    "menuItems": ["Sushi", "Ramen", "Tempura", "Edamame", "Green Tea"],
+    "restorantChain": "Tasty Bites"
+  },
+  {
+    "locationAddress": "1314 Cedar Lane",
+    "manager": "Chris Wilson",
+    "seetsCapacity": 55,
+    "employeesNumber": 11,
+    "menuItems": ["Pizza", "Salad", "French Fries", "Soft Drink", "Brownie"],
+    "restorantChain": "Tasty Bites"
+  },
+  {
+    "locationAddress": "1516 Maple Drive",
+    "manager": "Jessica Brown",
+    "seetsCapacity": 60,
+    "employeesNumber": 11,
+    "menuItems": ["Pizza", "Salad", "French Fries", "Soft Drink", "Ice Cream"],
+    "restorantChain": "Tasty Bites"
+  }
+]
