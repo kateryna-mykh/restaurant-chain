@@ -5,7 +5,7 @@ It takes two input parameters: the path to the folder containing the JSON files 
 This project provides a simple and efficient way to analyze restaurant data and extract meaningful insights.
 
 
-##How lanch this project
+## How lanch this project
 
 ```
 mvn clean package
@@ -17,7 +17,7 @@ All result files writes to `statistics` folder, created in initial [path-to-fold
 For now there is 1 entity Restorant, that have locationAddress, manager, seetsCapacity, employeesNumber, menuItems, restorantChain. 
 A RestorantChain have 1 or more Restorants, but Restorant assosiated only with one RestorantChain.
 
-##Input/Output Data files examples
+## Input/Output Data files examples
 Input file:
 
 ```
@@ -76,7 +76,7 @@ Output file "statistics_by_menuItems.xml":
 </statistics>
 ```
 
-##Results metrics with mulithreding 
+## Results metrics with mulithreding 
 Used 10 files (1 file with 1 entity, 3 with 10, 6 with 100):
 
 | Threads  | Execution time (ms)|
