@@ -13,7 +13,7 @@ java -jar target/exec-json-parser.jar [path-to-folder] [atribute-name]
 ```
 All result files writes to `statistics` folder, created in initial [path-to-folder].
 
-##Entities description
+## Entities description
 For now there is 1 entity Restorant, that have locationAddress, manager, seetsCapacity, employeesNumber, menuItems, restorantChain. 
 A RestorantChain have 1 or more Restorants, but Restorant assosiated only with one RestorantChain.
 
