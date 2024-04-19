@@ -2,7 +2,7 @@ package parser.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -15,7 +15,7 @@ import parser.storage.Storage;
 class StorageToItemDtoListConverterTest {
     @InjectMocks
     private StorageToItemDtoListConverter converter;
-    
+
     @BeforeAll
     static void setUpBeforeClass() throws Exception {
         Storage.parsedResultMap.put("Salad", 2L);
@@ -24,7 +24,7 @@ class StorageToItemDtoListConverterTest {
         Storage.parsedResultMap.put("French Fries", 5L);
         Storage.parsedResultMap.put("Pizza", 2L);
     }
-    
+
     @Test
     void convert_ReturnSortedListDto() {
         List<ItemDto> expected = new ArrayList<>();
@@ -33,8 +33,8 @@ class StorageToItemDtoListConverterTest {
         expected.add(new ItemDto("Pizza", 2L));
         expected.add(new ItemDto("Salad", 2L));
         expected.add(new ItemDto("Lemonade", 1L));
-       
+
         List<ItemDto> actual = converter.convert();
-        Assert.assertEquals(expected, actual);
+        Assertions.assertEquals(expected, actual);
     }
 }
