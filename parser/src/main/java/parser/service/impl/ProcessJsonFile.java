@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.stream.Stream;
 import parser.Main;
 import parser.dto.RestorantDto;
-import parser.exseption.IncorrectParamsException;
+import parser.exception.IncorrectParamsException;
 import parser.storage.Storage;
 
 public class ProcessJsonFile implements Runnable {

@@ -12,7 +12,7 @@ import java.util.concurrent.Future;
 import parser.dto.ItemDto;
 import parser.dto.RestorantDto;
 import parser.dto.StatisticsReportDto;
-import parser.exseption.IncorrectParamsException;
+import parser.exception.IncorrectParamsException;
 import parser.service.FileWriter;
 import parser.service.impl.ProcessJsonFile;
 import parser.service.impl.StorageToItemDtoListConverter;
