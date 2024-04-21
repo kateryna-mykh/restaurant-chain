@@ -27,7 +27,7 @@ public class Main {
     public static void main(String[] args) {
         readFolder = args[0];
         atribute = args[1];
-        
+
         checkInputArgsValid(readFolder, atribute);
 
         File folder = new File(readFolder);
