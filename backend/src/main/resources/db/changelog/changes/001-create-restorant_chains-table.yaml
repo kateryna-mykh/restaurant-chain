@@ -1,0 +1,37 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-restorant_chains-table
+      author: kateryna-mykh
+      changes:
+      - createTable:
+            tableName: restorant_chains
+            columns:
+            - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                     primaryKey: true
+                     nullable: false
+            - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                     nullable: false
+                     unique: true
+            - column:
+                  name: cuisine
+                  type: varchar(255)
+                  constraints:
+                     nullable: false
+            - column:
+                  name: total_branches
+                  type: integer
+                  constraints:
+                     nullable: false
+            - column:
+                  name: annual_revenue
+                  type: decimal(10,2)
+                  defaultValueNumeric: '0.00'
+                  constraints:
+                     nullable: false
