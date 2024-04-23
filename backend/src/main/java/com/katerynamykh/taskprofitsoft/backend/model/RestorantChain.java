@@ -1,4 +1,4 @@
-package com.katerynamykh.taskprofItsoft.backend.model;
+package com.katerynamykh.taskprofitsoft.backend.model;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -26,8 +26,6 @@ public class RestorantChain {
     private String name;
     @Column(nullable = false)
     private String cuisine;
-    @Column(nullable = false)
-    private Integer totalBranches;
     @Column(columnDefinition = "decimal(10,2) dafault 0.00", nullable = false)
     private BigDecimal annualRevenue;
     @OneToMany(mappedBy = "restorantChain", cascade = CascadeType.ALL, orphanRemoval = true)

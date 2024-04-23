@@ -1,4 +1,4 @@
-package com.katerynamykh.taskprofItsoft.backend.model;
+package com.katerynamykh.taskprofitsoft.backend.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

@@ -25,11 +25,6 @@ databaseChangeLog:
                   constraints:
                      nullable: false
             - column:
-                  name: total_branches
-                  type: integer
-                  constraints:
-                     nullable: false
-            - column:
                   name: annual_revenue
                   type: decimal(10,2)
                   defaultValueNumeric: '0.00'
