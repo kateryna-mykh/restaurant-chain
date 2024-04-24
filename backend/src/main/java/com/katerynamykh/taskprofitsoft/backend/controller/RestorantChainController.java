@@ -1,6 +1,7 @@
 package com.katerynamykh.taskprofitsoft.backend.controller;
 
 import com.katerynamykh.taskprofitsoft.backend.dto.chain.ChainResponseDto;
+import com.katerynamykh.taskprofitsoft.backend.dto.chain.ChainWithLocationsDto;
 import com.katerynamykh.taskprofitsoft.backend.dto.chain.CreateChainRequestDto;
 import com.katerynamykh.taskprofitsoft.backend.service.RestorantChainService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -35,7 +36,7 @@ public class RestorantChainController {
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     @Operation(summary = "Retrieve all restorant chains", description = "Retrieve all restorant chains")
-    List<ChainResponseDto> retrieveAll(){
+    List<ChainWithLocationsDto> retrieveAll(){
         return chainService.findAll();
     }
     
