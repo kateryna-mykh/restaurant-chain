@@ -16,6 +16,8 @@ public interface RestorantChainMapper {
 
     ChainResponseDto toDto(RestorantChain chain);
     
+    @Mapping(target = "mainChainInfo", source = "chain")
+    @Mapping(target = "locationAddress", ignore = true)
     ChainWithLocationsDto toDtoWithLocations(RestorantChain chain);
     
     ChainShortResponseDto toDtoShortInfo(RestorantChain chain);

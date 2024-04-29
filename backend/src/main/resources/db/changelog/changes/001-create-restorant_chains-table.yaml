@@ -18,7 +18,6 @@ databaseChangeLog:
                   type: varchar(255)
                   constraints:
                      nullable: false
-                     unique: true
             - column:
                   name: cuisine
                   type: varchar(255)
@@ -30,3 +29,12 @@ databaseChangeLog:
                   defaultValueNumeric: '0.00'
                   constraints:
                      nullable: false
+      - createIndex:
+            tableName: restorant_chains
+            indexName: idx_name_lower
+            unique: true
+            columns:
+                - column:
+                    name: lower(name)
+                    computed: true
+     

@@ -10,6 +10,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import org.springdoc.core.annotations.ParameterObject;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,10 +38,10 @@ public class RestorantChainController {
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     @Operation(summary = "Retrieve all restorant chains", description = "Retrieve all restorant chains")
-    List<ChainWithLocationsDto> retrieveAll(){
-        return chainService.findAll();
+    List<ChainWithLocationsDto> retrieveAll(@ParameterObject Pageable pageable) {
+        return chainService.findAll(pageable);
     }
-    
+
     /**
      * Create a restorant chain POST /api/restorant-chains
      * 
@@ -49,21 +51,23 @@ public class RestorantChainController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @Operation(summary = "Create a new restorant chain", description = "Create a new restorant chain")
-    ChainResponseDto create(@Parameter(name = "chainDto", required = true) @RequestBody @Valid CreateChainRequestDto chainDto) {
+    ChainResponseDto create(
+            @Parameter(name = "chainDto", required = true) @RequestBody @Valid CreateChainRequestDto chainDto) {
         return chainService.save(chainDto);
     }
-    
+
     /**
      * Update restorant chain PUT /api/restorant-chains/{id}
      * 
-     * @param id - (required)
+     * @param id       - (required)
      * @param chainDto - (required)
      * @return OK (status code 200)
      */
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     @Operation(summary = "Update restorant chain data", description = "Update restorant chain data")
-    public ChainResponseDto updateById(@Parameter(name = "chain id", required = true) @PathVariable Long id,
+    public ChainResponseDto updateById(
+            @Parameter(name = "chain id", required = true) @PathVariable Long id,
             @Parameter(name = "chainDto", required = true) @RequestBody @Valid CreateChainRequestDto chainDto) {
         return chainService.update(id, chainDto);
     }

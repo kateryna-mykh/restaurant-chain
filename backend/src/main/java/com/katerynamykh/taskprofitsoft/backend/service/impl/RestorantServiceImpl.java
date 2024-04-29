@@ -26,7 +26,7 @@ public class RestorantServiceImpl implements RestorantService {
     @Transactional
     @Override
     public RestorantResponseDto save(CreatedRestorantRequestDto restorantDto) {
-        if (restorantRepository.findByLocationAddress(restorantDto.locationAddress()).isPresent()) {
+        if (restorantRepository.findByLocationAddressIgnoreCase(restorantDto.locationAddress()).isPresent()) {
             throw new SaveDuplicateException(
                     "Faild to save duplicate restorant " + restorantDto.locationAddress());
         }
@@ -47,7 +47,7 @@ public class RestorantServiceImpl implements RestorantService {
     @Override
     public RestorantResponseDto update(Long id, CreatedRestorantRequestDto restorantDto) {
         Optional<Restorant> restorantByLocationAddress = restorantRepository
-                .findByLocationAddress(restorantDto.locationAddress());
+                .findByLocationAddressIgnoreCase(restorantDto.locationAddress());
         if (restorantByLocationAddress.isPresent()
                 && id.equals(restorantByLocationAddress.get().getId())) {
             throw new SaveDuplicateException(

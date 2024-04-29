@@ -1,0 +1,1 @@
+delete from restorant_chains where id=6;
