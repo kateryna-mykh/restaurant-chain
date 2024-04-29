@@ -32,10 +32,7 @@ public class Restorant {
     private Integer seetsCapacity;
     @Column(nullable = false)
     private Integer employeesNumber;
-    @Column(
-        name = "menu_items",
-        columnDefinition = "text"
-    )
+    @Column(name = "menu_items", columnDefinition = "text")
     private List<String> menuItems;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "chain_id", nullable = false)

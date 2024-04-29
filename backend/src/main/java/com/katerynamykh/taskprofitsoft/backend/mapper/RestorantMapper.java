@@ -3,6 +3,7 @@ package com.katerynamykh.taskprofitsoft.backend.mapper;
 import com.katerynamykh.taskprofitsoft.backend.config.MapperConfig;
 import com.katerynamykh.taskprofitsoft.backend.dto.restorant.CreatedRestorantRequestDto;
 import com.katerynamykh.taskprofitsoft.backend.dto.restorant.DetaildRestorantResponseDto;
+import com.katerynamykh.taskprofitsoft.backend.dto.restorant.RestoarntShortResponseDto;
 import com.katerynamykh.taskprofitsoft.backend.dto.restorant.RestorantResponseDto;
 import com.katerynamykh.taskprofitsoft.backend.model.Restorant;
 import com.katerynamykh.taskprofitsoft.backend.model.RestorantChain;
@@ -17,6 +18,9 @@ public interface RestorantMapper {
     
     @Mapping(target = "chainShortInfo", source = "restorantChain")
     DetaildRestorantResponseDto toDtoDetaild(Restorant restorant);
+    
+    @Mapping(target = "chainName", source = "restorantChain.name")
+    RestoarntShortResponseDto toShortDto(Restorant restorant);
     
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "restorantChain", source = "chain")
