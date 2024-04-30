@@ -6,7 +6,6 @@ import com.katerynamykh.taskprofitsoft.backend.dto.restorant.DetaildRestorantRes
 import com.katerynamykh.taskprofitsoft.backend.dto.restorant.RestoarntShortResponseDto;
 import com.katerynamykh.taskprofitsoft.backend.dto.restorant.RestorantResponseDto;
 import com.katerynamykh.taskprofitsoft.backend.model.Restorant;
-import com.katerynamykh.taskprofitsoft.backend.model.RestorantChain;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -23,7 +22,7 @@ public interface RestorantMapper {
     RestoarntShortResponseDto toShortDto(Restorant restorant);
     
     @Mapping(target = "id", ignore = true)
-    @Mapping(target = "restorantChain", source = "chain")
-    Restorant toModel(CreatedRestorantRequestDto restorantDto, RestorantChain chain);
+    @Mapping(target = "restorantChain.id", source = "chainId")
+    Restorant toModel(CreatedRestorantRequestDto restorantDto, Long chainId);
     
 }
