@@ -135,7 +135,7 @@ class RestorantControllerTest {
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isNotFound()).andReturn();
 
-        assertEquals("Can't find restorant by id: 100", result.getResolvedException().getMessage());
+        assertEquals("Can't find restorant by id 100", result.getResolvedException().getMessage());
     }
 
     @Test

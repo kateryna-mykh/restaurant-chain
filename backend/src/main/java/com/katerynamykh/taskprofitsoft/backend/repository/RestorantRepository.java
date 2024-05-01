@@ -10,4 +10,8 @@ import org.springframework.stereotype.Repository;
 public interface RestorantRepository
         extends JpaRepository<Restorant, Long>, JpaSpecificationExecutor<Restorant> {
     Optional<Restorant> findByLocationAddressIgnoreCase(String address);
+    
+    /*@Override
+    @Query("SELECT r FROM Restorant r LEFT JOIN FETCH r.restorantChain WHERE r.id=?1")
+    Optional<Restorant> findById(Long id);*/
 }

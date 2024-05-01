@@ -2,7 +2,6 @@ package com.katerynamykh.taskprofitsoft.backend.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -34,7 +33,7 @@ public class Restorant {
     private Integer employeesNumber;
     @Column(name = "menu_items", columnDefinition = "text")
     private List<String> menuItems;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne//(fetch = FetchType.LAZY)
     @JoinColumn(name = "chain_id", nullable = false)
     private RestorantChain restorantChain;
 }
