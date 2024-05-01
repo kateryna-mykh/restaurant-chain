@@ -35,7 +35,7 @@ databaseChangeLog:
                      nullable: false
             - column:
                   name: menu_items
-                  type: clob
+                  type: text
             - column:
                   name: chain_id
                   type: bigint
@@ -49,9 +49,9 @@ databaseChangeLog:
             referencedTableName: restorant_chains
       - createIndex:
             tableName: restorants
-            indexName: idx_address_lower
+            indexName: idx_address_upper
             unique: true
             columns:
                 - column:
-                    name: lower(location_address)
+                    name: upper(location_address)
                     computed: true

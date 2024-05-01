@@ -26,15 +26,15 @@ databaseChangeLog:
             - column:
                   name: annual_revenue
                   type: decimal(10,2)
-                  defaultValueNumeric: '0.00'
+                  defaultValueNumeric: 0.00
                   constraints:
                      nullable: false
       - createIndex:
             tableName: restorant_chains
-            indexName: idx_name_lower
+            indexName: idx_name_upper
             unique: true
             columns:
                 - column:
-                    name: lower(name)
+                    name: upper(name)
                     computed: true
      

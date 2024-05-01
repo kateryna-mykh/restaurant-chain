@@ -19,6 +19,7 @@ import com.katerynamykh.taskprofitsoft.backend.model.Restorant;
 import com.katerynamykh.taskprofitsoft.backend.model.RestorantChain;
 import com.katerynamykh.taskprofitsoft.backend.repository.RestorantChainRepository;
 import com.katerynamykh.taskprofitsoft.backend.repository.RestorantRepository;
+import com.katerynamykh.taskprofitsoft.backend.repository.spec.RestorantSpec;
 import com.katerynamykh.taskprofitsoft.backend.service.RestorantService;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -36,7 +37,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Service
 @RequiredArgsConstructor
 public class RestorantServiceImpl implements RestorantService {
-    private static final int DEFAULT_PAGE_SIZE = 100;
+    private static final int DEFAULT_PAGE_SIZE = 10;
     private static final int DEFAULT_PAGE_NUMBER = 0;
     private static final String CSV_DELIMITER = ",";
     private final RestorantRepository restorantRepository;
@@ -77,14 +78,16 @@ public class RestorantServiceImpl implements RestorantService {
         Optional<Restorant> restorantByLocationAddress = restorantRepository
                 .findByLocationAddressIgnoreCase(restorantDto.locationAddress());
         if (restorantByLocationAddress.isPresent()
-                && id.equals(restorantByLocationAddress.get().getId())) {
+                && !id.equals(restorantByLocationAddress.get().getId())) {
             throw new SaveDuplicateException(
                     "Faild to save duplicate restorant " + restorantDto.locationAddress());
         }
         RestorantChain chain = chainRepository.findById(restorantDto.restorantChainId())
                 .orElseThrow(() -> new EntityNotFoundException(
                         "Can't find chain by id: " + restorantDto.restorantChainId()));
-        return mapper.toDto(restorantRepository.save(mapper.toModel(restorantDto, chain.getId())));
+        Restorant model = mapper.toModel(restorantDto, chain.getId());
+        model.setId(id);
+        return mapper.toDto(restorantRepository.save(model));
     }
 
     @Override
@@ -92,13 +95,20 @@ public class RestorantServiceImpl implements RestorantService {
         restorantRepository.deleteById(id);
     }
 
+    // TODO:: explore why db restricts the query
     @Override
     public FilteredRestorantsDto search(SearchRestorantDto searchParams) {
         PageRequest pageble = buildPageble(searchParams.page(), searchParams.size());
-        Page<Restorant> allByParams = restorantRepository
-                .findAllByParamsIgnoreCase(searchParams.address(), searchParams.chainId(), pageble);
-        return new FilteredRestorantsDto(allByParams.stream().map(mapper::toShortDto).toList(),
-                allByParams.getTotalPages());
+        Page<Restorant> filteredRestorants;
+        if (searchParams.address() == null && searchParams.chainId() == null) {
+            filteredRestorants = restorantRepository.findAll(pageble);
+        } else {
+            filteredRestorants = restorantRepository.findAll(RestorantSpec.filterBy(searchParams),
+                    pageble);
+        }
+        return new FilteredRestorantsDto(
+                filteredRestorants.stream().map(mapper::toShortDto).toList(),
+                filteredRestorants.getTotalPages());
     }
 
     @Transactional
@@ -125,14 +135,18 @@ public class RestorantServiceImpl implements RestorantService {
         }
     }
 
+    // TODO:: explore why db restricts the query
     @Override
     public void generateReport(HttpServletResponse response, SearchRestorantDto searchParams) {
         response.setContentType(MediaType.APPLICATION_OCTET_STREAM_VALUE);
         response.setHeader(HttpHeaders.CONTENT_DISPOSITION,
                 "attachment; filename=restorants_report.csv");
-
-        List<Restorant> restorants = restorantRepository
-                .findAllByParamsIgnoreCase(searchParams.address(), searchParams.chainId());
+        List<Restorant> restorants;
+        if (searchParams.address() == null && searchParams.chainId() == null) {
+            restorants = restorantRepository.findAll();
+        } else {
+            restorants = restorantRepository.findAll(RestorantSpec.filterBy(searchParams));
+        }
         String reportHeader = String.format("%s,%s,%s,%s,%s", "id", "chainName", "location",
                 "seetsCapacity", "menuItems");
         StringBuilder sb = new StringBuilder().append(reportHeader);

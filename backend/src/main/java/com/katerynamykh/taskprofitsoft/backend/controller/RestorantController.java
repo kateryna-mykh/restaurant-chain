@@ -49,7 +49,7 @@ public class RestorantController {
     }
 
     /**
-     * Retrieve a resorant GET /api/restorants/{id}
+     * Retrieve a restorant GET /api/restorants/{id}
      * 
      * @param id - (required)
      * @return OK (status code 200)
@@ -91,12 +91,12 @@ public class RestorantController {
     }
 
     /**
-     * Search reqeuest POST /api/restorants/_list
+     * Search request POST /api/restorants/_list
      * 
      * @param searchParams - (not required)
      * @return OK (status code 200)
      */
-    @GetMapping("/_list")
+    @PostMapping("/_list")
     @Operation(summary = "Search restorants by params", description = "Search restorants by params")
     FilteredRestorantsDto search(
             @Parameter(name = "search_params", required = false) @RequestBody SearchRestorantDto searchParams) {

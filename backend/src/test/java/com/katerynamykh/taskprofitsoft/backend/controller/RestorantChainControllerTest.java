@@ -3,7 +3,6 @@ package com.katerynamykh.taskprofitsoft.backend.controller;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.katerynamykh.taskprofitsoft.backend.config.BasePostgreContainerConfig;
 import com.katerynamykh.taskprofitsoft.backend.dto.chain.ChainResponseDto;
 import com.katerynamykh.taskprofitsoft.backend.dto.chain.ChainWithLocationsDto;
 import com.katerynamykh.taskprofitsoft.backend.dto.chain.CreateChainRequestDto;
@@ -11,6 +10,7 @@ import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.SQLException;
 import javax.sql.DataSource;
+import lombok.SneakyThrows;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -30,7 +30,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-class RestorantChainControllerTest extends BasePostgreContainerConfig {
+class RestorantChainControllerTest {
     protected static MockMvc mockMvc;
 
     @Autowired
@@ -49,7 +49,12 @@ class RestorantChainControllerTest extends BasePostgreContainerConfig {
     }
 
     @AfterAll
-    static void tearDown(@Autowired DataSource data) throws SQLException {
+    static void afterAll(@Autowired DataSource data) throws SQLException {
+        tearDown(data);
+    }
+    
+    @SneakyThrows
+    static void tearDown(DataSource data) {
         try (Connection connection = data.getConnection()) {
             connection.setAutoCommit(true);
             ScriptUtils.executeSqlScript(connection,
@@ -70,7 +75,7 @@ class RestorantChainControllerTest extends BasePostgreContainerConfig {
     }
 
     @Test
-    @Sql(scripts = "classpath:database/delete-chain-with-id=6.sql", executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
+    @Sql(scripts = "classpath:database/delete-new-chain.sql", executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
     void create_AddNewChain_ShouldReturnChainWithId6() throws Exception {
         CreateChainRequestDto newChain = new CreateChainRequestDto("Candies", "european",
                 BigDecimal.ZERO);
@@ -102,7 +107,7 @@ class RestorantChainControllerTest extends BasePostgreContainerConfig {
     }
 
     @Test
-    @Sql(scripts = "classpath:database/reset-upadated-chain.sql", executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
+    @Sql(scripts = "classpath:database/reset-updated-chain.sql", executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
     void updateById_ValidData_Ok() throws Exception {
         CreateChainRequestDto updateChain = new CreateChainRequestDto("Candies", "european",
                 BigDecimal.ZERO);
@@ -138,7 +143,7 @@ class RestorantChainControllerTest extends BasePostgreContainerConfig {
 
     @Test
     @Sql(scripts = "classpath:database/add-chain-to-delete.sql", executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
-    void testDelete() throws Exception {
+    void delete_ShouldReturnNoContent() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.delete("/api/restorant-chains/{id}", 6)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isNoContent());

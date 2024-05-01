@@ -3,3 +3,5 @@ databaseChangeLog:
       file: db/changelog/changes/001-create-restorant_chains-table.yaml
    - include:
       file: db/changelog/changes/002-create-restorants-table.yaml
+   - include:
+      file: db/changelog/changes/003-load-data-to-restorant_chains-table.yaml
