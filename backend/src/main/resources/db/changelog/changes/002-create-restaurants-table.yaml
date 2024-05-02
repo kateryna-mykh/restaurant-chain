@@ -1,0 +1,57 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-restaurants-table
+      author: kateryna-mykh
+      changes:
+      - createTable:
+            tableName: restaurants
+            columns:
+            - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                     primaryKey: true
+                     nullable: false                
+            - column:
+                  name: location_address
+                  type: varchar(255)
+                  constraints:
+                     nullable: false
+            - column:
+                  name: manager
+                  type: varchar(255)
+                  constraints:
+                     nullable: false
+            - column:
+                  name: seets_capacity
+                  type: integer
+                  constraints:
+                     nullable: false
+            - column:
+                  name: employees_number
+                  type: integer
+                  constraints:
+                     nullable: false
+            - column:
+                  name: menu_items
+                  type: text[]
+            - column:
+                  name: chain_id
+                  type: bigint
+                  constraints:
+                     nullable: false                
+      - addForeignKeyConstraint:
+            baseColumnNames: chain_id
+            baseTableName: restaurants
+            constraintName: fk_restaurants_chainId
+            referencedColumnNames: id
+            referencedTableName: restaurant_chains
+      - createIndex:
+            tableName: restaurants
+            indexName: idx_address_upper
+            unique: true
+            columns:
+                - column:
+                    name: upper(location_address)
+                    computed: true

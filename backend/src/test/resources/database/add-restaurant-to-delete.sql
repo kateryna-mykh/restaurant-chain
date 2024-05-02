@@ -1,0 +1,1 @@
+insert into restaurants (location_address, manager, seets_capacity, employees_number, menu_items, chain_id) values ('161 Myrtle Street', 'Paolo Rycraft', 50, 15, '{"Apple Pie","Cherry Cobbler","Cherry Cheesecake"}', 1);

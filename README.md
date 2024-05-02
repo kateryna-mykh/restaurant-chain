@@ -1,4 +1,4 @@
-# restorant-chain app 
+# restaurant-chain app 
 Here are projects in borders of my internship tasks.
 There should be a website with backend and frontend parts.
 

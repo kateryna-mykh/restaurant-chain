@@ -1,0 +1,1 @@
+delete from restaurant_chains where name='Candies' and cuisine='european';
