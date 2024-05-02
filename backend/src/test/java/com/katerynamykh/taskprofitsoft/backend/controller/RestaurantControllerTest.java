@@ -257,8 +257,8 @@ class RestaurantControllerTest {
 
     @Test
     void search_SetAddressAndChainId_Ok() throws Exception {
-        SearchRestaurantDto addressSearch = new SearchRestaurantDto("7", 1L, null, null);
-        String jsonRequest = objectMapper.writeValueAsString(addressSearch);
+        SearchRestaurantDto addressAndChainSearch = new SearchRestaurantDto("7", 1L, null, null);
+        String jsonRequest = objectMapper.writeValueAsString(addressAndChainSearch);
 
         MvcResult result = mockMvc
                 .perform(MockMvcRequestBuilders.post("/api/restaurants/_list").content(jsonRequest)
@@ -281,8 +281,8 @@ class RestaurantControllerTest {
 
     @Test
     void search_SetSize_Ok() throws Exception {
-        SearchRestaurantDto addressSearch = new SearchRestaurantDto(null, null, null, 2);
-        String jsonRequest = objectMapper.writeValueAsString(addressSearch);
+        SearchRestaurantDto sizeSearch = new SearchRestaurantDto(null, null, null, 2);
+        String jsonRequest = objectMapper.writeValueAsString(sizeSearch);
 
         MvcResult result = mockMvc
                 .perform(MockMvcRequestBuilders.post("/api/restaurants/_list").content(jsonRequest)
@@ -298,8 +298,8 @@ class RestaurantControllerTest {
 
     @Test
     void search_SetPageAndSize_Ok() throws Exception {
-        SearchRestaurantDto addressSearch = new SearchRestaurantDto(null, null, 1, 3);
-        String jsonRequest = objectMapper.writeValueAsString(addressSearch);
+        SearchRestaurantDto pageAndSizeSearch = new SearchRestaurantDto(null, null, 1, 3);
+        String jsonRequest = objectMapper.writeValueAsString(pageAndSizeSearch);
 
         MvcResult result = mockMvc
                 .perform(MockMvcRequestBuilders.post("/api/restaurants/_list").content(jsonRequest)
@@ -311,5 +311,43 @@ class RestaurantControllerTest {
         assertNotNull(actual);
         assertEquals(2, actual.restaurants().size());
         assertEquals(2, actual.totalPages());
+    }
+
+    @Test
+    void generateReport_EmptyRequest_Ok() throws Exception {
+        SearchRestaurantDto emptySearch = new SearchRestaurantDto(null, null, null, null);
+        String jsonRequest = objectMapper.writeValueAsString(emptySearch);
+        String expectedData = new StringBuilder()
+                .append("id,chainName,locationAddress,seetsCapacity,menuItems")
+                .append(System.lineSeparator())
+                .append("1,Delicious Eats,5767 Anderson Place,50,[Burger, Pizza, Salad, French Fries, Soft Drink]")
+                .append(System.lineSeparator())
+                .append("2,Asian Fusion,07196 Blaine Court,30,[Curry, Noodles, Spring Rolls, Jasmine Rice, Thai Iced Tea]")
+                .append(System.lineSeparator()).append("3,Tasty Bites,06 Crest Line Way,100,null")
+                .append(System.lineSeparator())
+                .append("4,Barvy,3655 Drewry Crossing,20,[Zrazy, Uzvar, Cheesecakes]")
+                .append(System.lineSeparator())
+                .append("5,BEEF Meat & Wine,4 Ronald Regan Way,50,null").toString();
+
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/restaurants/_report").content(jsonRequest)
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().string(expectedData));
+    }
+
+    @Test
+    void generateReport_SetAddressAndChainId_Ok() throws Exception {
+        SearchRestaurantDto addressAndChainSearch = new SearchRestaurantDto("7", 2L, null, null);
+        String jsonRequest = objectMapper.writeValueAsString(addressAndChainSearch);
+        String expectedData = new StringBuilder()
+                .append("id,chainName,locationAddress,seetsCapacity,menuItems")
+                .append(System.lineSeparator())
+                .append("2,Asian Fusion,07196 Blaine Court,30,[Curry, Noodles, Spring Rolls, Jasmine Rice, Thai Iced Tea]")
+                .toString();
+
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/restaurants/_report").content(jsonRequest)
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().string(expectedData));
     }
 }

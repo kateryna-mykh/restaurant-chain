@@ -43,7 +43,7 @@ public class RestaurantController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @Operation(summary = "Create a new restaurant", description = "Create a new restaurant")
-    RestaurantResponseDto create(
+    public RestaurantResponseDto create(
             @Parameter(name = "restaurantDto", required = true) @RequestBody @Valid CreatedRestaurantRequestDto restaurantDto) {
         return restaurantService.save(restaurantDto);
     }
@@ -97,8 +97,9 @@ public class RestaurantController {
      * @return OK (status code 200)
      */
     @PostMapping("/_list")
+    @ResponseStatus(HttpStatus.OK)
     @Operation(summary = "Search restaurants by params", description = "Search restaurants by params")
-    FilteredRestaurantsDto search(
+    public FilteredRestaurantsDto search(
             @Parameter(name = "search_params", required = false) @RequestBody SearchRestaurantDto searchParams) {
         return restaurantService.search(searchParams);
     }
@@ -110,9 +111,10 @@ public class RestaurantController {
      * @param searchParams        - (not required)
      */
     @PostMapping(value = "/_report", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+    @ResponseStatus(HttpStatus.OK)
     @Operation(summary = "Generate report by params request", description = "Generate report by params request")
-    void generateReport(HttpServletResponse httpServletResponse,
-            @Parameter(name = "search_params", required = false) SearchRestaurantDto searchParams) {
+    public void generateReport(HttpServletResponse httpServletResponse,
+            @Parameter(name = "search_params", required = false) @RequestBody SearchRestaurantDto searchParams) {
         restaurantService.generateReport(httpServletResponse, searchParams);
     }
 
@@ -125,7 +127,7 @@ public class RestaurantController {
     @PostMapping("/upload")
     @ResponseStatus(HttpStatus.CREATED)
     @Operation(summary = "Upload restaurants from file", description = "Upload restaurants from file")
-    UploadResultDto uploadRestaurants(@RequestParam("file") MultipartFile file) {
+    public UploadResultDto uploadRestaurants(@RequestParam("file") MultipartFile file) {
         return restaurantService.uploadFromFile(file);
     }
 }

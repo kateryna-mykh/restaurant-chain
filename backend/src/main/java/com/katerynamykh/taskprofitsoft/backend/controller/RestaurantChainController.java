@@ -38,7 +38,7 @@ public class RestaurantChainController {
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     @Operation(summary = "Retrieve all restaurant chains", description = "Retrieve all restaurant chains")
-    List<ChainWithLocationsDto> retrieveAll(@ParameterObject Pageable pageable) {
+    public List<ChainWithLocationsDto> retrieveAll(@ParameterObject Pageable pageable) {
         return chainService.findAll(pageable);
     }
 
@@ -51,7 +51,7 @@ public class RestaurantChainController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @Operation(summary = "Create a new restaurant chain", description = "Create a new restaurant chain")
-    ChainResponseDto create(
+    public ChainResponseDto create(
             @Parameter(name = "chainDto", required = true) @RequestBody @Valid CreateChainRequestDto chainDto) {
         return chainService.save(chainDto);
     }
