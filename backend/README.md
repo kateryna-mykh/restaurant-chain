@@ -60,7 +60,6 @@ Execute all commands from `backend` project folder.
 1. Configure your database settings in the .env file.
 2. Build the project with Maven.
 3. Run DB with Docker Compose.
-4. Run the app.
 
 Fill .env file with following environment variables:
 

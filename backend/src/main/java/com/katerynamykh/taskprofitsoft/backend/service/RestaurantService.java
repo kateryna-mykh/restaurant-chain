@@ -5,7 +5,7 @@ import com.katerynamykh.taskprofitsoft.backend.dto.restaurant.DetaildRestaurantR
 import com.katerynamykh.taskprofitsoft.backend.dto.restaurant.FilteredRestaurantsDto;
 import com.katerynamykh.taskprofitsoft.backend.dto.restaurant.RestaurantResponseDto;
 import com.katerynamykh.taskprofitsoft.backend.dto.restaurant.SearchRestaurantDto;
-import com.katerynamykh.taskprofitsoft.backend.dto.restaurant.UploadResult;
+import com.katerynamykh.taskprofitsoft.backend.dto.restaurant.UploadResultDto;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -20,7 +20,7 @@ public interface RestaurantService {
     
     FilteredRestaurantsDto search(SearchRestaurantDto searchParams);
     
-    UploadResult uploadFromFile(MultipartFile multipart);
+    UploadResultDto uploadFromFile(MultipartFile multipart);
 
     void generateReport(HttpServletResponse response, SearchRestaurantDto searchParams);
 }

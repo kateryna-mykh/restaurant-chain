@@ -5,7 +5,7 @@ import com.katerynamykh.taskprofitsoft.backend.dto.restaurant.DetaildRestaurantR
 import com.katerynamykh.taskprofitsoft.backend.dto.restaurant.FilteredRestaurantsDto;
 import com.katerynamykh.taskprofitsoft.backend.dto.restaurant.RestaurantResponseDto;
 import com.katerynamykh.taskprofitsoft.backend.dto.restaurant.SearchRestaurantDto;
-import com.katerynamykh.taskprofitsoft.backend.dto.restaurant.UploadResult;
+import com.katerynamykh.taskprofitsoft.backend.dto.restaurant.UploadResultDto;
 import com.katerynamykh.taskprofitsoft.backend.service.RestaurantService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -85,7 +85,7 @@ public class RestaurantController {
      */
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @Operation(summary = "Delete a resorant", description = "Delete a resorant by id")
+    @Operation(summary = "Delete a restaurant", description = "Delete a restaurant by id")
     public void delete(@Parameter(name = "restaurant id", required = true) @PathVariable Long id) {
         restaurantService.deleteById(id);
     }
@@ -125,7 +125,7 @@ public class RestaurantController {
     @PostMapping("/upload")
     @ResponseStatus(HttpStatus.CREATED)
     @Operation(summary = "Upload restaurants from file", description = "Upload restaurants from file")
-    UploadResult uploadRestaurants(@RequestParam("file") MultipartFile file) {
+    UploadResultDto uploadRestaurants(@RequestParam("file") MultipartFile file) {
         return restaurantService.uploadFromFile(file);
     }
 }

@@ -1,0 +1,1 @@
+delete from restaurants where location_address in ('123 Main Street', '1516 Maple Drive', '1718 Walnut Lane', '1920 Elmwood Avenue', '2122 Oakwood Boulevard', '456 Oak Avenue', '1314 Cedar Lane');

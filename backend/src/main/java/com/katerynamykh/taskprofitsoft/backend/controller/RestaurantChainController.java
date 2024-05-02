@@ -79,7 +79,7 @@ public class RestaurantChainController {
      */
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @Operation(summary = "Delete a resorant chain", description = "Delete a restaurant chain by id")
+    @Operation(summary = "Delete a restaurant chain", description = "Delete a restaurant chain by id")
     public void delete(@Parameter(name = "chain id", required = true) @PathVariable Long id) {
         chainService.deleteById(id);
     }

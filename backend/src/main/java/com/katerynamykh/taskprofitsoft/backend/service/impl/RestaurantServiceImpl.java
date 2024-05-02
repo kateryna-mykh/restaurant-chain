@@ -10,7 +10,7 @@ import com.katerynamykh.taskprofitsoft.backend.dto.restaurant.FilteredRestaurant
 import com.katerynamykh.taskprofitsoft.backend.dto.restaurant.RestaurantResponseDto;
 import com.katerynamykh.taskprofitsoft.backend.dto.restaurant.RestaurantShortResponseDto;
 import com.katerynamykh.taskprofitsoft.backend.dto.restaurant.SearchRestaurantDto;
-import com.katerynamykh.taskprofitsoft.backend.dto.restaurant.UploadResult;
+import com.katerynamykh.taskprofitsoft.backend.dto.restaurant.UploadResultDto;
 import com.katerynamykh.taskprofitsoft.backend.exception.EntityNotFoundException;
 import com.katerynamykh.taskprofitsoft.backend.exception.FileUploadException;
 import com.katerynamykh.taskprofitsoft.backend.exception.SaveDuplicateException;
@@ -62,13 +62,14 @@ public class RestaurantServiceImpl implements RestaurantService {
         RestaurantChain chain = chainRepository.findById(restaurantDto.restaurantChainId())
                 .orElseThrow(() -> new EntityNotFoundException(
                         "Can't find chain by id: " + restaurantDto.restaurantChainId()));
-        return mapper.toDto(restaurantRepository.save(mapper.toModel(restaurantDto, chain.getId())));
+        return mapper
+                .toDto(restaurantRepository.save(mapper.toModel(restaurantDto, chain.getId())));
     }
 
     @Override
     public DetaildRestaurantResponseDto findById(Long id) {
-        Restaurant restaurantById = restaurantRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Can't find restaurant by id " + id));
+        Restaurant restaurantById = restaurantRepository.findById(id).orElseThrow(
+                () -> new EntityNotFoundException("Can't find restaurant by id " + id));
         return mapper.toDtoDetaild(restaurantById);
     }
 
@@ -102,8 +103,8 @@ public class RestaurantServiceImpl implements RestaurantService {
         if (searchParams.address() == null && searchParams.chainId() == null) {
             filteredRestaurants = restaurantRepository.findAll(pageble);
         } else {
-            filteredRestaurants = restaurantRepository.findAll(RestaurantSpec.filterBy(searchParams),
-                    pageble);
+            filteredRestaurants = restaurantRepository
+                    .findAll(RestaurantSpec.filterBy(searchParams), pageble);
         }
         return new FilteredRestaurantsDto(
                 filteredRestaurants.stream().map(mapper::toShortDto).toList(),
@@ -112,7 +113,7 @@ public class RestaurantServiceImpl implements RestaurantService {
 
     @Transactional
     @Override
-    public UploadResult uploadFromFile(MultipartFile multipart) {
+    public UploadResultDto uploadFromFile(MultipartFile multipart) {
         try {
             byte[] fileBytes = multipart.getBytes();
             List<CreatedRestaurantRequestDto> parsedDtos = jsonMapper.readValue(fileBytes,
@@ -128,13 +129,12 @@ public class RestaurantServiceImpl implements RestaurantService {
                     .map(r -> mapper.toModel(r, r.restaurantChainId()))
                     .map(restaurantRepository::save).toList();
             long savedNumber = restaurants.size();
-            return new UploadResult(savedNumber, allNumber - savedNumber, allNumber);
+            return new UploadResultDto(savedNumber, allNumber - savedNumber, allNumber);
         } catch (IOException e) {
             throw new FileUploadException(e.getMessage());
         }
     }
 
-    // TODO:: explore why db restricts the query
     @Override
     public void generateReport(HttpServletResponse response, SearchRestaurantDto searchParams) {
         response.setContentType(MediaType.APPLICATION_OCTET_STREAM_VALUE);
@@ -146,7 +146,7 @@ public class RestaurantServiceImpl implements RestaurantService {
         } else {
             restaurants = restaurantRepository.findAll(RestaurantSpec.filterBy(searchParams));
         }
-        String reportHeader = String.format("%s,%s,%s,%s,%s", "id", "chainName", "location",
+        String reportHeader = String.format("%s,%s,%s,%s,%s", "id", "chainName", "locationAddress",
                 "seetsCapacity", "menuItems");
         StringBuilder sb = new StringBuilder().append(reportHeader);
         List<RestaurantShortResponseDto> shortDtos = restaurants.stream().map(mapper::toShortDto)

@@ -4,8 +4,8 @@ import java.util.List;
 
 public record RestaurantShortResponseDto(
         Long id,
-        String locationAddress, 
-        Integer seetsCapacity, 
         String chainName,
+        String locationAddress,
+        Integer seetsCapacity,
         List<String> menuItems) {
 }

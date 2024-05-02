@@ -8,7 +8,13 @@ import org.junit.jupiter.api.Test;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.katerynamykh.taskprofitsoft.backend.dto.restaurant.CreatedRestaurantRequestDto;
 import com.katerynamykh.taskprofitsoft.backend.dto.restaurant.DetaildRestaurantResponseDto;
+import com.katerynamykh.taskprofitsoft.backend.dto.restaurant.FilteredRestaurantsDto;
 import com.katerynamykh.taskprofitsoft.backend.dto.restaurant.RestaurantResponseDto;
+import com.katerynamykh.taskprofitsoft.backend.dto.restaurant.RestaurantShortResponseDto;
+import com.katerynamykh.taskprofitsoft.backend.dto.restaurant.SearchRestaurantDto;
+import com.katerynamykh.taskprofitsoft.backend.dto.restaurant.UploadResultDto;
+import java.io.File;
+import java.nio.file.Files;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
@@ -20,6 +26,7 @@ import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.MediaType;
 import org.springframework.jdbc.datasource.init.ScriptUtils;
+import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.Sql.ExecutionPhase;
 import org.springframework.test.web.servlet.MockMvc;
@@ -27,7 +34,6 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
@@ -64,7 +70,6 @@ class RestaurantControllerTest {
     }
 
     @Test
-    @Transactional
     @Sql(scripts = "classpath:database/delete-created-restaurant.sql", executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
     void create_AddNewRestaurant_ShouldReturnRestaurant() throws Exception {
         CreatedRestaurantRequestDto newRestaurant = new CreatedRestaurantRequestDto(
@@ -137,7 +142,6 @@ class RestaurantControllerTest {
     }
 
     @Test
-    @Transactional
     @Sql(scripts = "classpath:database/reset-updated-restaurant.sql", executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
     void updateById_ValidRestaurant_Ok() throws Exception {
         CreatedRestaurantRequestDto updateRestaurant = new CreatedRestaurantRequestDto(
@@ -198,17 +202,114 @@ class RestaurantControllerTest {
     }
 
     @Test
-    void testUploadResorants() {
-        // TODO:: later api/restaurants/upload
+    @Sql(scripts = "classpath:database/delete-upload-restaurants.sql", executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
+    void uploadResorants_TestFile_Ok() throws Exception {
+        File file = new File("src/test/resources/database/test-data-set-10-entities.json");
+        MockMultipartFile jsonData = new MockMultipartFile("file", "test-data-set-10-entities.json",
+                MediaType.APPLICATION_JSON_VALUE, Files.readAllBytes(file.toPath()));
+
+        MvcResult result = mockMvc
+                .perform(MockMvcRequestBuilders.multipart("/api/restaurants/upload").file(jsonData)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isCreated()).andReturn();
+
+        UploadResultDto actual = objectMapper.readValue(result.getResponse().getContentAsString(),
+                UploadResultDto.class);
+        assertEquals(7, actual.uploaded());
+        assertEquals(3, actual.skipped());
+        assertEquals(10, actual.all());
     }
 
     @Test
-    void testSearch() {
-        // TODO:: later api/restaurants/_list
+    void search_EmptyRequest_Ok() throws Exception {
+        SearchRestaurantDto emptySearch = new SearchRestaurantDto(null, null, null, null);
+        String jsonRequest = objectMapper.writeValueAsString(emptySearch);
+
+        MvcResult result = mockMvc
+                .perform(MockMvcRequestBuilders.post("/api/restaurants/_list").content(jsonRequest)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
+
+        FilteredRestaurantsDto actual = objectMapper
+                .readValue(result.getResponse().getContentAsString(), FilteredRestaurantsDto.class);
+        assertNotNull(actual);
+        assertEquals(5, actual.restaurants().size());
+        assertEquals(1, actual.totalPages());
+
     }
 
     @Test
-    void testGenerateReport() {
-        // TODO:: later api/restaurants/_report
+    void search_SetAddress_Ok() throws Exception {
+        SearchRestaurantDto addressSearch = new SearchRestaurantDto("7", null, null, null);
+        String jsonRequest = objectMapper.writeValueAsString(addressSearch);
+
+        MvcResult result = mockMvc
+                .perform(MockMvcRequestBuilders.post("/api/restaurants/_list").content(jsonRequest)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
+
+        FilteredRestaurantsDto actual = objectMapper
+                .readValue(result.getResponse().getContentAsString(), FilteredRestaurantsDto.class);
+        assertNotNull(actual);
+        assertEquals(2, actual.restaurants().size());
+        assertEquals(1, actual.totalPages());
+    }
+
+    @Test
+    void search_SetAddressAndChainId_Ok() throws Exception {
+        SearchRestaurantDto addressSearch = new SearchRestaurantDto("7", 1L, null, null);
+        String jsonRequest = objectMapper.writeValueAsString(addressSearch);
+
+        MvcResult result = mockMvc
+                .perform(MockMvcRequestBuilders.post("/api/restaurants/_list").content(jsonRequest)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
+
+        FilteredRestaurantsDto actual = objectMapper
+                .readValue(result.getResponse().getContentAsString(), FilteredRestaurantsDto.class);
+
+        RestaurantShortResponseDto found = actual.restaurants().get(0);
+        assertNotNull(actual);
+        assertEquals(1, actual.restaurants().size());
+        assertEquals(1, actual.totalPages());
+        assertEquals("5767 Anderson Place", found.locationAddress());
+        assertEquals(50, found.seetsCapacity());
+        assertEquals(List.of("Burger", "Pizza", "Salad", "French Fries", "Soft Drink"),
+                found.menuItems());
+        assertEquals("Delicious Eats", found.chainName());
+    }
+
+    @Test
+    void search_SetSize_Ok() throws Exception {
+        SearchRestaurantDto addressSearch = new SearchRestaurantDto(null, null, null, 2);
+        String jsonRequest = objectMapper.writeValueAsString(addressSearch);
+
+        MvcResult result = mockMvc
+                .perform(MockMvcRequestBuilders.post("/api/restaurants/_list").content(jsonRequest)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
+
+        FilteredRestaurantsDto actual = objectMapper
+                .readValue(result.getResponse().getContentAsString(), FilteredRestaurantsDto.class);
+        assertNotNull(actual);
+        assertEquals(2, actual.restaurants().size());
+        assertEquals(3, actual.totalPages());
+    }
+
+    @Test
+    void search_SetPageAndSize_Ok() throws Exception {
+        SearchRestaurantDto addressSearch = new SearchRestaurantDto(null, null, 1, 3);
+        String jsonRequest = objectMapper.writeValueAsString(addressSearch);
+
+        MvcResult result = mockMvc
+                .perform(MockMvcRequestBuilders.post("/api/restaurants/_list").content(jsonRequest)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
+
+        FilteredRestaurantsDto actual = objectMapper
+                .readValue(result.getResponse().getContentAsString(), FilteredRestaurantsDto.class);
+        assertNotNull(actual);
+        assertEquals(2, actual.restaurants().size());
+        assertEquals(2, actual.totalPages());
     }
 }
