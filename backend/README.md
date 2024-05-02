@@ -12,13 +12,13 @@ Backend part.
 
 - POST /api/restaurants (Create a restaurant)
 - GET /api/restaurants/{id} (Get a specific restaurant)
-- PUT /api//restaurants/{id} (Update a restaurant)
+- PUT /api/restaurants/{id} (Update a restaurant)
 - DELETE /api/restaurants/{id} (Delete a restaurant)
 - POST /api/restaurants/_list (Get restaurants by query params)
 - POST /api/restaurants/_report (Generate report file in CSV by query params with restaurants)
 - POST /api/restaurants/upload (Upload restaurants from JSON) 
 
-For upload endpoint you can find example file here `test/resources/database/test-data-set-10-entities.json`
+For the upload endpoint you can find the example file here `test/resources/database/test-data-set-10-entities.json`
 
 
 - POST /api/restaurant-chains (Create a new chain)
@@ -26,7 +26,7 @@ For upload endpoint you can find example file here `test/resources/database/test
 - PUT /api/restaurant-chains/{id} (Update a chain)
 - DELETE /api/restaurant-chains/{id} (Delete a chain)
 
-##Input file examples
+## Input file examples
 
 Request to /api/restaurants/_list:
 Can be empty. If it is, return all restaurants. Search by `address` field is case insensible.
@@ -55,7 +55,7 @@ Request
 
 ```
 
-## How lanch this project
+## How launch this project
 Execute all commands from `backend` project folder.
 1. Configure your database settings in the .env file.
 2. Build the project with Maven.
