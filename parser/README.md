@@ -1,4 +1,4 @@
-# restorant-chain app
+# restaurant-chain app
 
 This is console script application that parses a collection of JSON files representing restaurants and generates statistics based on one of their attributes.  
 It takes two input parameters: the path to the folder containing the JSON files and the name of the attribute used for generating the statistics. 
@@ -15,8 +15,8 @@ java -jar target/exec-json-parser.jar [path-to-folder] [atribute-name]
 All result files writes to `statistics` folder, created in initial [path-to-folder].
 
 ## Entities description
-For now there is 1 entity Restorant, that have locationAddress, manager, seetsCapacity, employeesNumber, menuItems, restorantChain. 
-A RestorantChain have 1 or more Restorants, but Restorant assosiated only with one RestorantChain.
+For now there is 1 entity Restaurant, that have locationAddress, manager, seetsCapacity, employeesNumber, menuItems, restaurantChain. 
+A RestaurantChain have 1 or more Restaurants, but Restaurant assosiated only with one RestaurantChain.
 
 ## Input/Output Data files examples
 Input file:
@@ -29,7 +29,7 @@ Input file:
     "seetsCapacity": 50,
     "employeesNumber": 10,
     "menuItems": ["Burger", "Pizza", "Salad", "French Fries", "Soft Drink"],
-    "restorantChain": "Delicious Eats"
+    "restaurantChain": "Delicious Eats"
   },
   {
     "locationAddress": "1516 Maple Drive",
@@ -37,7 +37,7 @@ Input file:
     "seetsCapacity": 60,
     "employeesNumber": 12,
     "menuItems": ["Burger", "Pizza", "Salad", "Cheese Fries", "Lemonade"],
-    "restorantChain": "Delicious Eats"
+    "restaurantChain": "Delicious Eats"
   }
 ]
 ```
