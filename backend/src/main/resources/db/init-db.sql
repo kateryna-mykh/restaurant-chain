@@ -1,3 +1,3 @@
 DROP DATABASE IF EXISTS chain_db;
 CREATE USER postgres WITH SUPERUSER PASSWORD postgres;
-CREATE DATABASE restorant_db OWNER postgres;
+CREATE DATABASE chain_db OWNER postgres;

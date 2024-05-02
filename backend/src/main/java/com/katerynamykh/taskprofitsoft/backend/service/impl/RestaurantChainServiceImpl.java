@@ -4,10 +4,10 @@ import com.katerynamykh.taskprofitsoft.backend.dto.chain.ChainResponseDto;
 import com.katerynamykh.taskprofitsoft.backend.dto.chain.ChainWithLocationsDto;
 import com.katerynamykh.taskprofitsoft.backend.dto.chain.CreateChainRequestDto;
 import com.katerynamykh.taskprofitsoft.backend.exception.SaveDuplicateException;
-import com.katerynamykh.taskprofitsoft.backend.mapper.RestorantChainMapper;
-import com.katerynamykh.taskprofitsoft.backend.model.RestorantChain;
-import com.katerynamykh.taskprofitsoft.backend.repository.RestorantChainRepository;
-import com.katerynamykh.taskprofitsoft.backend.service.RestorantChainService;
+import com.katerynamykh.taskprofitsoft.backend.mapper.RestaurantChainMapper;
+import com.katerynamykh.taskprofitsoft.backend.model.RestaurantChain;
+import com.katerynamykh.taskprofitsoft.backend.repository.RestaurantChainRepository;
+import com.katerynamykh.taskprofitsoft.backend.service.RestaurantChainService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
@@ -16,9 +16,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
-public class RestorantChainServiceImpl implements RestorantChainService {
-    private final RestorantChainRepository chainRepository;
-    private final RestorantChainMapper mapper;
+public class RestaurantChainServiceImpl implements RestaurantChainService {
+    private final RestaurantChainRepository chainRepository;
+    private final RestaurantChainMapper mapper;
 
     @Transactional
     @Override
@@ -42,7 +42,7 @@ public class RestorantChainServiceImpl implements RestorantChainService {
         if (chainRepository.findByNameIgnoreCase(chainDto.name()).isPresent()) {
             throw new SaveDuplicateException("Faild to save duplicate chain " + chainDto.name());
         }
-        RestorantChain chain = mapper.toModel(chainDto);
+        RestaurantChain chain = mapper.toModel(chainDto);
         chain.setId(id);
         return mapper.toDto(chainRepository.save(chain));
     }

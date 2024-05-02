@@ -5,29 +5,29 @@ import com.katerynamykh.taskprofitsoft.backend.dto.chain.ChainResponseDto;
 import com.katerynamykh.taskprofitsoft.backend.dto.chain.ChainShortResponseDto;
 import com.katerynamykh.taskprofitsoft.backend.dto.chain.ChainWithLocationsDto;
 import com.katerynamykh.taskprofitsoft.backend.dto.chain.CreateChainRequestDto;
-import com.katerynamykh.taskprofitsoft.backend.model.RestorantChain;
+import com.katerynamykh.taskprofitsoft.backend.model.RestaurantChain;
 import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 
 @Mapper(config = MapperConfig.class)
-public interface RestorantChainMapper {
+public interface RestaurantChainMapper {
 
-    ChainResponseDto toDto(RestorantChain chain);
+    ChainResponseDto toDto(RestaurantChain chain);
     
     @Mapping(target = "mainChainInfo", source = "chain")
     @Mapping(target = "locationAddress", ignore = true)
-    ChainWithLocationsDto toDtoWithLocations(RestorantChain chain);
+    ChainWithLocationsDto toDtoWithLocations(RestaurantChain chain);
     
-    ChainShortResponseDto toDtoShortInfo(RestorantChain chain);
+    ChainShortResponseDto toDtoShortInfo(RestaurantChain chain);
     
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "branches", ignore = true)
-    RestorantChain toModel(CreateChainRequestDto chainDto);
+    RestaurantChain toModel(CreateChainRequestDto chainDto);
     
     @AfterMapping
-    default void setBranshesLocations(@MappingTarget ChainWithLocationsDto chainDto, RestorantChain chain) {
+    default void setBranshesLocations(@MappingTarget ChainWithLocationsDto chainDto, RestaurantChain chain) {
         chainDto.setLocationAddress(
                 chain.getBranches()
                 .stream()

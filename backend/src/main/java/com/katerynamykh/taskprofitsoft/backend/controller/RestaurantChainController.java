@@ -3,7 +3,7 @@ package com.katerynamykh.taskprofitsoft.backend.controller;
 import com.katerynamykh.taskprofitsoft.backend.dto.chain.ChainResponseDto;
 import com.katerynamykh.taskprofitsoft.backend.dto.chain.ChainWithLocationsDto;
 import com.katerynamykh.taskprofitsoft.backend.dto.chain.CreateChainRequestDto;
-import com.katerynamykh.taskprofitsoft.backend.service.RestorantChainService;
+import com.katerynamykh.taskprofitsoft.backend.service.RestaurantChainService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -23,41 +23,41 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-@Tag(name = "RestorantChain management API", description = "REST endpoints for managing chains of restorants")
+@Tag(name = "RestaurantChain management API", description = "REST endpoints for managing chains of restaurants")
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/api/restorant-chains")
-public class RestorantChainController {
-    private final RestorantChainService chainService;
+@RequestMapping("/api/restaurant-chains")
+public class RestaurantChainController {
+    private final RestaurantChainService chainService;
 
     /**
-     * Retrieve all restorant chains GET /api/restorant-chains
+     * Retrieve all restaurant chains GET /api/restaurant-chains
      * 
      * @return OK (status code 200)
      */
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    @Operation(summary = "Retrieve all restorant chains", description = "Retrieve all restorant chains")
+    @Operation(summary = "Retrieve all restaurant chains", description = "Retrieve all restaurant chains")
     List<ChainWithLocationsDto> retrieveAll(@ParameterObject Pageable pageable) {
         return chainService.findAll(pageable);
     }
 
     /**
-     * Create a restorant chain POST /api/restorant-chains
+     * Create a restaurant chain POST /api/restaurant-chains
      * 
      * @param chainDto
      * @return CREATED (status code 201)
      */
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    @Operation(summary = "Create a new restorant chain", description = "Create a new restorant chain")
+    @Operation(summary = "Create a new restaurant chain", description = "Create a new restaurant chain")
     ChainResponseDto create(
             @Parameter(name = "chainDto", required = true) @RequestBody @Valid CreateChainRequestDto chainDto) {
         return chainService.save(chainDto);
     }
 
     /**
-     * Update restorant chain PUT /api/restorant-chains/{id}
+     * Update restaurant chain PUT /api/restaurant-chains/{id}
      * 
      * @param id       - (required)
      * @param chainDto - (required)
@@ -65,7 +65,7 @@ public class RestorantChainController {
      */
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    @Operation(summary = "Update restorant chain data", description = "Update restorant chain data")
+    @Operation(summary = "Update restaurant chain data", description = "Update restaurant chain data")
     public ChainResponseDto updateById(
             @Parameter(name = "chain id", required = true) @PathVariable Long id,
             @Parameter(name = "chainDto", required = true) @RequestBody @Valid CreateChainRequestDto chainDto) {
@@ -73,13 +73,13 @@ public class RestorantChainController {
     }
 
     /**
-     * Delete a restorant chain DELETE /api/restorant-chains/{id}
+     * Delete a restaurant chain DELETE /api/restaurant-chains/{id}
      * 
      * @param id - (required)
      */
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @Operation(summary = "Delete a resorant chain", description = "Delete a resorant chain by id")
+    @Operation(summary = "Delete a resorant chain", description = "Delete a restaurant chain by id")
     public void delete(@Parameter(name = "chain id", required = true) @PathVariable Long id) {
         chainService.deleteById(id);
     }

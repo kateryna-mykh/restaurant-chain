@@ -1,7 +1,7 @@
 databaseChangeLog:
    - include:
-      file: db/changelog/changes/001-create-restorant_chains-table.yaml
+      file: db/changelog/changes/001-create-restaurant_chains-table.yaml
    - include:
-      file: db/changelog/changes/002-create-restorants-table.yaml
+      file: db/changelog/changes/002-create-restaurants-table.yaml
    - include:
-      file: db/changelog/changes/003-load-data-to-restorant_chains-table.yaml
+      file: db/changelog/changes/003-load-data-to-restaurant_chains-table.yaml

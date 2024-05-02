@@ -1,10 +1,10 @@
 databaseChangeLog:
   - changeSet:
-      id: create-restorant_chains-table
+      id: create-restaurant_chains-table
       author: kateryna-mykh
       changes:
       - createTable:
-            tableName: restorant_chains
+            tableName: restaurant_chains
             columns:
             - column:
                   name: id
@@ -30,7 +30,7 @@ databaseChangeLog:
                   constraints:
                      nullable: false
       - createIndex:
-            tableName: restorant_chains
+            tableName: restaurant_chains
             indexName: idx_name_upper
             unique: true
             columns:

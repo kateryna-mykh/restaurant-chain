@@ -1,8 +1,8 @@
-package com.katerynamykh.taskprofitsoft.backend.dto.restorant;
+package com.katerynamykh.taskprofitsoft.backend.dto.restaurant;
 
 import java.util.List;
 
-public record RestoarntShortResponseDto(
+public record RestaurantShortResponseDto(
         Long id,
         String locationAddress, 
         Integer seetsCapacity, 

@@ -6,9 +6,9 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.katerynamykh.taskprofitsoft.backend.dto.restorant.CreatedRestorantRequestDto;
-import com.katerynamykh.taskprofitsoft.backend.dto.restorant.DetaildRestorantResponseDto;
-import com.katerynamykh.taskprofitsoft.backend.dto.restorant.RestorantResponseDto;
+import com.katerynamykh.taskprofitsoft.backend.dto.restaurant.CreatedRestaurantRequestDto;
+import com.katerynamykh.taskprofitsoft.backend.dto.restaurant.DetaildRestaurantResponseDto;
+import com.katerynamykh.taskprofitsoft.backend.dto.restaurant.RestaurantResponseDto;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
@@ -31,7 +31,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-class RestorantControllerTest {
+class RestaurantControllerTest {
     protected static MockMvc mockMvc;
 
     @Autowired
@@ -45,7 +45,7 @@ class RestorantControllerTest {
         try (Connection connection = data.getConnection()) {
             connection.setAutoCommit(true);
             ScriptUtils.executeSqlScript(connection,
-                    new ClassPathResource("/database/add-chains-and-restorants.sql"));
+                    new ClassPathResource("/database/add-chains-and-restaurants.sql"));
         }
     }
 
@@ -65,61 +65,60 @@ class RestorantControllerTest {
 
     @Test
     @Transactional
-    @Sql(scripts = "classpath:database/delete-created-restorant.sql", executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
-    void create_AddNewRestorant_ShouldReturnRestorant() throws Exception {
-        CreatedRestorantRequestDto newRestorant = new CreatedRestorantRequestDto(
+    @Sql(scripts = "classpath:database/delete-created-restaurant.sql", executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
+    void create_AddNewRestaurant_ShouldReturnRestaurant() throws Exception {
+        CreatedRestaurantRequestDto newRestaurant = new CreatedRestaurantRequestDto(
                 "161 Myrtle Street", "Paolo Rycraft", 15, 5, 5L,
                 List.of("Apple Pie", "Cherry Cobbler", "Cherry Cheesecake"));
-        String jsonRequest = objectMapper.writeValueAsString(newRestorant);
+        String jsonRequest = objectMapper.writeValueAsString(newRestaurant);
 
         MvcResult result = mockMvc
-                .perform(MockMvcRequestBuilders.post("/api/restorants").content(jsonRequest)
+                .perform(MockMvcRequestBuilders.post("/api/restaurants").content(jsonRequest)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isCreated()).andReturn();
 
-        RestorantResponseDto actual = objectMapper
-                .readValue(result.getResponse().getContentAsString(), RestorantResponseDto.class);
+        RestaurantResponseDto actual = objectMapper
+                .readValue(result.getResponse().getContentAsString(), RestaurantResponseDto.class);
         assertNotNull(actual);
         assertEquals("Cherry Cheesecake", actual.menuItems().get(2));
     }
 
     @Test
-    void create_AddRestorantNotQniqueAdress_ShouldReturnBadRequest() throws Exception {
-        CreatedRestorantRequestDto newRestorant = new CreatedRestorantRequestDto(
+    void create_AddRestaurantNotQniqueAdress_ShouldReturnBadRequest() throws Exception {
+        CreatedRestaurantRequestDto newRestaurant = new CreatedRestaurantRequestDto(
                 "06 Crest Line Way", "Paolo Rycraft", 15, 5, 1L, List.of());
-        String jsonRequest = objectMapper.writeValueAsString(newRestorant);
+        String jsonRequest = objectMapper.writeValueAsString(newRestaurant);
 
         MvcResult result = mockMvc
-                .perform(MockMvcRequestBuilders.post("/api/restorants").content(jsonRequest)
+                .perform(MockMvcRequestBuilders.post("/api/restaurants").content(jsonRequest)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isBadRequest()).andReturn();
-        assertEquals("Faild to save duplicate restorant 06 Crest Line Way",
+        assertEquals("Faild to save duplicate restaurant 06 Crest Line Way",
                 result.getResolvedException().getMessage());
     }
 
     @Test
-    void create_AddRestorantWithNotExistingChain_ShouldReturnNotFound() throws Exception {
-        CreatedRestorantRequestDto newRestorant = new CreatedRestorantRequestDto(
+    void create_AddRestaurantWithNotExistingChain_ShouldReturnNotFound() throws Exception {
+        CreatedRestaurantRequestDto newRestaurant = new CreatedRestaurantRequestDto(
                 "161 Myrtle Street", "Paolo Rycraft", 15, 5, 100L, List.of());
-        String jsonRequest = objectMapper.writeValueAsString(newRestorant);
+        String jsonRequest = objectMapper.writeValueAsString(newRestaurant);
 
         MvcResult result = mockMvc
-                .perform(MockMvcRequestBuilders.post("/api/restorants").content(jsonRequest)
+                .perform(MockMvcRequestBuilders.post("/api/restaurants").content(jsonRequest)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isNotFound()).andReturn();
         assertEquals("Can't find chain by id: 100", result.getResolvedException().getMessage());
     }
 
-    //TODO:: debug why db restricts to retrieve
     @Test
     void retrieveById_IdExist_ShouldReturnDetaildDtoAndStatusOk() throws Exception {
         MvcResult result = mockMvc
-                .perform(MockMvcRequestBuilders.get("/api/restorants/{id}", 2)
+                .perform(MockMvcRequestBuilders.get("/api/restaurants/{id}", 2)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
 
-        DetaildRestorantResponseDto actual = objectMapper.readValue(
-                result.getResponse().getContentAsString(), DetaildRestorantResponseDto.class);
+        DetaildRestaurantResponseDto actual = objectMapper.readValue(
+                result.getResponse().getContentAsString(), DetaildRestaurantResponseDto.class);
         assertNotNull(actual);
         assertEquals(2, actual.id());
         assertEquals("07196 Blaine Court", actual.locationAddress());
@@ -129,47 +128,45 @@ class RestorantControllerTest {
 
     @Test
     void retrieveById_IdNotExist_ShouldReturnNotFound() throws Exception {
-        // TODO::
         MvcResult result = mockMvc
-                .perform(MockMvcRequestBuilders.get("/api/restorants/{id}", 100)
+                .perform(MockMvcRequestBuilders.get("/api/restaurants/{id}", 100)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isNotFound()).andReturn();
 
-        assertEquals("Can't find restorant by id 100", result.getResolvedException().getMessage());
+        assertEquals("Can't find restaurant by id 100", result.getResolvedException().getMessage());
     }
 
     @Test
     @Transactional
-    @Sql(scripts = "classpath:database/add-restorant-to-delete.sql", executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
-    @Sql(scripts = "classpath:database/delete-created-restorant.sql", executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
-    void updateById_ValidRestorant_Ok() throws Exception {
-        CreatedRestorantRequestDto updateRestorant = new CreatedRestorantRequestDto(
-                "161 Myrtle Street", "Paolo Rycraft", 20, 4, 1L, List.of());
-        String jsonRequest = objectMapper.writeValueAsString(updateRestorant);
+    @Sql(scripts = "classpath:database/reset-updated-restaurant.sql", executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
+    void updateById_ValidRestaurant_Ok() throws Exception {
+        CreatedRestaurantRequestDto updateRestaurant = new CreatedRestaurantRequestDto(
+                "06 Crest Line Way", "Paolo Rycraft", 100, 20, 3L, List.of(""));
+        String jsonRequest = objectMapper.writeValueAsString(updateRestaurant);
 
         MvcResult result = mockMvc
-                .perform(MockMvcRequestBuilders.put("/api/restorants/{id}", 6).content(jsonRequest)
+                .perform(MockMvcRequestBuilders.put("/api/restaurants/{id}", 3).content(jsonRequest)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
 
-        RestorantResponseDto actual = objectMapper
-                .readValue(result.getResponse().getContentAsString(), RestorantResponseDto.class);
+        RestaurantResponseDto actual = objectMapper
+                .readValue(result.getResponse().getContentAsString(), RestaurantResponseDto.class);
         assertNotNull(actual);
-        assertEquals(6, actual.id());
-        assertEquals(4, actual.employeesNumber());
-        assertEquals(20, actual.seetsCapacity());
+        assertEquals(3, actual.id());
+        assertEquals(20, actual.employeesNumber());
+        assertEquals(100, actual.seetsCapacity());
         assertEquals("Paolo Rycraft", actual.manager());
-        assertEquals("161 Myrtle Street", actual.locationAddress());
+        assertEquals("06 Crest Line Way", actual.locationAddress());
     }
 
     @Test
     void updateById_ChainNotExist_ShouldReturnNotFound() throws Exception {
-        CreatedRestorantRequestDto updateRestorant = new CreatedRestorantRequestDto(
+        CreatedRestaurantRequestDto updateRestaurant = new CreatedRestaurantRequestDto(
                 "161 Myrtle Street", "Paolo Rycraft", 20, 4, 100L, List.of());
-        String jsonRequest = objectMapper.writeValueAsString(updateRestorant);
+        String jsonRequest = objectMapper.writeValueAsString(updateRestaurant);
 
         MvcResult result = mockMvc
-                .perform(MockMvcRequestBuilders.put("/api/restorants/{id}", 2).content(jsonRequest)
+                .perform(MockMvcRequestBuilders.put("/api/restaurants/{id}", 2).content(jsonRequest)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isNotFound()).andReturn();
 
@@ -178,40 +175,40 @@ class RestorantControllerTest {
 
     @Test
     void updateById_DuplicateLocation_ShouldReturnBadRequest() throws Exception {
-        CreatedRestorantRequestDto updateRestorant = new CreatedRestorantRequestDto(
+        CreatedRestaurantRequestDto updateRestaurant = new CreatedRestaurantRequestDto(
                 "06 Crest Line Way", "Paolo Rycraft", 20, 4, 5L, List.of());
-        String jsonRequest = objectMapper.writeValueAsString(updateRestorant);
+        String jsonRequest = objectMapper.writeValueAsString(updateRestaurant);
 
         MvcResult result = mockMvc
-                .perform(MockMvcRequestBuilders.put("/api/restorants/{id}", 5).content(jsonRequest)
+                .perform(MockMvcRequestBuilders.put("/api/restaurants/{id}", 5).content(jsonRequest)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isBadRequest()).andReturn();
 
-        assertEquals("Faild to save duplicate restorant 06 Crest Line Way",
+        assertEquals("Faild to save duplicate restaurant 06 Crest Line Way",
                 result.getResolvedException().getMessage());
 
     }
 
     @Test
-    @Sql(scripts = "classpath:database/add-restorant-to-delete.sql", executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
+    @Sql(scripts = "classpath:database/add-restaurant-to-delete.sql", executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
     void delete_ShouldReturnNoContent() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.delete("/api/restorants/{id}", 6)
+        mockMvc.perform(MockMvcRequestBuilders.delete("/api/restaurants/{id}", 6)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isNoContent());
     }
 
     @Test
     void testUploadResorants() {
-        // TODO:: later api/restorants/upload
+        // TODO:: later api/restaurants/upload
     }
 
     @Test
     void testSearch() {
-        // TODO:: later api/restorants/_list
+        // TODO:: later api/restaurants/_list
     }
 
     @Test
     void testGenerateReport() {
-        // TODO:: later api/restorants/_report
+        // TODO:: later api/restaurants/_report
     }
 }

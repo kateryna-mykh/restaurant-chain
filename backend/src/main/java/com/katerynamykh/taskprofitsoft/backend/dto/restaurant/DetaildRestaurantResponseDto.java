@@ -1,9 +1,9 @@
-package com.katerynamykh.taskprofitsoft.backend.dto.restorant;
+package com.katerynamykh.taskprofitsoft.backend.dto.restaurant;
 
 import com.katerynamykh.taskprofitsoft.backend.dto.chain.ChainShortResponseDto;
 import java.util.List;
 
-public record DetaildRestorantResponseDto(
+public record DetaildRestaurantResponseDto(
     Long id,
     String locationAddress, 
     String manager,

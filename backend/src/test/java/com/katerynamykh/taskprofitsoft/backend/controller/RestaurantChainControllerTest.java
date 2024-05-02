@@ -30,7 +30,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-class RestorantChainControllerTest {
+class RestaurantChainControllerTest {
     protected static MockMvc mockMvc;
 
     @Autowired
@@ -65,7 +65,7 @@ class RestorantChainControllerTest {
     @Test
     void retrieveAll_WithoutParams_ShouldReturn5Chains() throws Exception {
         MvcResult result = mockMvc
-                .perform(MockMvcRequestBuilders.get("/api/restorant-chains")
+                .perform(MockMvcRequestBuilders.get("/api/restaurant-chains")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
 
@@ -82,7 +82,7 @@ class RestorantChainControllerTest {
         String jsonRequest = objectMapper.writeValueAsString(newChain);
 
         MvcResult result = mockMvc
-                .perform(MockMvcRequestBuilders.post("/api/restorant-chains").content(jsonRequest)
+                .perform(MockMvcRequestBuilders.post("/api/restaurant-chains").content(jsonRequest)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isCreated()).andReturn();
 
@@ -99,7 +99,7 @@ class RestorantChainControllerTest {
         String jsonRequest = objectMapper.writeValueAsString(newChain);
 
         MvcResult result = mockMvc
-                .perform(MockMvcRequestBuilders.post("/api/restorant-chains").content(jsonRequest)
+                .perform(MockMvcRequestBuilders.post("/api/restaurant-chains").content(jsonRequest)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isBadRequest()).andReturn();
         assertEquals("Faild to save duplicate chain tasty bites",
@@ -114,7 +114,7 @@ class RestorantChainControllerTest {
         String jsonRequest = objectMapper.writeValueAsString(updateChain);
 
         MvcResult result = mockMvc
-                .perform(MockMvcRequestBuilders.put("/api/restorant-chains/{id}", 1)
+                .perform(MockMvcRequestBuilders.put("/api/restaurant-chains/{id}", 1)
                         .content(jsonRequest).contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
 
@@ -134,7 +134,7 @@ class RestorantChainControllerTest {
         String jsonRequest = objectMapper.writeValueAsString(updateChain);
 
         MvcResult result = mockMvc
-                .perform(MockMvcRequestBuilders.put("/api/restorant-chains/{id}", 1)
+                .perform(MockMvcRequestBuilders.put("/api/restaurant-chains/{id}", 1)
                         .content(jsonRequest).contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isBadRequest()).andReturn();
         assertEquals("Faild to save duplicate chain BARVY",
@@ -144,7 +144,7 @@ class RestorantChainControllerTest {
     @Test
     @Sql(scripts = "classpath:database/add-chain-to-delete.sql", executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
     void delete_ShouldReturnNoContent() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.delete("/api/restorant-chains/{id}", 6)
+        mockMvc.perform(MockMvcRequestBuilders.delete("/api/restaurant-chains/{id}", 6)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isNoContent());
     }

@@ -6,7 +6,7 @@ import com.katerynamykh.taskprofitsoft.backend.dto.chain.CreateChainRequestDto;
 import java.util.List;
 import org.springframework.data.domain.Pageable;
 
-public interface RestorantChainService {
+public interface RestaurantChainService {
     ChainResponseDto save(CreateChainRequestDto chainDto);
 
     List<ChainWithLocationsDto> findAll(Pageable pageable);

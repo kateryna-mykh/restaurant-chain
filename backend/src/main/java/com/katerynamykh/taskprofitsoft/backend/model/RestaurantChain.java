@@ -19,8 +19,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "restorant_chains")
-public class RestorantChain {
+@Table(name = "restaurant_chains")
+public class RestaurantChain {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -30,6 +30,6 @@ public class RestorantChain {
     private String cuisine;
     @Column(columnDefinition = "decimal(10,2) dafault 0.00", nullable = false)
     private BigDecimal annualRevenue;
-    @OneToMany(mappedBy = "restorantChain", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Restorant> branches = new HashSet<>();
+    @OneToMany(mappedBy = "restaurantChain", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Restaurant> branches = new HashSet<>();
 }

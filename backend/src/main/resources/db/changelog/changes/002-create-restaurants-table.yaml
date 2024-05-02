@@ -1,10 +1,10 @@
 databaseChangeLog:
   - changeSet:
-      id: create-restorants-table
+      id: create-restaurants-table
       author: kateryna-mykh
       changes:
       - createTable:
-            tableName: restorants
+            tableName: restaurants
             columns:
             - column:
                   name: id
@@ -35,7 +35,7 @@ databaseChangeLog:
                      nullable: false
             - column:
                   name: menu_items
-                  type: text
+                  type: text[]
             - column:
                   name: chain_id
                   type: bigint
@@ -43,12 +43,12 @@ databaseChangeLog:
                      nullable: false                
       - addForeignKeyConstraint:
             baseColumnNames: chain_id
-            baseTableName: restorants
-            constraintName: fk_restorants_chainId
+            baseTableName: restaurants
+            constraintName: fk_restaurants_chainId
             referencedColumnNames: id
-            referencedTableName: restorant_chains
+            referencedTableName: restaurant_chains
       - createIndex:
-            tableName: restorants
+            tableName: restaurants
             indexName: idx_address_upper
             unique: true
             columns:
