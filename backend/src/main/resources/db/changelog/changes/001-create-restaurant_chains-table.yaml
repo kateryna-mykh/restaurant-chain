@@ -1,0 +1,40 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-restaurant_chains-table
+      author: kateryna-mykh
+      changes:
+      - createTable:
+            tableName: restaurant_chains
+            columns:
+            - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                     primaryKey: true
+                     nullable: false
+            - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                     nullable: false
+            - column:
+                  name: cuisine
+                  type: varchar(255)
+                  constraints:
+                     nullable: false
+            - column:
+                  name: annual_revenue
+                  type: decimal(10,2)
+                  defaultValueNumeric: 0.00
+                  constraints:
+                     nullable: false
+      - createIndex:
+            tableName: restaurant_chains
+            indexName: idx_name_upper
+            unique: true
+            columns:
+                - column:
+                    name: upper(name)
+                    computed: true
+     

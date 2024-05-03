@@ -1,0 +1,82 @@
+[
+  {
+    "locationAddress": "123 Main Street",
+    "manager": "John Doe",
+    "seetsCapacity": 50,
+    "employeesNumber": 10,
+    "menuItems": ["Burger", "Pizza", "Salad", "French Fries", "Soft Drink"],
+    "restaurantChainId": 1
+  },
+  {
+    "locationAddress": "1516 Maple Drive",
+    "manager": "Jessica Brown",
+    "seetsCapacity": 60,
+    "employeesNumber": 12,
+    "menuItems": ["Burger", "Pizza", "Salad", "Cheese Fries", "Lemonade"],
+    "restaurantChainId": 1
+  },
+  {
+    "locationAddress": "1718 Walnut Lane",
+    "manager": "David Martinez",
+    "seetsCapacity": 60,
+    "employeesNumber": 12,
+    "menuItems": ["Curry", "Noodles", "Spring Rolls", "Jasmine Rice", "Thai Iced Tea"],
+    "restaurantChainId": 2
+  },
+  {
+    "locationAddress": "1920 Elmwood Avenue",
+    "manager": "Amanda Lee",
+    "seetsCapacity": 65,
+    "employeesNumber": 15,
+    "menuItems": ["Curry", "Noodles", "Spring Rolls", "Vegetable Tempura", "Green Tea"],
+    "restaurantChainId": 2
+  },
+  {
+    "locationAddress": "2122 Oakwood Boulevard",
+    "manager": "Ryan Taylor",
+    "seetsCapacity": 70,
+    "employeesNumber": 14,
+    "menuItems": ["Borch", "Varenyki", "Zrazy", "Uzvar", "Сheesecakes"],
+    "restaurantChainId": 5
+  },
+  {
+    "locationAddress": "2324 Pinecrest Drive",
+    "manager": "Sarah Anderson",
+    "seetsCapacity": 75,
+    "employeesNumber": 15,
+    "menuItems": ["Pho", "Banh Mi", "Vietnamese Spring Rolls", "Beef Pho", "Vietnamese Coffee"],
+    "restaurantChainId": 10
+  },
+  {
+    "locationAddress": "456 Oak Avenue",
+    "manager": "Jane Smith",
+    "seetsCapacity": 45,
+    "employeesNumber": 9,
+    "menuItems": ["Steak", "Pasta", "Sandwich", "Caesar Salad", "Iced Tea"],
+    "restaurantChainId": 3
+  },
+  {
+    "locationAddress": "1314 Cedar Lane",
+    "manager": "Chris Wilson",
+    "seetsCapacity": 55,
+    "employeesNumber": 11,
+    "menuItems": ["Pizza", "Salad", "French Fries", "Soft Drink", "Brownie"],
+    "restaurantChainId": 3
+  },
+    {
+    "locationAddress": "1314 Cedar Lane",
+    "manager": "Michael Johnson",
+    "seetsCapacity": 40,
+    "employeesNumber": 8,
+    "menuItems": ["Sushi", "Ramen", "Tempura", "Edamame", "Green Tea"],
+    "restaurantChainId": 3
+  },
+  {
+    "locationAddress": "1516 Maple Drive",
+    "manager": "Jessica Brown",
+    "seetsCapacity": 60,
+    "employeesNumber": 11,
+    "menuItems": ["Pizza", "Salad", "French Fries", "Soft Drink", "Ice Cream"],
+    "restaurantChainId": 3
+  }
+]

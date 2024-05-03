@@ -1,4 +1,4 @@
-package com.katerynamykh.taskprofItsoft.backend;
+package com.katerynamykh.taskprofitsoft.backend;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
