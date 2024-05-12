@@ -95,7 +95,17 @@ const signIn = ({
       login,
       password,
     },
-  );
+  ).catch(() => {
+    // TODO: Mocked '.catch()' section
+    if (login === MOCK_USER_AUTH.login && password === MOCK_USER_AUTH.password) {
+      return MOCK_USER_AUTH_RESPONSE;
+    }
+    return Promise.reject([
+      {
+        code: 'WRONG_LOGIN_OR_PASSWORD',
+      },
+    ]);
+  });
 };
 
 const signUp = ({
@@ -134,16 +144,6 @@ const fetchSignIn = ({
     email,
     login,
     password,
-  }).catch(() => {
-    // TODO: Mocked '.catch()' section
-    if (login === MOCK_USER_AUTH.login && password === MOCK_USER_AUTH.password) {
-      return MOCK_USER_AUTH_RESPONSE;
-    }
-    return Promise.reject([
-      {
-        code: 'WRONG_LOGIN_OR_PASSWORD',
-      },
-    ]);
   }).then(({ token, user }) => {
     storage.setItem(keys.TOKEN, token.value);
     storage.setItem(keys.TOKEN_EXPIRATION, token.expirationTimestamp);

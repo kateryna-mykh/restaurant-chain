@@ -30,7 +30,7 @@ const menuItems = [
   {
     link: `${pagesURLs[pages.restaurantsListPage]}`,
     neededAuthorities: [authorities.ENABLE_SEE_SECRET_PAGE],
-    titleIntlId: `${pages.restaurantsListPage}`,
+    titleIntlId: `page.${pages.restaurantsListPage}`,
   },
 ];
 
