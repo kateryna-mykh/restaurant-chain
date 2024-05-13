@@ -3,6 +3,7 @@ const initialState = {
     isFailed: false,
     list: [],
     pages: 0,
+    errorMessage: '',
 };
 
 export default function Reducer(state = initialState, action) {
@@ -25,17 +26,26 @@ export default function Reducer(state = initialState, action) {
             };
         }
         case 'DELETE_RESTAURANT': {
-            const {id} = action;
+            const { id } = action;
             return {
                 ...state,
                 list: state.list.filter(restaurant => restaurant.id !== id)
             };
         }
+        case 'ADD_RESTAURANT': {
+           return {
+               ...state,
+               isLoading: false,
+           };
+        }
         case 'ERROR_RECEIVE_RESTAURANTS': {
-            return { isFailed: true, isLoading: false, };
+            return { isFailed: true, isLoading: false, errorMessage: action.err};
         }
         case 'ERROR_DELETE_RESTAURANT': {
-            return { isFailed: true };
+            return { isFailed: true, errorMessage: action.err };
+        }
+        case 'ERROR_ADD_RESTAURANT': {
+            return { isFailed: true, isLoading: false, errorMessage: action.err};
         }
         default: { return state; }
     }

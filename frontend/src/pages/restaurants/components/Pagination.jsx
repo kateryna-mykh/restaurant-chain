@@ -7,7 +7,7 @@ const Pagination = ({
     onChange,
 }) => {
     return (
-        <PaginationMUI count={count} shape={'rounded'} onChange={onChange} page={page} />
+        <PaginationMUI count={count} shape={'rounded'} variant={'outlined'} onChange={onChange} page={page} />
     );
 }
 

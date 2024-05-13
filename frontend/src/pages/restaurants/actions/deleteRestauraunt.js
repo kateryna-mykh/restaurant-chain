@@ -6,15 +6,15 @@ const deleteRestaurant = id => ({
     type: 'DELETE_RESTAURANT',
 });
 
-const errorDeleteRestaurant = () => ({
+const errorDeleteRestaurant = (err) => ({
+    err,
     type: 'ERROR_DELETE_RESTAURANT',
 });
 
 const deleteRestaurantRequest = (id) => (dispatch) => {
-console.log(`${rquestURLs.restauratsEntityPath}/${id}`);
     return axios.delete(`${rquestURLs.restauratsEntityPath}/${id}`)
     .catch(() => dispatch(deleteRestaurant(id)))
-    .catch(() => dispatch(errorDeleteRestaurant()));
+    .catch(err => dispatch(errorDeleteRestaurant(err.message)));
 };
 
 export default { deleteRestaurantRequest };

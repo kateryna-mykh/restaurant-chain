@@ -5,9 +5,10 @@ import FilterIcon from '../components/icons/Filter';
 import Pagination from '../components/Pagination';
 import Storage from 'misc/storage/index';
 
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import actionsRestaurant from '../actions/fetchRestaurants';
+//import useCurrentPage from 'misc/hooks/useCurrentPage';
 
 const Restaurants = (props) => {
     const {
@@ -18,15 +19,34 @@ const Restaurants = (props) => {
     } = useSelector((store) => store);
 
     const { formatMessage } = useIntl();
-
     const dispatch = useDispatch();
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const [baseQuery, setBaseQuery] = useState({
+        "page": 0,
+        "size": 10
+    });
+
+    const handlePageChange = (event, value) => {
+        setCurrentPage(value);
+        Storage.setItem("currentPage", JSON.stringify(value));
+        setBaseQuery({
+            ...baseQuery,
+            page: value - 1,
+        });
+    };
+
     useEffect(() => {
-        dispatch(actionsRestaurant.fetchRestaurants());
-    }, []);
+        const savedPage = Storage.getItem("currentPage");
+        const parsedPage = JSON.parse(savedPage);
+        setCurrentPage(parsedPage);
+        dispatch(actionsRestaurant.fetchRestaurants(JSON.stringify(baseQuery)));
+    }, [currentPage]);
 
     return (
         <div>
             <div style={{ padding: '0px 0px 0px calc(100% - 143px)' }}>
+            
                 <Button colorVariant='header' onClick={() => { }}>
                     + {formatMessage({ id: 'button.add' })}
                 </Button>
@@ -44,7 +64,7 @@ const Restaurants = (props) => {
                 </div>
             </div>
             <div style={{ display: 'flex', width: '80%', justifyContent: 'center', margin: '20px' }}>
-                <Pagination onChange={() => { }} count={pages} />
+                <Pagination count={pages} page={currentPage} onChange={handlePageChange} />
             </div>
         </div>
     );
