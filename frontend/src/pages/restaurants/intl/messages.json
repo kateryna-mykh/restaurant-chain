@@ -1,0 +1,8 @@
+{
+	"button.add": "Add Item",
+	"button.filter": "Filter",
+	"delete.display.text": "Are you sure you want to delete this entity?",
+	"delete.display.error": "Deletion was failed.",
+	"delete.display.notification": "Item was deleted.",
+	"button.agree": "Agree"
+}

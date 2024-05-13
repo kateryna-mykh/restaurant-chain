@@ -2,7 +2,7 @@ import React from 'react';
 import SvgIcon from 'components/SvgIcon';
 import useTheme from 'misc/hooks/useTheme';
 
-const DeleteIcon = ({
+const Delete = ({
     color = 'header', // default | header | error | success | warning | info | <string>
     size = 24,
 }) => {
@@ -26,4 +26,4 @@ const DeleteIcon = ({
     );
 };
 
-export default DeleteIcon;
+export default Delete;
