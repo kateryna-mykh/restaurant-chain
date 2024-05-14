@@ -11,6 +11,14 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import actionsRestaurant from '../actions/fetchRestaurants';
 
+const mockedChainNames = [
+    { id: 1, name: "Delicious Eats" },
+    { id: 2, name: "Asian Fusion" },
+    { id: 3, name: "Tasty Bites" },
+    { id: 4, name: "Barvy" },
+    { id: 5, name: "BEEF Meat & Wine" },
+];
+
 const Restaurants = (props) => {
     const {
         list: restaurantsList,
@@ -27,6 +35,11 @@ const Restaurants = (props) => {
     const [baseQuery, setBaseQuery] = useState({
         "page": 0,
         "size": 10
+    });
+    const [filterQuery, setFilterQuery] = useState({
+        "address": "",
+        "chainId": 0, //1-5
+        ...baseQuery,
     });
 
     const handlePageChange = (event, value) => {
@@ -63,7 +76,16 @@ const Restaurants = (props) => {
                     <Button colorVariant='secondary' onClick={() => { }}>
                         <FilterIcon /> {formatMessage({ id: 'button.filter' })}
                     </Button>
-                    <div style={{ border: '1px solid black', width: '140px' }}>Here will be filter creterias</div>
+                    <div style={{ border: '1px solid black', width: '140px', display: 'inline-list-item' }}>
+                        <span>Location address: </span>
+                        <span style={{ display: 'flex' }}>   <input placeholder='address..' onChange={() => { }} style={{ width: '100%' }}></input></span>
+                        <span>Chain name:</span>
+                        {
+                            mockedChainNames.map(chain =>
+                                <Button colorVariant='secondary' fullWidth={true} key={chain.id} onClick={() => { }}>{chain.name}</Button>)
+                        }
+                        <Button colorVariant='header' fullWidth={true} onClick={() => { }}>{formatMessage({ id: 'button.apply' })}</Button>
+                    </div>
                 </div>
             </div>
             <div style={{ display: 'flex', width: '80%', justifyContent: 'center', margin: '20px' }}>
@@ -72,5 +94,5 @@ const Restaurants = (props) => {
         </div>
     );
 }
-//navigate( `${pagesURLs.restaurants}/${r.id}`)
+
 export default Restaurants;
