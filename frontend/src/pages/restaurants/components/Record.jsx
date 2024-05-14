@@ -1,11 +1,11 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import { useIntl } from 'react-intl'
 import DeleteIcon from "../components/icons/Delete";
 import Notification from "../components/Notification";
 import IconButton from "components/IconButton";
 import Button from "components/Button";
 import Dialog from "components/Dialog";
-import actionsDeleteRestaurant from '../actions/deleteRestauraunt';
+import actionsDeleteRestaurant from '../actions/deleteRestaurant';
 import { useDispatch } from 'react-redux';
 
 const Record = ({ restaurant, isFailed, onClick }) => {
@@ -15,10 +15,12 @@ const Record = ({ restaurant, isFailed, onClick }) => {
     const [deletionFailed, setDeletionFailed] = useState(isFailed);
     const { formatMessage } = useIntl();
 
-    const handleClickOpen = () => {
+    const handleClickOpen = (event) => {
+        event.stopPropagation();
         setOpen(true);
     };
-    const handleClose = (isDeleationFailed) => {
+    const handleClose = (isDeleationFailed, event) => {
+        event.stopPropagation();
         if (!isDeleationFailed) {
             setOpen(false);
             setTimer(true);
@@ -39,7 +41,6 @@ const Record = ({ restaurant, isFailed, onClick }) => {
                 boxShadow: '2px 2px 4px 1px rgba(136, 150, 171, .5)',
                 alignContent: "center", alignItems: 'center'
             }}>
-            {restaurant.id} |
             {restaurant.chainName} |
             {restaurant.locationAddress} |
             {restaurant.seetsCapacity}
@@ -56,9 +57,9 @@ const Record = ({ restaurant, isFailed, onClick }) => {
                 sx>
                 <span>{formatMessage({ id: 'delete.display.text' })}</span>
                 <span>
-                    <Button colorVariant='header' onClick={() => {
+                    <Button colorVariant='header' onClick={(e) => {
                         dispatch(actionsDeleteRestaurant.deleteRestaurantRequest(restaurant.id));
-                        handleClose(deletionFailed);
+                        handleClose(deletionFailed, e);
                     }
                     }> {formatMessage({ id: 'button.agree' })}</Button>
                 </span>
