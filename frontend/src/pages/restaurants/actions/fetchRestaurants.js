@@ -1,5 +1,6 @@
 import rquestURLs from 'constants/backendURLs';
 import axios from 'misc/requests';
+import { RECEIVE_RESTAURANTS, REQUEST_RESTAURANTS, ERROR_RECEIVE_RESTAURANTS } from '../constants/ActionTypes';
 
 const MOCK_RESTAURANTS_LIST_RESPONSE = {
     "restaurants": [
@@ -64,17 +65,17 @@ const MOCK_RESTAURANTS_SECOND_PAGE = {
 
 const receiveRestaurants = restaurants => ({
     restaurants,
-    type: 'RECEIVE_RESTAURANTS',
+    type: RECEIVE_RESTAURANTS,
 });
 
 const requestRestaurants = request => ({
     request,
-    type: 'REQUEST_RESTAURANTS',
+    type: REQUEST_RESTAURANTS,
 });
 
 const errorReceiveRestaurants = (err) => ({
-    err,
-    type: 'ERROR_RECEIVE_RESTAURANTS',
+    payload: err,
+    type: ERROR_RECEIVE_RESTAURANTS,
 });
 
 const getRestaurants = (request) => {
@@ -93,7 +94,7 @@ const fetchRestaurants = (request) => (dispatch) => {
     dispatch(requestRestaurants(request));
     return getRestaurants(request).then(r =>
         dispatch(receiveRestaurants(r)))
-        .catch(() => dispatch(errorReceiveRestaurants()));
+        .catch(err => dispatch(errorReceiveRestaurants(err.message)));
 };
 
 export default { fetchRestaurants };

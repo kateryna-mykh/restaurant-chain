@@ -5,5 +5,7 @@
 	"delete.display.error": "Deletion was failed.",
 	"delete.display.notification": "Item was deleted.",
 	"button.agree": "Agree",
-	"button.apply": "Apply"
+	"button.apply": "Apply",
+	"filter.location.lable": "Location address",
+	"filter.chainName.lable": "Chain name"
 }

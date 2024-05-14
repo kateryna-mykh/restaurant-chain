@@ -1,3 +1,11 @@
+import {
+    RECEIVE_RESTAURANTS,
+    REQUEST_RESTAURANTS,
+    DELETE_RESTAURANT,
+    ERROR_RECEIVE_RESTAURANTS,
+    ERROR_DELETE_RESTAURANT
+} from '../constants/ActionTypes';
+
 const initialState = {
     isLoading: false,
     isFailed: false,
@@ -8,13 +16,13 @@ const initialState = {
 
 export default function Reducer(state = initialState, action) {
     switch (action.type) {
-        case 'REQUEST_RESTAURANTS': {
+        case REQUEST_RESTAURANTS: {
             return {
                 ...state,
                 isLoading: true,
             };
         }
-        case 'RECEIVE_RESTAURANTS': {
+        case RECEIVE_RESTAURANTS: {
             const {
                 restaurants
             } = action;
@@ -25,27 +33,18 @@ export default function Reducer(state = initialState, action) {
                 pages: restaurants.totalPages,
             };
         }
-        case 'DELETE_RESTAURANT': {
+        case DELETE_RESTAURANT: {
             const { id } = action;
             return {
                 ...state,
                 list: state.list.filter(restaurant => restaurant.id !== id)
             };
         }
-        case 'ADD_RESTAURANT': {
-           return {
-               ...state,
-               isLoading: false,
-           };
+        case ERROR_RECEIVE_RESTAURANTS: {
+            return { isFailed: true, isLoading: false, errorMessage: action.payload };
         }
-        case 'ERROR_RECEIVE_RESTAURANTS': {
-            return { isFailed: true, isLoading: false, errorMessage: action.err};
-        }
-        case 'ERROR_DELETE_RESTAURANT': {
-            return { isFailed: true, errorMessage: action.err };
-        }
-        case 'ERROR_ADD_RESTAURANT': {
-            return { isFailed: true, isLoading: false, errorMessage: action.err};
+        case ERROR_DELETE_RESTAURANT: {
+            return { isFailed: true, errorMessage: action.payload };
         }
         default: { return state; }
     }

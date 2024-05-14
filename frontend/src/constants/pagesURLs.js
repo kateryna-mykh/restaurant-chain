@@ -6,7 +6,6 @@ const result = {
   [pages.login]: `${config.UI_URL_PREFIX}/${pages.login}`,
   [pages.secretPage]: `${config.UI_URL_PREFIX}/${pages.secretPage}`,
   [pages.restaurantsListPage]: `${config.UI_URL_PREFIX}/${pages.restaurantsListPage}`,
-  [pages.restaurantDetailedInfoPage]: `${config.UI_URL_PREFIX}/${pages.restaurantDetailedInfoPage}/:id`,
 };
 
 export default result;

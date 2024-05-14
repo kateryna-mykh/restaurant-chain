@@ -1,14 +1,15 @@
 import rquestURLs from 'constants/backendURLs';
 import axios from 'misc/requests';
+import { DELETE_RESTAURANT, ERROR_DELETE_RESTAURANT } from '../constants/ActionTypes';
 
 const deleteRestaurant = id => ({
     id,
-    type: 'DELETE_RESTAURANT',
+    type: DELETE_RESTAURANT,
 });
 
 const errorDeleteRestaurant = (err) => ({
-    err,
-    type: 'ERROR_DELETE_RESTAURANT',
+    payload: err,
+    type: ERROR_DELETE_RESTAURANT,
 });
 
 const deleteRestaurantRequest = (id) => (dispatch) => {
