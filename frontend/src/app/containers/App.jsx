@@ -88,7 +88,7 @@ function App() {
                     />
                     <Route
                       element={<DetaildInfoPage />}
-                      path={`${pageURLs[pages.restaurantDetailedInfoPage]}`}
+                      path={`${pageURLs[pages.restaurantsListPage]}/:id`}
                     />
                     <Route
                       element={(

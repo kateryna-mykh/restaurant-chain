@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import { useIntl } from 'react-intl'
 import DeleteIcon from "../components/icons/Delete";
 import Notification from "../components/Notification";
@@ -8,8 +8,7 @@ import Dialog from "components/Dialog";
 import actionsDeleteRestaurant from '../actions/deleteRestauraunt';
 import { useDispatch } from 'react-redux';
 
-
-const Record = ({ restaurant, isFailed }) => {
+const Record = ({ restaurant, isFailed, onClick }) => {
     const [showDeleteIcon, setShowDeleteIcon] = useState(false);
     const [open, setOpen] = useState(false);
     const [timer, setTimer] = useState(false);
@@ -34,7 +33,7 @@ const Record = ({ restaurant, isFailed }) => {
     return (
         <div onMouseOver={() => { setShowDeleteIcon(true) }}
             onMouseOut={() => { setShowDeleteIcon(false) }}
-            onClick={() => { }}
+            onClick={onClick}
             style={{
                 height: '40px', borderRadius: '4px',
                 boxShadow: '2px 2px 4px 1px rgba(136, 150, 171, .5)',
