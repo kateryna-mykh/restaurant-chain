@@ -31,15 +31,15 @@ const Restaurants = (props) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
+    const [showCriteria, setShowCritera] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [baseQuery, setBaseQuery] = useState({
         "page": 0,
-        "size": 10
+        "size": 10,
     });
     const [filterQuery, setFilterQuery] = useState({
         "address": "",
-        "chainId": 0, //1-5
-        ...baseQuery,
+        "chainId": null, //1-5
     });
 
     const handlePageChange = (event, value) => {
@@ -52,11 +52,22 @@ const Restaurants = (props) => {
     };
 
     useEffect(() => {
-        const savedPage = Storage.getItem("currentPage");
-        const parsedPage = JSON.parse(savedPage);
+        setShowCritera(JSON.parse(Storage.getItem("showFilter")));
+        let parsedPage = JSON.parse(Storage.getItem("currentPage"));
         setCurrentPage(parsedPage);
+        setBaseQuery({
+            ...baseQuery,
+            page: parsedPage - 1,
+        });
         dispatch(actionsRestaurant.fetchRestaurants(JSON.stringify(baseQuery)));
+
     }, [currentPage]);
+
+    const handleShowCriteria = () => {
+        const v = !showCriteria;
+        setShowCritera(v);
+        Storage.setItem("showFilter", JSON.stringify(v));
+    };
 
     return (
         <div>
@@ -72,11 +83,11 @@ const Restaurants = (props) => {
                             onClick={() => navigate(`${pagesURLs.restaurants}/${r.id}?mode=view`)}
                         />)}
                 </div>
-                <div style={{ position: 'relative' }}>
-                    <Button colorVariant='secondary' onClick={() => { }}>
+                <div style={{ width: '140px' }}>
+                    <Button colorVariant='secondary' fullWidth={true} onClick={() => handleShowCriteria()}>
                         <FilterIcon /> {formatMessage({ id: 'button.filter' })}
                     </Button>
-                    <div style={{ border: '1px solid black', width: '140px', display: 'inline-list-item' }}>
+                    {showCriteria && <div style={{ border: '1px solid black', width: '140px', display: 'inline-list-item' }}>
                         <span>Location address: </span>
                         <span style={{ display: 'flex' }}>   <input placeholder='address..' onChange={() => { }} style={{ width: '100%' }}></input></span>
                         <span>Chain name:</span>
@@ -86,6 +97,7 @@ const Restaurants = (props) => {
                         }
                         <Button colorVariant='header' fullWidth={true} onClick={() => { }}>{formatMessage({ id: 'button.apply' })}</Button>
                     </div>
+                    }
                 </div>
             </div>
             <div style={{ display: 'flex', width: '80%', justifyContent: 'center', margin: '20px' }}>
