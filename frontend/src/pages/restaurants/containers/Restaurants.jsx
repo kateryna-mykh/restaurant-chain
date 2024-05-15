@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import actionsRestaurant from '../actions/fetchRestaurants';
+import actionsRestaurants from '../actions/fetchRestaurants';
 
 const mockedChainNames = [
     { id: 1, name: "Delicious Eats" },
@@ -20,12 +20,9 @@ const mockedChainNames = [
 ];
 
 const Restaurants = (props) => {
-    const {
-        list: restaurantsList,
-        isLoading: isLoadingRestaurants,
-        isFailed,
-        pages,
-    } = useSelector((store) => store);
+    const restaurantsList = useSelector((store) => store.list);
+    const isFailed = useSelector((store) => store.isFailed);
+    const pages = useSelector((store) => store.pages);
 
     const { formatMessage } = useIntl();
     const dispatch = useDispatch();
@@ -33,34 +30,52 @@ const Restaurants = (props) => {
 
     const [showCriteria, setShowCritera] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
-    const [baseQuery, setBaseQuery] = useState({
-        "page": 0,
-        "size": 10,
-    });
     const [filterQuery, setFilterQuery] = useState({
-        "address": "",
-        "chainId": null, //1-5
+        address: '',
+        chainId: '',
+        page: 0,
+        size: 10,
     });
 
     const handlePageChange = (event, value) => {
         setCurrentPage(value);
         Storage.setItem("currentPage", JSON.stringify(value));
-        setBaseQuery({
-            ...baseQuery,
+        setFilterQuery({
+            ...filterQuery,
             page: value - 1,
         });
     };
 
-    useEffect(() => {
+    const handleFilterCriteria = () => {
+        Storage.setItem("filterCriteria", JSON.stringify(filterQuery));
+    };
+
+    const searchRequest = () => {
         setShowCritera(JSON.parse(Storage.getItem("showFilter")));
         let parsedPage = JSON.parse(Storage.getItem("currentPage"));
         setCurrentPage(parsedPage);
-        setBaseQuery({
-            ...baseQuery,
-            page: parsedPage - 1,
-        });
-        dispatch(actionsRestaurant.fetchRestaurants(JSON.stringify(baseQuery)));
 
+        let filerCriteria = JSON.parse(Storage.getItem("filterCriteria"));
+        if (filerCriteria !== null) {
+            setFilterQuery({
+                ...filterQuery,
+                address: filerCriteria.address,
+                chainId: filerCriteria.chainId,
+                page: parsedPage - 1,
+            });
+        } else {
+            setFilterQuery({
+                ...filterQuery,
+                address: '',
+                chainId: '',
+                page: parsedPage - 1,
+            });
+        }
+
+        dispatch(actionsRestaurants.fetchRestaurants(JSON.stringify(filterQuery)));
+    };
+    useEffect(() => {
+        searchRequest();
     }, [currentPage]);
 
     const handleShowCriteria = () => {
@@ -71,8 +86,8 @@ const Restaurants = (props) => {
 
     return (
         <div>
-            <div style={{ padding: '0px 0px 0px calc(100% - 143px)' }}>
-                <Button colorVariant='header' onClick={() => navigate(`${pagesURLs.restaurants}/0?mode=edit`)}>
+            <div style={{ textAlign: 'right', width: '140px', padding: '0px 0px 8px calc(100% - 140px)' }}>
+                <Button fullWidth={true} colorVariant='header' onClick={() => navigate(`${pagesURLs.restaurants}/0?mode=edit`)}>
                     + {formatMessage({ id: 'button.add' })}
                 </Button>
             </div>
@@ -87,15 +102,28 @@ const Restaurants = (props) => {
                     <Button colorVariant='secondary' fullWidth={true} onClick={() => handleShowCriteria()}>
                         <FilterIcon /> {formatMessage({ id: 'button.filter' })}
                     </Button>
-                    {showCriteria && <div style={{ border: '1px solid black', width: '140px', display: 'inline-list-item' }}>
-                        <span>Location address: </span>
-                        <span style={{ display: 'flex' }}>   <input placeholder='address..' onChange={() => { }} style={{ width: '100%' }}></input></span>
-                        <span>Chain name:</span>
+                    {showCriteria && <div style={{ border: '1px solid black', display: 'inline-list-item' }}>
+                        <span>{formatMessage({ id: 'filter.location.lable' })}: </span>
+                        <span style={{ display: 'flex' }}>
+                            <input placeholder='address..' value={filterQuery.address}
+                                onChange={(e) => setFilterQuery({
+                                    ...filterQuery,
+                                    address: e.target.value,
+                                })} style={{ width: '100%' }}></input>
+                        </span>
+                        <span>{formatMessage({ id: 'filter.chainName.lable' })}:</span>
                         {
                             mockedChainNames.map(chain =>
-                                <Button colorVariant='secondary' fullWidth={true} key={chain.id} onClick={() => { }}>{chain.name}</Button>)
+                                <Button colorVariant='secondary' fullWidth={true} key={chain.id}
+                                    onClick={() => setFilterQuery({
+                                        ...filterQuery,
+                                        chainId: chain.id,
+                                    })}>{chain.name}</Button>)
                         }
-                        <Button colorVariant='header' fullWidth={true} onClick={() => { }}>{formatMessage({ id: 'button.apply' })}</Button>
+                        <Button colorVariant='header' fullWidth={true}
+                            onClick={() => { handleFilterCriteria(); searchRequest(); }}>
+                            {formatMessage({ id: 'button.apply' })}
+                        </Button>
                     </div>
                     }
                 </div>

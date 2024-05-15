@@ -1,3 +1,12 @@
 {
-
+"button.create": "Створити",
+"button.save": "Зберегти",
+"button.cancel": "Скасувати",
+"button.back": "Назад",
+"restaurant.info.location": "Адреса",
+"restaurant.info.manager": "Керівник",
+"restaurant.info.seats": "Кількість ",
+"restaurant.info.emploees": "Кількість працівників",
+"restaurant.info.chainId": "Ідентифікатор закладу",
+"restaurant.info.menu": "Меню"
 }

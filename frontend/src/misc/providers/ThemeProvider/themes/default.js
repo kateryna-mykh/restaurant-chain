@@ -36,10 +36,10 @@ const theme = {
         text: commonColors.text.primaryHeader,
       },
       primary: {
-        background: '#bcbcbc',
+        background: commonColors.background.secondaryHeader,
         backgroundDisabled: '#bcbcbc',
         backgroundHovered: '#d0e0e3',
-        text: commonColors.text.primaryContrast,
+        text: commonColors.text.primary,
       },
       secondary: {
         background: 'none',

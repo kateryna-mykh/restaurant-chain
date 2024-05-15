@@ -5,7 +5,7 @@ import Notification from "../components/Notification";
 import IconButton from "components/IconButton";
 import Button from "components/Button";
 import Dialog from "components/Dialog";
-import actionsDeleteRestaurant from '../actions/deleteRestaurant';
+import actionsRestaurant from '../actions/deleteRestaurant';
 import { useDispatch } from 'react-redux';
 
 const Record = ({ restaurant, isFailed, onClick }) => {
@@ -58,7 +58,7 @@ const Record = ({ restaurant, isFailed, onClick }) => {
                 <span>{formatMessage({ id: 'delete.display.text' })}</span>
                 <span>
                     <Button colorVariant='header' onClick={(e) => {
-                        dispatch(actionsDeleteRestaurant.deleteRestaurantRequest(restaurant.id));
+                        dispatch(actionsRestaurant.deleteRestaurantRequest(restaurant.id));
                         handleClose(deletionFailed, e);
                     }
                     }> {formatMessage({ id: 'button.agree' })}</Button>
