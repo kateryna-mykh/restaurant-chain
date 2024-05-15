@@ -1,8 +1,8 @@
 {
   "locationAddress": "789 Elm Street",
   "manager": "Michael Johnson",
-  "seetsCapacity": 40,
+  "seatsCapacity": 40,
   "employeesNumber": 8,
   "menuItems": ["Sushi", "Ramen", "Tempura", "Edamame", "Green Tea"],
-  "restorantChain": "Tasty Bites"
+  "restaurantChain": "Tasty Bites"
 }
