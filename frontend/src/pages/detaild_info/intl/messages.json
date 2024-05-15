@@ -8,5 +8,6 @@
 "restaurant.info.seats": "Seats Capacity",
 "restaurant.info.emploees": "Number of Emploees",
 "restaurant.info.chainId": "Chain Id",
-"restaurant.info.menu": "Menu Items"
+"restaurant.info.menu": "Menu Items",
+"create.display.notification": "Something goes wrong.."
 }

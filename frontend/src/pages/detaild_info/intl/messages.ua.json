@@ -8,5 +8,6 @@
 "restaurant.info.seats": "Кількість місць",
 "restaurant.info.emploees": "Кількість працівників",
 "restaurant.info.chainId": "Ідентифікатор закладу",
-"restaurant.info.menu": "Меню"
+"restaurant.info.menu": "Меню",
+"create.display.notification": "Щось пішло не так.."
 }

@@ -1,6 +1,10 @@
 import rquestURLs from 'constants/backendURLs';
 import axios from 'misc/requests';
-import { RECEIVE_RESTAURANTS, REQUEST_RESTAURANTS, ERROR_RECEIVE_RESTAURANTS } from '../constants/ActionTypes';
+import {
+    RECEIVE_RESTAURANTS,
+    REQUEST_RESTAURANTS,
+    ERROR_RECEIVE_RESTAURANTS
+} from '../constants/ActionTypes';
 
 const MOCK_RESTAURANTS_LIST_RESPONSE = {
     "restaurants": [
@@ -8,28 +12,28 @@ const MOCK_RESTAURANTS_LIST_RESPONSE = {
             "id": 1,
             "chainName": "Delicious Eats",
             "locationAddress": "123 Main Street",
-            "seetsCapacity": 50,
+            "seatsCapacity": 50,
             "menuItems": ["Burger", "Pizza", "Salad", "French Fries", "Soft Drink"]
         },
         {
             "id": 2,
             "chainName": "Delicious Eats",
             "locationAddress": "1516 Maple Drive",
-            "seetsCapacity": 60,
+            "seatsCapacity": 60,
             "menuItems": ["Burger", "Pizza", "Salad", "Cheese Fries", "Lemonade"]
         },
         {
             "id": 3,
             "chainName": "Asian Fusion",
             "locationAddress": "1718 Walnut Lane",
-            "seetsCapacity": 60,
+            "seatsCapacity": 60,
             "menuItems": ["Curry", "Noodles", "Spring Rolls", "Jasmine Rice", "Thai Iced Tea"]
         },
         {
             "id": 4,
             "chainName": "Asian Fusion",
             "locationAddress": "1920 Elmwood Avenue",
-            "seetsCapacity": 65,
+            "seatsCapacity": 65,
             "menuItems": ["Curry", "Noodles", "Spring Rolls", "Vegetable Tempura", "Green Tea"
             ]
         },
@@ -37,21 +41,21 @@ const MOCK_RESTAURANTS_LIST_RESPONSE = {
             "id": 5,
             "chainName": "BEEF Meat & Wine",
             "locationAddress": "2122 Oakwood Boulevard",
-            "seetsCapacity": 70,
+            "seatsCapacity": 70,
             "menuItems": ["Borch", "Varenyki", "Zrazy", "Uzvar", "Сheesecakes"]
         },
         {
             "id": 6,
             "chainName": "Tasty Bites",
             "locationAddress": "456 Oak Avenue",
-            "seetsCapacity": 45,
+            "seatsCapacity": 45,
             "menuItems": ["Steak", "Pasta", "Sandwich", "Caesar Salad", "Iced Tea"]
         },
         {
             "id": 7,
             "chainName": "Tasty Bites",
             "locationAddress": "1314 Cedar Lane",
-            "seetsCapacity": 55,
+            "seatsCapacity": 55,
             "menuItems": ["Pizza", "Salad", "French Fries", "Soft Drink", "Brownie"]
         }
     ],

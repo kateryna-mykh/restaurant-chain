@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useIntl } from 'react-intl'
 import DeleteIcon from "../components/icons/Delete";
-import Notification from "../components/Notification";
+import Notification from "components/Notification";
 import IconButton from "components/IconButton";
 import Button from "components/Button";
 import Dialog from "components/Dialog";
@@ -43,7 +43,7 @@ const Record = ({ restaurant, isFailed, onClick }) => {
             }}>
             {restaurant.chainName} |
             {restaurant.locationAddress} |
-            {restaurant.seetsCapacity}
+            {restaurant.seatsCapacity}
             {
                 showDeleteIcon && (
                     <IconButton onClick={handleClickOpen}>

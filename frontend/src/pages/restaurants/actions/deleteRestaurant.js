@@ -1,6 +1,9 @@
 import rquestURLs from 'constants/backendURLs';
 import axios from 'misc/requests';
-import { DELETE_RESTAURANT, ERROR_DELETE_RESTAURANT } from '../constants/ActionTypes';
+import {
+    DELETE_RESTAURANT,
+    ERROR_DELETE_RESTAURANT
+} from '../constants/ActionTypes';
 
 const deleteRestaurant = id => ({
     id,
@@ -14,8 +17,8 @@ const errorDeleteRestaurant = (err) => ({
 
 const deleteRestaurantRequest = (id) => (dispatch) => {
     return axios.delete(`${rquestURLs.restauratsEntityPath}/${id}`)
-    .catch(() => dispatch(deleteRestaurant(id)))
-    .catch(err => dispatch(errorDeleteRestaurant(err.message)));
+        .catch(() => dispatch(deleteRestaurant(id)))
+        .catch(err => dispatch(errorDeleteRestaurant(err.message)));
 };
 
 export default { deleteRestaurantRequest };
