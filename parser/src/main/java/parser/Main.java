@@ -10,7 +10,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import parser.dto.ItemDto;
-import parser.dto.RestorantDto;
+import parser.dto.RestaurantDto;
 import parser.dto.StatisticsReportDto;
 import parser.exception.IncorrectParamsException;
 import parser.service.FileWriter;
@@ -69,7 +69,7 @@ public class Main {
             throw new IncorrectParamsException("Path to folder not exist");
         }
         try {
-            RestorantDto.class.getDeclaredField(atributeValue);
+            RestaurantDto.class.getDeclaredField(atributeValue);
         } catch (NoSuchFieldException | SecurityException e) {
             throw new IncorrectParamsException("Atribute not exist " + atributeValue);
         }

@@ -15,7 +15,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Stream;
 import parser.Main;
-import parser.dto.RestorantDto;
+import parser.dto.RestaurantDto;
 import parser.exception.IncorrectParamsException;
 import parser.storage.Storage;
 
@@ -50,7 +50,7 @@ public class ProcessJsonFile implements Runnable {
 
     private void parseRestoarntDto(JsonParser parser)
             throws StreamReadException, DatabindException, IOException {
-        RestorantDto obj = jsonMapper.readValue(parser, RestorantDto.class);
+        RestaurantDto obj = jsonMapper.readValue(parser, RestaurantDto.class);
         Field declaredField;
         List<String> value = new ArrayList<>();
         try {

@@ -2,801 +2,801 @@
   {
     "locationAddress": "1 Apple Street",
     "manager": "John Appleseed",
-    "seetsCapacity": 50,
+    "seatsCapacity": 50,
     "employeesNumber": 15,
     "menuItems": ["Apple Pie", "Apple Crisp", "Caramel Apples", "Apple Cider", "Apple Tart"],
-    "restorantChain": "Apple Delights"
+    "restaurantChain": "Apple Delights"
   },
   {
     "locationAddress": "2 Banana Avenue",
     "manager": "Barbara Bananarama",
-    "seetsCapacity": 40,
+    "seatsCapacity": 40,
     "employeesNumber": 20,
     "menuItems": ["Banana Split", "Banana Bread", "Banana Smoothie", "Banana Pancakes", "Banana Chips"],
-    "restorantChain": "Banana Bonanza"
+    "restaurantChain": "Banana Bonanza"
   },
   {
     "locationAddress": "3 Cherry Lane",
     "manager": "Charlie Cherrybomb",
-    "seetsCapacity": 55,
+    "seatsCapacity": 55,
     "employeesNumber": 25,
     "menuItems": ["Apple Pie", "Cherry Cobbler", "Cherry Cheesecake", "Cherry Jam", "Cherry Soda"],
-    "restorantChain": "Apple Pie"
+    "restaurantChain": "Apple Pie"
   },
   {
     "locationAddress": "4 Date Drive",
     "manager": "Daisy Datepicker",
-    "seetsCapacity": 60,
+    "seatsCapacity": 60,
     "employeesNumber": 30,
     "menuItems": ["Date Shake", "Date Bars", "Stuffed Dates", "Date Bread", "Date Smoothie"],
-    "restorantChain": "Date Oasis"
+    "restaurantChain": "Date Oasis"
   },
   {
     "locationAddress": "5 Elderberry Street",
     "manager": "Eddie Elderberry",
-    "seetsCapacity": 45,
+    "seatsCapacity": 45,
     "employeesNumber": 12,
     "menuItems": ["Elderberry Jam", "Elderflower Cordial", "Elderberry Pie", "Elderberry Tea", "Elderberry Syrup"],
-    "restorantChain": "Elderberry Eats"
+    "restaurantChain": "Elderberry Eats"
   },
   {
     "locationAddress": "6 Fig Avenue",
     "manager": "Fiona Figgy",
-    "seetsCapacity": 48,
+    "seatsCapacity": 48,
     "employeesNumber": 18,
     "menuItems": ["Fig Newtons", "Fig Jam", "Fig Bread", "Fig Salad", "Fig Smoothie"],
-    "restorantChain": "Fig Feast"
+    "restaurantChain": "Fig Feast"
   },
   {
     "locationAddress": "7 Grape Lane",
     "manager": "George Grapeson",
-    "seetsCapacity": 42,
+    "seatsCapacity": 42,
     "employeesNumber": 21,
     "menuItems": ["Grape Jelly", "Grape Soda", "Grape Salad", "Grape Sorbet", "Grape Pie"],
-    "restorantChain": "Grapevine Grub"
+    "restaurantChain": "Grapevine Grub"
   },
   {
     "locationAddress": "8 Honeydew Boulevard",
     "manager": "Holly Honeydew",
-    "seetsCapacity": 52,
+    "seatsCapacity": 52,
     "employeesNumber": 26,
     "menuItems": ["Honeydew Sorbet", "Honeydew Smoothie", "Honeydew Salad", "Honeydew Pie", "Honeydew Juice"],
-    "restorantChain": "Honeydew Heaven"
+    "restaurantChain": "Honeydew Heaven"
   },
   {
     "locationAddress": "9 Kiwi Drive",
     "manager": "Kevin Kiwifruit",
-    "seetsCapacity": 58,
+    "seatsCapacity": 58,
     "employeesNumber": 29,
     "menuItems": ["Kiwi Sorbet", "Kiwi Salad", "Kiwi Smoothie", "Kiwi Salsa", "Kiwi Pie"],
-    "restorantChain": "Kiwifruit Kitchen"
+    "restaurantChain": "Kiwifruit Kitchen"
   },
   {
     "locationAddress": "10 Lemon Lane",
     "manager": "Lucy Lemonade",
-    "seetsCapacity": 49,
+    "seatsCapacity": 49,
     "employeesNumber": 24,
     "menuItems": ["Lemonade Stand", "Lemon Tart", "Lemon Meringue Pie", "Lemon Sorbet", "Lemon Bars"],
-    "restorantChain": "Lemon Lagoon"
+    "restaurantChain": "Lemon Lagoon"
   },
   {
     "locationAddress": "11 Mango Street",
     "manager": "Manny Mangosteen",
-    "seetsCapacity": 54,
+    "seatsCapacity": 54,
     "employeesNumber": 27,
     "menuItems": ["Mango Smoothie", "Mango Salad", "Mango Salsa", "Mango Sorbet", "Mango Lassi"],
-    "restorantChain": "Mango Madness"
+    "restaurantChain": "Mango Madness"
   },
   {
     "locationAddress": "12 Orange Avenue",
     "manager": "Olivia Orange",
-    "seetsCapacity": 44,
+    "seatsCapacity": 44,
     "employeesNumber": 22,
     "menuItems": ["Orange Sorbet", "Orange Juice", "Orange Salad", "Orange Marmalade", "Orange Sherbet"],
-    "restorantChain": "Orange Oasis"
+    "restaurantChain": "Orange Oasis"
   },
   {
     "locationAddress": "13 Peach Lane",
     "manager": "Paula Peach",
-    "seetsCapacity": 46,
+    "seatsCapacity": 46,
     "employeesNumber": 23,
     "menuItems": ["Peach Cobbler", "Peach Smoothie", "Peach Sorbet", "Peach Pie", "Peach Jam"],
-    "restorantChain": "Peachy Keen"
+    "restaurantChain": "Peachy Keen"
   },
   {
     "locationAddress": "14 Pear Drive",
     "manager": "Peter Pear",
-    "seetsCapacity": 59,
+    "seatsCapacity": 59,
     "employeesNumber": 18,
     "menuItems": ["Pear Salad", "Pear Tart", "Pear Sorbet", "Pear Juice", "Pear Compote"],
-    "restorantChain": "Perfect Pear"
+    "restaurantChain": "Perfect Pear"
   },
   {
     "locationAddress": "15 Raspberry Street",
     "manager": "Rosie Raspberry",
-    "seetsCapacity": 51,
+    "seatsCapacity": 51,
     "employeesNumber": 13,
     "menuItems": ["Raspberry Jam", "Raspberry Sorbet", "Raspberry Salad", "Raspberry Smoothie", "Raspberry Tart"],
-    "restorantChain": "Raspberry Rendezvous"
+    "restaurantChain": "Raspberry Rendezvous"
   },
   {
     "locationAddress": "16 Strawberry Avenue",
     "manager": "Sam Strawberry",
-    "seetsCapacity": 57,
+    "seatsCapacity": 57,
     "employeesNumber": 28,
     "menuItems": ["Strawberry Shortcake", "Strawberry Smoothie", "Strawberry Sorbet", "Strawberry Jam", "Strawberry Pie"],
-    "restorantChain": "Strawberry Sensation"
+    "restaurantChain": "Strawberry Sensation"
   },
   {
     "locationAddress": "17 Tangerine Lane",
     "manager": "Tina Tangerine",
-    "seetsCapacity": 47,
+    "seatsCapacity": 47,
     "employeesNumber": 14,
     "menuItems": ["Tangerine Sorbet", "Tangerine Juice", "Tangerine Salad", "Tangerine Smoothie", "Tangerine Tart"],
-    "restorantChain": "Tangerine Tango"
+    "restaurantChain": "Tangerine Tango"
   },
   {
     "locationAddress": "18 Watermelon Drive",
     "manager": "Wally Watermelon",
-    "seetsCapacity": 53,
+    "seatsCapacity": 53,
     "employeesNumber": 26,
     "menuItems": ["Watermelon Salad", "Watermelon Smoothie", "Watermelon Sorbet", "Watermelon Juice", "Watermelon Gazpacho"],
-    "restorantChain": "Watermelon Wonder"
+    "restaurantChain": "Watermelon Wonder"
   },
   {
     "locationAddress": "19 Blueberry Street",
     "manager": "Betty Blueberry",
-    "seetsCapacity": 43,
+    "seatsCapacity": 43,
     "employeesNumber": 21,
     "menuItems": ["Blueberry Pie", "Blueberry Muffin", "Blueberry Pancakes", "Blueberry Smoothie", "Blueberry Jam"],
-    "restorantChain": "Blueberry Bliss"
+    "restaurantChain": "Blueberry Bliss"
   },
   {
     "locationAddress": "20 Coconut Avenue",
     "manager": "Carl Coconut",
-    "seetsCapacity": 56,
+    "seatsCapacity": 56,
     "employeesNumber": 28,
     "menuItems": ["Coconut Sorbet", "Coconut Cream Pie", "Coconut Smoothie", "Coconut Curry", "Coconut Bread"],
-    "restorantChain": "Coconut Craze"
+    "restaurantChain": "Coconut Craze"
   },
   {
     "locationAddress": "21 Cranberry Lane",
     "manager": "Cindy Cranberry",
-    "seetsCapacity": 48,
+    "seatsCapacity": 48,
     "employeesNumber": 24,
     "menuItems": ["Cranberry Sauce", "Cranberry Juice", "Cranberry Pie", "Cranberry Smoothie", "Cranberry Salad"],
-    "restorantChain": "Cranberry Cove"
+    "restaurantChain": "Cranberry Cove"
   },
   {
     "locationAddress": "22 Grapefruit Drive",
     "manager": "Gary Grapefruit",
-    "seetsCapacity": 52,
+    "seatsCapacity": 52,
     "employeesNumber": 26,
     "menuItems": ["Grapefruit Sorbet", "Grapefruit Juice", "Grapefruit Salad", "Grapefruit Smoothie", "Grapefruit Tart"],
-    "restorantChain": "Grapefruit Grove"
+    "restaurantChain": "Grapefruit Grove"
   },
   {
     "locationAddress": "23 Guava Street",
     "manager": "Gina Guava",
-    "seetsCapacity": 44,
+    "seatsCapacity": 44,
     "employeesNumber": 22,
     "menuItems": ["Guava Sorbet", "Guava Smoothie", "Guava Juice", "Guava Jam", "Guava Salad"],
-    "restorantChain": "Guava Garden"
+    "restaurantChain": "Guava Garden"
   },
   {
     "locationAddress": "24 Lychee Avenue",
     "manager": "Larry Lychee",
-    "seetsCapacity": 57,
+    "seatsCapacity": 57,
     "employeesNumber": 28,
     "menuItems": ["Lychee Sorbet", "Lychee Martini", "Lychee Salad", "Lychee Smoothie", "Lychee Cake"],
-    "restorantChain": "Lychee Lagoon"
+    "restaurantChain": "Lychee Lagoon"
   },
   {
     "locationAddress": "25 Papaya Lane",
     "manager": "Penny Papaya",
-    "seetsCapacity": 49,
+    "seatsCapacity": 49,
     "employeesNumber": 24,
     "menuItems": ["Papaya Salad", "Papaya Smoothie", "Papaya Sorbet", "Papaya Juice", "Papaya Cake"],
-    "restorantChain": "Papaya Paradise"
+    "restaurantChain": "Papaya Paradise"
   },
   {
     "locationAddress": "26 Passionfruit Drive",
     "manager": "Paul Passionfruit",
-    "seetsCapacity": 53,
+    "seatsCapacity": 53,
     "employeesNumber": 26,
     "menuItems": ["Passionfruit Sorbet", "Passionfruit Martini", "Passionfruit Salad", "Passionfruit Smoothie", "Passionfruit Cake"],
-    "restorantChain": "Passionfruit Palace"
+    "restaurantChain": "Passionfruit Palace"
   },
   {
     "locationAddress": "27 Pineapple Street",
     "manager": "Patty Pineapple",
-    "seetsCapacity": 45,
+    "seatsCapacity": 45,
     "employeesNumber": 15,
     "menuItems": ["Pineapple Sorbet", "Pineapple Juice", "Pineapple Salad", "Pineapple Smoothie", "Pineapple Cake"],
-    "restorantChain": "Pineapple Paradise"
+    "restaurantChain": "Pineapple Paradise"
   },
   {
     "locationAddress": "28 Pomegranate Avenue",
     "manager": "Peter Pomegranate",
-    "seetsCapacity": 58,
+    "seatsCapacity": 58,
     "employeesNumber": 29,
     "menuItems": ["Pomegranate Sorbet", "Pomegranate Juice", "Pomegranate Salad", "Pomegranate Smoothie", "Pomegranate Cake"],
-    "restorantChain": "Pomegranate Palace"
+    "restaurantChain": "Pomegranate Palace"
   },
   {
     "locationAddress": "29 Raspberry Lane",
     "manager": "Ricky Raspberry",
-    "seetsCapacity": 47,
+    "seatsCapacity": 47,
     "employeesNumber": 14,
     "menuItems": ["Raspberry Sorbet", "Raspberry Juice", "Raspberry Salad", "Raspberry Smoothie", "Raspberry Cake"],
-    "restorantChain": "Raspberry Rapture"
+    "restaurantChain": "Raspberry Rapture"
   },
   {
     "locationAddress": "30 Starfruit Drive",
     "manager": "Sandy Starfruit",
-    "seetsCapacity": 54,
+    "seatsCapacity": 54,
     "employeesNumber": 27,
     "menuItems": ["Starfruit Sorbet", "Starfruit Juice", "Starfruit Salad", "Starfruit Smoothie", "Starfruit Cake"],
-    "restorantChain": "Starfruit Sanctuary"
+    "restaurantChain": "Starfruit Sanctuary"
   },
   {
     "locationAddress": "31 Tamarind Street",
     "manager": "Terry Tamarind",
-    "seetsCapacity": 46,
+    "seatsCapacity": 46,
     "employeesNumber": 23,
     "menuItems": ["Tamarind Sorbet", "Tamarind Juice", "Tamarind Salad", "Tamarind Smoothie", "Tamarind Cake"],
-    "restorantChain": "Tamarind Tropics"
+    "restaurantChain": "Tamarind Tropics"
   },
   {
     "locationAddress": "32 Dragonfruit Avenue",
     "manager": "Danny Dragonfruit",
-    "seetsCapacity": 59,
+    "seatsCapacity": 59,
     "employeesNumber": 18,
     "menuItems": ["Dragonfruit Sorbet", "Dragonfruit Juice", "Dragonfruit Salad", "Dragonfruit Smoothie", "Dragonfruit Cake"],
-    "restorantChain": "Dragonfruit Dreamland"
+    "restaurantChain": "Dragonfruit Dreamland"
   },
   {
     "locationAddress": "33 Kiwano Lane",
     "manager": "Kathy Kiwano",
-    "seetsCapacity": 51,
+    "seatsCapacity": 51,
     "employeesNumber": 13,
     "menuItems": ["Kiwano Sorbet", "Kiwano Juice", "Kiwano Salad", "Kiwano Smoothie", "Kiwano Cake"],
-    "restorantChain": "Kiwano Kingdom"
+    "restaurantChain": "Kiwano Kingdom"
   },
   {
     "locationAddress": "34 Persimmon Drive",
     "manager": "Penny Persimmon",
-    "seetsCapacity": 57,
+    "seatsCapacity": 57,
     "employeesNumber": 28,
     "menuItems": ["Persimmon Sorbet", "Persimmon Juice", "Persimmon Salad", "Persimmon Smoothie", "Persimmon Cake"],
-    "restorantChain": "Persimmon Paradise"
+    "restaurantChain": "Persimmon Paradise"
   },
   {
     "locationAddress": "35 Durian Street",
     "manager": "Dave Durian",
-    "seetsCapacity": 47,
+    "seatsCapacity": 47,
     "employeesNumber": 14,
     "menuItems": ["Durian Sorbet", "Durian Juice", "Durian Salad", "Durian Smoothie", "Durian Cake"],
-    "restorantChain": "Durian Delights"
+    "restaurantChain": "Durian Delights"
   },
   {
     "locationAddress": "36 Longan Avenue",
     "manager": "Lucy Longan",
-    "seetsCapacity": 54,
+    "seatsCapacity": 54,
     "employeesNumber": 27,
     "menuItems": ["Longan Sorbet", "Longan Juice", "Longan Salad", "Longan Smoothie", "Longan Cake"],
-    "restorantChain": "Longan Lounge"
+    "restaurantChain": "Longan Lounge"
   },
   {
     "locationAddress": "37 Jackfruit Lane",
     "manager": "Jake Jackfruit",
-    "seetsCapacity": 46,
+    "seatsCapacity": 46,
     "employeesNumber": 23,
     "menuItems": ["Jackfruit Sorbet", "Jackfruit Juice", "Jackfruit Salad", "Jackfruit Smoothie", "Jackfruit Cake"],
-    "restorantChain": "Jackfruit Junction"
+    "restaurantChain": "Jackfruit Junction"
   },
   {
     "locationAddress": "38 Rambutan Drive",
     "manager": "Rita Rambutan",
-    "seetsCapacity": 59,
+    "seatsCapacity": 59,
     "employeesNumber": 18,
     "menuItems": ["Rambutan Sorbet", "Rambutan Juice", "Rambutan Salad", "Rambutan Smoothie", "Rambutan Cake"],
-    "restorantChain": "Rambutan Retreat"
+    "restaurantChain": "Rambutan Retreat"
   },
   {
     "locationAddress": "39 Mangosteen Street",
     "manager": "Maggie Mangosteen",
-    "seetsCapacity": 51,
+    "seatsCapacity": 51,
     "employeesNumber": 13,
     "menuItems": ["Mangosteen Sorbet", "Mangosteen Juice", "Mangosteen Salad", "Mangosteen Smoothie", "Mangosteen Cake"],
-    "restorantChain": "Mangosteen Mansion"
+    "restaurantChain": "Mangosteen Mansion"
   },
   {
     "locationAddress": "40 Jabuticaba Avenue",
     "manager": "Jerry Jabuticaba",
-    "seetsCapacity": 57,
+    "seatsCapacity": 57,
     "employeesNumber": 28,
     "menuItems": ["Jabuticaba Sorbet", "Jabuticaba Juice", "Jabuticaba Salad", "Jabuticaba Smoothie", "Jabuticaba Cake"],
-    "restorantChain": "Jabuticaba Jungle"
+    "restaurantChain": "Jabuticaba Jungle"
   },
   {
     "locationAddress": "41 Acai Lane",
     "manager": "Anna Acai",
-    "seetsCapacity": 47,
+    "seatsCapacity": 47,
     "employeesNumber": 14,
     "menuItems": ["Acai Sorbet", "Acai Juice", "Acai Bowl", "Acai Smoothie", "Acai Cake"],
-    "restorantChain": "Acai Adventures"
+    "restaurantChain": "Acai Adventures"
   },
   {
     "locationAddress": "42 Cupuaçu Drive",
     "manager": "Carl Cupuaçu",
-    "seetsCapacity": 54,
+    "seatsCapacity": 54,
     "employeesNumber": 27,
     "menuItems": ["Cupuaçu Sorbet", "Cupuaçu Juice", "Cupuaçu Salad", "Cupuaçu Smoothie", "Cupuaçu Cake"],
-    "restorantChain": "Cupuaçu Cove"
+    "restaurantChain": "Cupuaçu Cove"
   },
   {
     "locationAddress": "43 Acerola Street",
     "manager": "Alice Acerola",
-    "seetsCapacity": 46,
+    "seatsCapacity": 46,
     "employeesNumber": 23,
     "menuItems": ["Acerola Sorbet", "Acerola Juice", "Acerola Salad", "Acerola Smoothie", "Acerola Cake"],
-    "restorantChain": "Acerola Oasis"
+    "restaurantChain": "Acerola Oasis"
   },
   {
     "locationAddress": "44 Guabiju Avenue",
     "manager": "Gary Guabiju",
-    "seetsCapacity": 59,
+    "seatsCapacity": 59,
     "employeesNumber": 18,
     "menuItems": ["Guabiju Sorbet", "Guabiju Juice", "Guabiju Salad", "Guabiju Smoothie", "Guabiju Cake"],
-    "restorantChain": "Guabiju Garden"
+    "restaurantChain": "Guabiju Garden"
   },
   {
     "locationAddress": "45 Pitanga Lane",
     "manager": "Penny Pitanga",
-    "seetsCapacity": 51,
+    "seatsCapacity": 51,
     "employeesNumber": 13,
     "menuItems": ["Pitanga Sorbet", "Pitanga Juice", "Pitanga Salad", "Pitanga Smoothie", "Pitanga Cake"],
-    "restorantChain": "Pitanga Paradise"
+    "restaurantChain": "Pitanga Paradise"
   },
   {
     "locationAddress": "46 Bacuri Drive",
     "manager": "Bob Bacuri",
-    "seetsCapacity": 57,
+    "seatsCapacity": 57,
     "employeesNumber": 28,
     "menuItems": ["Bacuri Sorbet", "Bacuri Juice", "Bacuri Salad", "Bacuri Smoothie", "Bacuri Cake"],
-    "restorantChain": "Bacuri Bay"
+    "restaurantChain": "Bacuri Bay"
   },
   {
     "locationAddress": "47 Mangaba Street",
     "manager": "Mary Mangaba",
-    "seetsCapacity": 47,
+    "seatsCapacity": 47,
     "employeesNumber": 14,
     "menuItems": ["Mangaba Sorbet", "Mangaba Juice", "Mangaba Salad", "Mangaba Smoothie", "Mangaba Cake"],
-    "restorantChain": "Mangaba Meadows"
+    "restaurantChain": "Mangaba Meadows"
   },
   {
     "locationAddress": "48 Murici Avenue",
     "manager": "Mike Murici",
-    "seetsCapacity": 54,
+    "seatsCapacity": 54,
     "employeesNumber": 27,
     "menuItems": ["Murici Sorbet", "Murici Juice", "Murici Salad", "Murici Smoothie", "Murici Cake"],
-    "restorantChain": "Murici Mansion"
+    "restaurantChain": "Murici Mansion"
   },
   {
     "locationAddress": "49 Maracuja Lane",
     "manager": "Martha Maracuja",
-    "seetsCapacity": 46,
+    "seatsCapacity": 46,
     "employeesNumber": 23,
     "menuItems": ["Maracuja Sorbet", "Maracuja Juice", "Maracuja Salad", "Maracuja Smoothie", "Maracuja Cake"],
-    "restorantChain": "Maracuja Marina"
+    "restaurantChain": "Maracuja Marina"
   },
   {
     "locationAddress": "50 Caju Drive",
     "manager": "Calvin Caju",
-    "seetsCapacity": 59,
+    "seatsCapacity": 59,
     "employeesNumber": 18,
     "menuItems": ["Caju Sorbet", "Caju Juice", "Caju Salad", "Caju Smoothie", "Caju Cake"],
-    "restorantChain": "Caju Coast"
+    "restaurantChain": "Caju Coast"
   },
   {
     "locationAddress": "51 Araza Street",
     "manager": "Annie Araza",
-    "seetsCapacity": 51,
+    "seatsCapacity": 51,
     "employeesNumber": 13,
     "menuItems": ["Araza Sorbet", "Araza Juice", "Araza Salad", "Araza Smoothie", "Araza Cake"],
-    "restorantChain": "Araza Alley"
+    "restaurantChain": "Araza Alley"
   },
   {
     "locationAddress": "52 Umbu Avenue",
     "manager": "Uriel Umbu",
-    "seetsCapacity": 57,
+    "seatsCapacity": 57,
     "employeesNumber": 28,
     "menuItems": ["Umbu Sorbet", "Umbu Juice", "Umbu Salad", "Umbu Smoothie", "Umbu Cake"],
-    "restorantChain": "Umbu Utopia"
+    "restaurantChain": "Umbu Utopia"
   },
   {
     "locationAddress": "53 Pitomba Lane",
     "manager": "Polly Pitomba",
-    "seetsCapacity": 47,
+    "seatsCapacity": 47,
     "employeesNumber": 14,
     "menuItems": ["Pitomba Sorbet", "Pitomba Juice", "Pitomba Salad", "Pitomba Smoothie", "Pitomba Cake"],
-    "restorantChain": "Pitomba Paradise"
+    "restaurantChain": "Pitomba Paradise"
   },
   {
     "locationAddress": "54 Camu Camu Drive",
     "manager": "Cameron Camu",
-    "seetsCapacity": 54,
+    "seatsCapacity": 54,
     "employeesNumber": 27,
     "menuItems": ["Camu Camu Sorbet", "Camu Camu Juice", "Camu Camu Salad", "Camu Camu Smoothie", "Camu Camu Cake"],
-    "restorantChain": "Camu Camu Cove"
+    "restaurantChain": "Camu Camu Cove"
   },
   {
     "locationAddress": "55 Cupuacu Street",
     "manager": "Cassandra Cupuacu",
-    "seetsCapacity": 46,
+    "seatsCapacity": 46,
     "employeesNumber": 23,
     "menuItems": ["Cupuacu Sorbet", "Cupuacu Juice", "Cupuacu Salad", "Cupuacu Smoothie", "Cupuacu Cake"],
-    "restorantChain": "Cupuacu Corner"
+    "restaurantChain": "Cupuacu Corner"
   },
   {
     "locationAddress": "56 Grumixama Avenue",
     "manager": "Greg Grumixama",
-    "seetsCapacity": 59,
+    "seatsCapacity": 59,
     "employeesNumber": 18,
     "menuItems": ["Grumixama Sorbet", "Grumixama Juice", "Grumixama Salad", "Grumixama Smoothie", "Grumixama Cake"],
-    "restorantChain": "Grumixama Grove"
+    "restaurantChain": "Grumixama Grove"
   },
   {
     "locationAddress": "57 Muruci Lane",
     "manager": "Maggie Muruci",
-    "seetsCapacity": 51,
+    "seatsCapacity": 51,
     "employeesNumber": 13,
     "menuItems": ["Muruci Sorbet", "Muruci Juice", "Muruci Salad", "Muruci Smoothie", "Muruci Cake"],
-    "restorantChain": "Muruci Manor"
+    "restaurantChain": "Muruci Manor"
   },
   {
     "locationAddress": "58 Seriguela Drive",
     "manager": "Seth Seriguela",
-    "seetsCapacity": 57,
+    "seatsCapacity": 57,
     "employeesNumber": 28,
     "menuItems": ["Seriguela Sorbet", "Seriguela Juice", "Seriguela Salad", "Seriguela Smoothie", "Seriguela Cake"],
-    "restorantChain": "Seriguela Sanctuary"
+    "restaurantChain": "Seriguela Sanctuary"
   },
   {
     "locationAddress": "59 Bacaba Street",
     "manager": "Brenda Bacaba",
-    "seetsCapacity": 47,
+    "seatsCapacity": 47,
     "employeesNumber": 14,
     "menuItems": ["Bacaba Sorbet", "Bacaba Juice", "Bacaba Salad", "Bacaba Smoothie", "Bacaba Cake"],
-    "restorantChain": "Bacaba Bliss"
+    "restaurantChain": "Bacaba Bliss"
   },
   {
     "locationAddress": "60 Mangaba Avenue",
     "manager": "Michael Mangaba",
-    "seetsCapacity": 54,
+    "seatsCapacity": 54,
     "employeesNumber": 27,
     "menuItems": ["Mangaba Sorbet", "Mangaba Juice", "Mangaba Salad", "Mangaba Smoothie", "Mangaba Cake"],
-    "restorantChain": "Mangaba Mansion"
+    "restaurantChain": "Mangaba Mansion"
   },
   {
     "locationAddress": "61 Tapereba Lane",
     "manager": "Tara Tapereba",
-    "seetsCapacity": 46,
+    "seatsCapacity": 46,
     "employeesNumber": 23,
     "menuItems": ["Tapereba Sorbet", "Tapereba Juice", "Tapereba Salad", "Tapereba Smoothie", "Tapereba Cake"],
-    "restorantChain": "Tapereba Trails"
+    "restaurantChain": "Tapereba Trails"
   },
   {
     "locationAddress": "62 Atemoia Drive",
     "manager": "Aaron Atemoia",
-    "seetsCapacity": 59,
+    "seatsCapacity": 59,
     "employeesNumber": 18,
     "menuItems": ["Atemoia Sorbet", "Atemoia Juice", "Atemoia Salad", "Atemoia Smoothie", "Atemoia Cake"],
-    "restorantChain": "Atemoia Acres"
+    "restaurantChain": "Atemoia Acres"
   },
   {
     "locationAddress": "63 Cocona Street",
     "manager": "Cathy Cocona",
-    "seetsCapacity": 51,
+    "seatsCapacity": 51,
     "employeesNumber": 13,
     "menuItems": ["Cocona Sorbet", "Cocona Juice", "Cocona Salad", "Cocona Smoothie", "Cocona Cake"],
-    "restorantChain": "Cocona Cove"
+    "restaurantChain": "Cocona Cove"
   },
   {
     "locationAddress": "64 Graviola Avenue",
     "manager": "Gavin Graviola",
-    "seetsCapacity": 57,
+    "seatsCapacity": 57,
     "employeesNumber": 28,
     "menuItems": ["Graviola Sorbet", "Graviola Juice", "Graviola Salad", "Graviola Smoothie", "Graviola Cake"],
-    "restorantChain": "Graviola Grove"
+    "restaurantChain": "Graviola Grove"
   },
   {
     "locationAddress": "65 Camapu Street",
     "manager": "Carla Camapu",
-    "seetsCapacity": 47,
+    "seatsCapacity": 47,
     "employeesNumber": 14,
     "menuItems": ["Camapu Sorbet", "Camapu Juice", "Camapu Salad", "Camapu Smoothie", "Camapu Cake"],
-    "restorantChain": "Camapu Corner"
+    "restaurantChain": "Camapu Corner"
   },
   {
     "locationAddress": "66 Araticum Drive",
     "manager": "Adam Araticum",
-    "seetsCapacity": 54,
+    "seatsCapacity": 54,
     "employeesNumber": 27,
     "menuItems": ["Araticum Sorbet", "Araticum Juice", "Araticum Salad", "Araticum Smoothie", "Araticum Cake"],
-    "restorantChain": "Araticum Avenue"
+    "restaurantChain": "Araticum Avenue"
   },
   {
     "locationAddress": "67 Caja Street",
     "manager": "Clara Caja",
-    "seetsCapacity": 46,
+    "seatsCapacity": 46,
     "employeesNumber": 23,
     "menuItems": ["Caja Sorbet", "Caja Juice", "Caja Salad", "Caja Smoothie", "Caja Cake"],
-    "restorantChain": "Caja Cove"
+    "restaurantChain": "Caja Cove"
   },
   {
     "locationAddress": "68 Araca Drive",
     "manager": "Andy Araca",
-    "seetsCapacity": 59,
+    "seatsCapacity": 59,
     "employeesNumber": 18,
     "menuItems": ["Araca Sorbet", "Araca Juice", "Araca Salad", "Araca Smoothie", "Araca Cake"],
-    "restorantChain": "Araca Alley"
+    "restaurantChain": "Araca Alley"
   },
   {
     "locationAddress": "69 Biriba Street",
     "manager": "Bonnie Biriba",
-    "seetsCapacity": 51,
+    "seatsCapacity": 51,
     "employeesNumber": 13,
     "menuItems": ["Biriba Sorbet", "Biriba Juice", "Biriba Salad", "Biriba Smoothie", "Biriba Cake"],
-    "restorantChain": "Biriba Boulevard"
+    "restaurantChain": "Biriba Boulevard"
   },
   {
     "locationAddress": "70 Imbe Avenue",
     "manager": "Ivan Imbe",
-    "seetsCapacity": 57,
+    "seatsCapacity": 57,
     "employeesNumber": 28,
     "menuItems": ["Imbe Sorbet", "Imbe Juice", "Imbe Salad", "Imbe Smoothie", "Imbe Cake"],
-    "restorantChain": "Imbe Isle"
+    "restaurantChain": "Imbe Isle"
   },
   {
     "locationAddress": "71 Mangarataia Lane",
     "manager": "Molly Mangarataia",
-    "seetsCapacity": 47,
+    "seatsCapacity": 47,
     "employeesNumber": 14,
     "menuItems": ["Mangarataia Sorbet", "Mangarataia Juice", "Mangarataia Salad", "Mangarataia Smoothie", "Mangarataia Cake"],
-    "restorantChain": "Mangarataia Meadows"
+    "restaurantChain": "Mangarataia Meadows"
   },
   {
     "locationAddress": "72 Muru Drive",
     "manager": "Max Muru",
-    "seetsCapacity": 54,
+    "seatsCapacity": 54,
     "employeesNumber": 27,
     "menuItems": ["Muru Sorbet", "Muru Juice", "Muru Salad", "Muru Smoothie", "Muru Cake"],
-    "restorantChain": "Muru Mansion"
+    "restaurantChain": "Muru Mansion"
   },
   {
     "locationAddress": "73 Oiti Street",
     "manager": "Oliver Oiti",
-    "seetsCapacity": 46,
+    "seatsCapacity": 46,
     "employeesNumber": 23,
     "menuItems": ["Oiti Sorbet", "Oiti Juice", "Oiti Salad", "Oiti Smoothie", "Oiti Cake"],
-    "restorantChain": "Oiti Oasis"
+    "restaurantChain": "Oiti Oasis"
   },
   {
     "locationAddress": "74 Tapereba Drive",
     "manager": "Tiffany Tapereba",
-    "seetsCapacity": 59,
+    "seatsCapacity": 59,
     "employeesNumber": 18,
     "menuItems": ["Tapereba Sorbet", "Tapereba Juice", "Tapereba Salad", "Tapereba Smoothie", "Tapereba Cake"],
-    "restorantChain": "Tapereba Trails"
+    "restaurantChain": "Tapereba Trails"
   },
   {
     "locationAddress": "75 Uxi Street",
     "manager": "Ulysses Uxi",
-    "seetsCapacity": 51,
+    "seatsCapacity": 51,
     "employeesNumber": 13,
     "menuItems": ["Uxi Sorbet", "Uxi Juice", "Uxi Salad", "Uxi Smoothie", "Uxi Cake"],
-    "restorantChain": "Uxi Utopia"
+    "restaurantChain": "Uxi Utopia"
   },
   {
     "locationAddress": "76 Bacaba Avenue",
     "manager": "Betty Bacaba",
-    "seetsCapacity": 57,
+    "seatsCapacity": 57,
     "employeesNumber": 28,
     "menuItems": ["Bacaba Sorbet", "Bacaba Juice", "Bacaba Salad", "Bacaba Smoothie", "Bacaba Cake"],
-    "restorantChain": "Bacaba Bliss"
+    "restaurantChain": "Bacaba Bliss"
   },
   {
     "locationAddress": "77 Camu Camu Lane",
     "manager": "Carl Camu",
-    "seetsCapacity": 47,
+    "seatsCapacity": 47,
     "employeesNumber": 14,
     "menuItems": ["Camu Camu Sorbet", "Camu Camu Juice", "Camu Camu Salad", "Camu Camu Smoothie", "Camu Camu Cake"],
-    "restorantChain": "Camu Camu Cove"
+    "restaurantChain": "Camu Camu Cove"
   },
   {
     "locationAddress": "78 Cupuacu Drive",
     "manager": "Cindy Cupuacu",
-    "seetsCapacity": 54,
+    "seatsCapacity": 54,
     "employeesNumber": 27,
     "menuItems": ["Cupuacu Sorbet", "Cupuacu Juice", "Cupuacu Salad", "Cupuacu Smoothie", "Cupuacu Cake"],
-    "restorantChain": "Cupuacu Corner"
+    "restaurantChain": "Cupuacu Corner"
   },
   {
     "locationAddress": "79 Grumixama Street",
     "manager": "George Grumixama",
-    "seetsCapacity": 46,
+    "seatsCapacity": 46,
     "employeesNumber": 23,
     "menuItems": ["Grumixama Sorbet", "Grumixama Juice", "Grumixama Salad", "Grumixama Smoothie", "Grumixama Cake"],
-    "restorantChain": "Grumixama Grove"
+    "restaurantChain": "Grumixama Grove"
   },
   {
     "locationAddress": "80 Maracuja Avenue",
     "manager": "Maggie Maracuja",
-    "seetsCapacity": 59,
+    "seatsCapacity": 59,
     "employeesNumber": 18,
     "menuItems": ["Maracuja Sorbet", "Maracuja Juice", "Maracuja Salad", "Maracuja Smoothie", "Maracuja Cake"],
-    "restorantChain": "Maracuja Manor"
+    "restaurantChain": "Maracuja Manor"
   },
   {
     "locationAddress": "81 Araza Lane",
     "manager": "Alex Araza",
-    "seetsCapacity": 51,
+    "seatsCapacity": 51,
     "employeesNumber": 13,
     "menuItems": ["Araza Sorbet", "Araza Juice", "Araza Salad", "Araza Smoothie", "Araza Cake"],
-    "restorantChain": "Araza Alley"
+    "restaurantChain": "Araza Alley"
   },
   {
     "locationAddress": "82 Umbu Drive",
     "manager": "Ursula Umbu",
-    "seetsCapacity": 57,
+    "seatsCapacity": 57,
     "employeesNumber": 28,
     "menuItems": ["Umbu Sorbet", "Umbu Juice", "Umbu Salad", "Umbu Smoothie", "Umbu Cake"],
-    "restorantChain": "Umbu Utopia"
+    "restaurantChain": "Umbu Utopia"
   },
   {
     "locationAddress": "83 Pitomba Street",
     "manager": "Paul Pitomba",
-    "seetsCapacity": 47,
+    "seatsCapacity": 47,
     "employeesNumber": 14,
     "menuItems": ["Pitomba Sorbet", "Pitomba Juice", "Pitomba Salad", "Pitomba Smoothie", "Pitomba Cake"],
-    "restorantChain": "Pitomba Paradise"
+    "restaurantChain": "Pitomba Paradise"
   },
   {
     "locationAddress": "84 Camu Camu Avenue",
     "manager": "Caroline Camu",
-    "seetsCapacity": 54,
+    "seatsCapacity": 54,
     "employeesNumber": 27,
     "menuItems": ["Camu Camu Sorbet", "Camu Camu Juice", "Camu Camu Salad", "Camu Camu Smoothie", "Camu Camu Cake"],
-    "restorantChain": "Camu Camu Cove"
+    "restaurantChain": "Camu Camu Cove"
   },
   {
     "locationAddress": "85 Cupuacu Lane",
     "manager": "Caleb Cupuacu",
-    "seetsCapacity": 46,
+    "seatsCapacity": 46,
     "employeesNumber": 23,
     "menuItems": ["Cupuacu Sorbet", "Cupuacu Juice", "Cupuacu Salad", "Cupuacu Smoothie", "Cupuacu Cake"],
-    "restorantChain": "Cupuacu Corner"
+    "restaurantChain": "Cupuacu Corner"
   },
   {
     "locationAddress": "86 Grumixama Drive",
     "manager": "Gloria Grumixama",
-    "seetsCapacity": 59,
+    "seatsCapacity": 59,
     "employeesNumber": 18,
     "menuItems": ["Grumixama Sorbet", "Grumixama Juice", "Grumixama Salad", "Grumixama Smoothie", "Grumixama Cake"],
-    "restorantChain": "Grumixama Grove"
+    "restaurantChain": "Grumixama Grove"
   },
   {
     "locationAddress": "87 Maracuja Street",
     "manager": "Matt Maracuja",
-    "seetsCapacity": 51,
+    "seatsCapacity": 51,
     "employeesNumber": 13,
     "menuItems": ["Maracuja Sorbet", "Maracuja Juice", "Maracuja Salad", "Maracuja Smoothie", "Maracuja Cake"],
-    "restorantChain": "Maracuja Manor"
+    "restaurantChain": "Maracuja Manor"
   },
   {
     "locationAddress": "88 Araza Avenue",
     "manager": "Amelia Araza",
-    "seetsCapacity": 57,
+    "seatsCapacity": 57,
     "employeesNumber": 28,
     "menuItems": ["Araza Sorbet", "Araza Juice", "Araza Salad", "Araza Smoothie", "Araza Cake"],
-    "restorantChain": "Araza Alley"
+    "restaurantChain": "Araza Alley"
   },
   {
     "locationAddress": "89 Umbu Lane",
     "manager": "Uri Umbu",
-    "seetsCapacity": 47,
+    "seatsCapacity": 47,
     "employeesNumber": 14,
     "menuItems": ["Umbu Sorbet", "Umbu Juice", "Umbu Salad", "Umbu Smoothie", "Umbu Cake"],
-    "restorantChain": "Umbu Utopia"
+    "restaurantChain": "Umbu Utopia"
   },
   {
     "locationAddress": "90 Pitomba Drive",
     "manager": "Penny Pitomba",
-    "seetsCapacity": 54,
+    "seatsCapacity": 54,
     "employeesNumber": 27,
     "menuItems": ["Pitomba Sorbet", "Pitomba Juice", "Pitomba Salad", "Pitomba Smoothie", "Pitomba Cake"],
-    "restorantChain": "Pitomba Paradise"
+    "restaurantChain": "Pitomba Paradise"
   },
   {
     "locationAddress": "91 Camu Camu Street",
     "manager": "Chris Camu",
-    "seetsCapacity": 46,
+    "seatsCapacity": 46,
     "employeesNumber": 23,
     "menuItems": ["Camu Camu Sorbet", "Camu Camu Juice", "Camu Camu Salad", "Camu Camu Smoothie", "Camu Camu Cake"],
-    "restorantChain": "Camu Camu Cove"
+    "restaurantChain": "Camu Camu Cove"
   },
   {
     "locationAddress": "92 Cupuacu Avenue",
     "manager": "Cynthia Cupuacu",
-    "seetsCapacity": 59,
+    "seatsCapacity": 59,
     "employeesNumber": 18,
     "menuItems": ["Cupuacu Sorbet", "Cupuacu Juice", "Cupuacu Salad", "Cupuacu Smoothie", "Cupuacu Cake"],
-    "restorantChain": "Cupuacu Corner"
+    "restaurantChain": "Cupuacu Corner"
   },
   {
     "locationAddress": "93 Grumixama Lane",
     "manager": "Gary Grumixama",
-    "seetsCapacity": 51,
+    "seatsCapacity": 51,
     "employeesNumber": 13,
     "menuItems": ["Grumixama Sorbet", "Grumixama Juice", "Grumixama Salad", "Grumixama Smoothie", "Grumixama Cake"],
-    "restorantChain": "Grumixama Grove"
+    "restaurantChain": "Grumixama Grove"
   },
   {
     "locationAddress": "94 Maracuja Drive",
     "manager": "Maria Maracuja",
-    "seetsCapacity": 57,
+    "seatsCapacity": 57,
     "employeesNumber": 28,
     "menuItems": ["Maracuja Sorbet", "Maracuja Juice", "Maracuja Salad", "Maracuja Smoothie", "Maracuja Cake"],
-    "restorantChain": "Maracuja Manor"
+    "restaurantChain": "Maracuja Manor"
   },
   {
     "locationAddress": "95 Araza Street",
     "manager": "Arthur Araza",
-    "seetsCapacity": 47,
+    "seatsCapacity": 47,
     "employeesNumber": 14,
     "menuItems": ["Araza Sorbet", "Araza Juice", "Araza Salad", "Araza Smoothie", "Araza Cake"],
-    "restorantChain": "Araza Alley"
+    "restaurantChain": "Araza Alley"
   },
   {
     "locationAddress": "96 Umbu Avenue",
     "manager": "Uma Umbu",
-    "seetsCapacity": 54,
+    "seatsCapacity": 54,
     "employeesNumber": 27,
     "menuItems": ["Umbu Sorbet", "Umbu Juice", "Umbu Salad", "Umbu Smoothie", "Umbu Cake"],
-    "restorantChain": "Umbu Utopia"
+    "restaurantChain": "Umbu Utopia"
   },
   {
     "locationAddress": "97 Pitomba Lane",
     "manager": "Peter Pitomba",
-    "seetsCapacity": 46,
+    "seatsCapacity": 46,
     "employeesNumber": 23,
     "menuItems": ["Pitomba Sorbet", "Pitomba Juice", "Pitomba Salad", "Pitomba Smoothie", "Pitomba Cake"],
-    "restorantChain": "Pitomba Paradise"
+    "restaurantChain": "Pitomba Paradise"
   },
   {
     "locationAddress": "98 Camu Camu Drive",
     "manager": "Carrie Camu",
-    "seetsCapacity": 59,
+    "seatsCapacity": 59,
     "employeesNumber": 18,
     "menuItems": ["Camu Camu Sorbet", "Camu Camu Juice", "Camu Camu Salad", "Camu Camu Smoothie", "Camu Camu Cake"],
-    "restorantChain": "Camu Camu Cove"
+    "restaurantChain": "Camu Camu Cove"
   },
   {
     "locationAddress": "99 Cupuacu Street",
     "manager": "Carlos Cupuacu",
-    "seetsCapacity": 51,
+    "seatsCapacity": 51,
     "employeesNumber": 13,
     "menuItems": ["Cupuacu Sorbet", "Cupuacu Juice", "Cupuacu Salad", "Cupuacu Smoothie", "Cupuacu Cake"],
-    "restorantChain": "Cupuacu Corner"
+    "restaurantChain": "Cupuacu Corner"
   },
   {
     "locationAddress": "100 Grumixama Avenue",
     "manager": "Grace Grumixama",
-    "seetsCapacity": 57,
+    "seatsCapacity": 57,
     "employeesNumber": 28,
     "menuItems": ["Grumixama Sorbet", "Grumixama Juice", "Grumixama Salad", "Grumixama Smoothie", "Grumixama Cake"],
-    "restorantChain": "Grumixama Grove"
+    "restaurantChain": "Grumixama Grove"
   }
 ]
