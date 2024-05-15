@@ -30,7 +30,7 @@ public class Restaurant {
     @NotNull
     private String manager;
     @Column(nullable = false)
-    private Integer seetsCapacity;
+    private Integer seatsCapacity;
     @Column(nullable = false)
     private Integer employeesNumber;
     @Column(name = "menu_items", columnDefinition = "text[]")

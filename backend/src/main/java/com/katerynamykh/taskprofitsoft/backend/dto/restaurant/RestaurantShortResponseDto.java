@@ -6,6 +6,6 @@ public record RestaurantShortResponseDto(
         Long id,
         String chainName,
         String locationAddress,
-        Integer seetsCapacity,
+        Integer seatsCapacity,
         List<String> menuItems) {
 }

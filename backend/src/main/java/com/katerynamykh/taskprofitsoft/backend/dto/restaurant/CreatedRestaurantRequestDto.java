@@ -8,7 +8,7 @@ import java.util.List;
 public record CreatedRestaurantRequestDto(
         @NotBlank String locationAddress, 
         @NotBlank String manager,
-        @NotNull @Positive Integer seetsCapacity, 
+        @NotNull @Positive Integer seatsCapacity, 
         @NotNull @Positive Integer employeesNumber,
         @NotNull Long restaurantChainId, 
         List<String> menuItems) {

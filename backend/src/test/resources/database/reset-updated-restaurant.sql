@@ -1,1 +1,1 @@
-update restaurants set manager='Terry Androck', seets_capacity=100, employees_number=15 where id=3;
+update restaurants set manager='Terry Androck', seats_capacity=100, employees_number=15 where id=3;

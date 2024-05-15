@@ -7,7 +7,7 @@ public record DetaildRestaurantResponseDto(
     Long id,
     String locationAddress, 
     String manager,
-    Integer seetsCapacity, 
+    Integer seatsCapacity, 
     Integer employeesNumber,
     ChainShortResponseDto chainShortInfo, 
     List<String> menuItems) {

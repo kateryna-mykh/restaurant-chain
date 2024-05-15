@@ -147,7 +147,7 @@ public class RestaurantServiceImpl implements RestaurantService {
             restaurants = restaurantRepository.findAll(RestaurantSpec.filterBy(searchParams));
         }
         String reportHeader = String.format("%s,%s,%s,%s,%s", "id", "chainName", "locationAddress",
-                "seetsCapacity", "menuItems");
+                "seatsCapacity", "menuItems");
         StringBuilder sb = new StringBuilder().append(reportHeader);
         List<RestaurantShortResponseDto> shortDtos = restaurants.stream().map(mapper::toShortDto)
                 .toList();
@@ -155,7 +155,7 @@ public class RestaurantServiceImpl implements RestaurantService {
             for (RestaurantShortResponseDto dto : shortDtos) {
                 sb.append(System.lineSeparator()).append(dto.id()).append(CSV_DELIMITER)
                         .append(dto.chainName()).append(CSV_DELIMITER).append(dto.locationAddress())
-                        .append(CSV_DELIMITER).append(dto.seetsCapacity()).append(CSV_DELIMITER)
+                        .append(CSV_DELIMITER).append(dto.seatsCapacity()).append(CSV_DELIMITER)
                         .append(dto.menuItems());
             }
             response.getOutputStream().write(sb.toString().getBytes());
