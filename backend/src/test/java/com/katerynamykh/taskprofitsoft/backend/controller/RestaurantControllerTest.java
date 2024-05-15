@@ -158,7 +158,7 @@ class RestaurantControllerTest {
         assertNotNull(actual);
         assertEquals(3, actual.id());
         assertEquals(20, actual.employeesNumber());
-        assertEquals(100, actual.seetsCapacity());
+        assertEquals(100, actual.seatsCapacity());
         assertEquals("Paolo Rycraft", actual.manager());
         assertEquals("06 Crest Line Way", actual.locationAddress());
     }
@@ -273,7 +273,7 @@ class RestaurantControllerTest {
         assertEquals(1, actual.restaurants().size());
         assertEquals(1, actual.totalPages());
         assertEquals("5767 Anderson Place", found.locationAddress());
-        assertEquals(50, found.seetsCapacity());
+        assertEquals(50, found.seatsCapacity());
         assertEquals(List.of("Burger", "Pizza", "Salad", "French Fries", "Soft Drink"),
                 found.menuItems());
         assertEquals("Delicious Eats", found.chainName());
@@ -318,7 +318,7 @@ class RestaurantControllerTest {
         SearchRestaurantDto emptySearch = new SearchRestaurantDto(null, null, null, null);
         String jsonRequest = objectMapper.writeValueAsString(emptySearch);
         String expectedData = new StringBuilder()
-                .append("id,chainName,locationAddress,seetsCapacity,menuItems")
+                .append("id,chainName,locationAddress,seatsCapacity,menuItems")
                 .append(System.lineSeparator())
                 .append("1,Delicious Eats,5767 Anderson Place,50,[Burger, Pizza, Salad, French Fries, Soft Drink]")
                 .append(System.lineSeparator())
@@ -340,7 +340,7 @@ class RestaurantControllerTest {
         SearchRestaurantDto addressAndChainSearch = new SearchRestaurantDto("7", 2L, null, null);
         String jsonRequest = objectMapper.writeValueAsString(addressAndChainSearch);
         String expectedData = new StringBuilder()
-                .append("id,chainName,locationAddress,seetsCapacity,menuItems")
+                .append("id,chainName,locationAddress,seatsCapacity,menuItems")
                 .append(System.lineSeparator())
                 .append("2,Asian Fusion,07196 Blaine Court,30,[Curry, Noodles, Spring Rolls, Jasmine Rice, Thai Iced Tea]")
                 .toString();

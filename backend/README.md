@@ -47,7 +47,7 @@ Request
 {
   "locationAddress": "",
   "manager": "",
-  "seetsCapacity": 10, 
+  "seatsCapacity": 10, 
   "employeesNumber":,
   "restaurantChainId":, 
   "menuItems":
