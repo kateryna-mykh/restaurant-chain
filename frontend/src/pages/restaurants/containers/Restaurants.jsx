@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import actionsRestaurants from '../actions/fetchRestaurants';
+import { MODE_EDIT, MODE_VIEW } from '../constants/modes';
 
 const mockedChainNames = [
     { id: 1, name: "Delicious Eats" },
@@ -87,7 +88,7 @@ const Restaurants = (props) => {
     return (
         <div>
             <div style={{ textAlign: 'right', width: '140px', padding: '0px 0px 8px calc(100% - 140px)' }}>
-                <Button fullWidth={true} colorVariant='header' onClick={() => navigate(`${pagesURLs.restaurants}/0?mode=edit`)}>
+                <Button fullWidth={true} colorVariant='header' onClick={() => navigate(`${pagesURLs.restaurants}/0?mode=${MODE_EDIT}`)}>
                     + {formatMessage({ id: 'button.add' })}
                 </Button>
             </div>
@@ -95,7 +96,7 @@ const Restaurants = (props) => {
                 <div style={{ display: 'flex', flexDirection: 'column', width: '80%', margin: '0px auto' }}>
                     {restaurantsList.map((r, i) =>
                         <Record key={i} restaurant={r} isFailed={isFailed}
-                            onClick={() => navigate(`${pagesURLs.restaurants}/${r.id}?mode=view`)}
+                            onClick={() => navigate(`${pagesURLs.restaurants}/${r.id}?mode=${MODE_VIEW}`)}
                         />)}
                 </div>
                 <div style={{ width: '140px' }}>
