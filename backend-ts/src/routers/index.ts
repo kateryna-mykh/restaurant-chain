@@ -1,6 +1,6 @@
 import express from 'express';
 import ping from 'src/ping.controller';
-import reviews from 'src/reviews/reviews.router';
+import reviews from 'src/reviews/rewiews.router';
 
 const router = express.Router();
 

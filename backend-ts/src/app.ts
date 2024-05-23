@@ -4,7 +4,6 @@ import config from './config';
 import log4js, { Configuration } from 'log4js';
 import mongoose, { ConnectOptions } from 'mongoose';
 import Consul, { ConsulOptions } from 'consul';
-import 'dotenv/config';
 
 type EnvType = 'dev' | 'prod';
 
