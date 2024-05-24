@@ -1,84 +1,47 @@
-# nodejs-sample
-This is an example node js project using typescript, consul, express, mongoose, mocha.
+# backend-ts
+This is an node js project using typescript, consul, express, mongoose, mocha.
 
-# How to run "for the prod"
+## Endpoints
+- GET: http://localhost:8888/ping (For base check - response will be `PONG`)  
+- GET: http://localhost:8888/api/reviews/{id}?from={from}&size={size} (Get all reviews by specific restaurant id, sorted from newest to oldest by date. Default `from` is 0, default `size` is 10)  
+- POST: http://localhost:8888/api/reviews (Create a review)
+- POST: http://localhost:8888/api/reviews/_counts (Return report with counting number of reviews by restaurant's ids)
 
-Just execute `docker-compose up`
-
-It will run all services in containers (nodejs-sample, db and consul).
-Once consul is running, all key-values will be added automatically.
-Once consul and db are running, nodejs-sample will be started.
-
-After that you can check the service by calling
-GET: `http://localhost:8888/ping`
-response will be `PONG`
-
-All consul kv's and mongoDB data will be stored in docker/data/...
-Thus, when the containers are restarted, data will not be lost.
-
-# Configuration
-
-If for some reason consul kv's were not added, and you need to add it manually:
-
-Open consul ui (by default `localhost:8501`)
-Add to consul these key-values:
-
-for "prod" version
-
-`config/nodejs-sample/prod/address` : `0.0.0.0`
-
-`config/nodejs-sample/prod/port` : `8888`
-
-`config/nodejs-sample/prod/mongo.address` : `mongodb://db:27017`
-
-
-for "dev" version
-
-`config/nodejs-sample/dev/address` : `localhost`
-
-`config/nodejs-sample/dev/port` : `8888`
-
-`config/nodejs-sample/dev/mongo.address` : `mongodb://127.0.0.1:27018`
-
-
-run nodejs-sample again
-
-# Setup
-Run `npm install` in the terminal
-
-# How to run for the prod
-
-When consul and mongoDB containers are running
-```
-npm run start
-```
-
-If everything is fine, you will see:
-"Example app listening on port localhost:8888"
-
-# How to develop
+## Input file examples
+Request to /api/reviews
 
 ```
-npm run devel
+{
+    "text": "test",
+    "phoneNumber": "0994414063",
+    "restaurantId": 2,
+    "name": "test",
+    "mark": 7
+}
 ```
 
-# How to build
+Request to /api/reviews/_counts
 
 ```
+{ 
+   "ids": [1,2,3]
+} 
+```
+
+## How launch this project
+1. This project depends from `backend` module. First run with docker `backend` project.
+2. Run following commands in the terminal from `backend-ts` module:
+
+```
+npm install
+
 npm run build
+
+docker-compose up
 ```
 
-# How to run tests
+If image `backend-ts` not running in container - run it;
 
-```
-npm run test
-```
 
-If everything is fine, you should see the list of passed tests
-
-# How to check coverage
-
-```
-npm run coverage
-```
-If everything is fine, you should see the table with coverage after passed tests
+## Tests
+Test coverage - 86.04%

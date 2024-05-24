@@ -11,7 +11,7 @@ const config = {
       },
     },
     service: {
-      name: 'nodejs-sample',
+      name: 'backend-ts',
     },
   },
   log4js: {
