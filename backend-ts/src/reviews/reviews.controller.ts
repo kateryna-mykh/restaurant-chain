@@ -30,7 +30,7 @@ export const listReviewsSortDesc = async (req: Request, res: Response) => {
       parseInt(req.params.id as string), 
       parseInt(req.query.from as string) || 0,
       parseInt(req.query.size as string) || 10);
-    if(!result) {
+    if(result.length === 0) {
       res.status(httpStatus.NOT_FOUND).send();
     } else {
       res.send({result});

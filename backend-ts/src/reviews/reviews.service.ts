@@ -10,7 +10,11 @@ export const createReview = async ( reviewDto: ReviewSaveDto): Promise<string> =
 };
 
 export const findListReviews = async (restaurantId: number, from: number, maxsSize: number): Promise<ReviewInfoDto[]> => {
-  const reviews = await Review.find({restaurantId}).sort({date: -1}).skip(from).limit(maxsSize);
+  const reviews = await Review
+    .find({...(restaurantId && {restaurantId})})
+    .sort({date: -1})
+    .skip(from)
+    .limit(maxsSize);
   return reviews.map(review => toInfoDto(review));
 };
 
@@ -34,15 +38,16 @@ export const countByRestaurantId = async (listRestaurantIds: number[]): Promise<
 export const validateReviwParams = async (reviewDto: ReviewSaveDto) => {
   await validateRestaurantId(reviewDto.restaurantId ?? 0);
   if (!reviewDto.phoneNumber?.match(/^\d{3}[ -]?\d{3}[ -]?\d{4}$/)){
-    throw new Error(`Phone number is incorrect`); 
+    throw new Error(`Phone number is incorrect.`); 
   }
   if(reviewDto.text){
     if (reviewDto.text.replace(/\s/g, "").length < 3) {
       throw new Error(`Text of review shouldn't be empty and longer then 2 characters.`); 
     }
   }
-  if (reviewDto.mark){
-    if (reviewDto.mark > 10 || reviewDto.mark < 1) {
+  if (reviewDto.mark !== undefined){
+    const mark = reviewDto.mark;
+    if (mark > 10 || mark < 1) {
       throw new Error(`Mark should be from 1 to 10.`);  
     }
   }

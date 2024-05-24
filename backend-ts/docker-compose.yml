@@ -1,6 +1,6 @@
 version: '3.5'
 services:
-  nodejs-sample:
+  backend-ts:
     build: .
     ports:
       - '8888:8888'
