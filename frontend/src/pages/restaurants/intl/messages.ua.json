@@ -1,0 +1,11 @@
+{
+	"button.add": "Додати сутність",
+	"button.filter": "Фільтр",
+	"delete.display.text": "Ви впевнені, що хочете видалити сутність?",
+	"delete.display.error": "Видалення не вдалося.",
+	"delete.display.notification": "Сутність була видалена.",
+	"button.agree": "Підтвердити",
+	"button.apply": "Застосувати",
+    "filter.location.lable": "Адреса",
+    "filter.chainName.lable": "Назва закладу"
+}

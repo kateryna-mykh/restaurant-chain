@@ -1,0 +1,13 @@
+{
+"button.create": "Create",
+"button.save": "Save",
+"button.cancel": "Cancel",
+"button.back": "Back",
+"restaurant.info.location": "Location",
+"restaurant.info.manager": "Manager",
+"restaurant.info.seats": "Seats Capacity",
+"restaurant.info.emploees": "Number of Emploees",
+"restaurant.info.chainId": "Chain Id",
+"restaurant.info.menu": "Menu Items",
+"create.display.notification": "Something goes wrong.."
+}

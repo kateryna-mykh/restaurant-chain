@@ -30,6 +30,7 @@ function Button({
   onClick,
   startIcon,
   variant = variants.secondary,
+  fullWidth
 }) {
   const { theme } = useTheme();
   return (
@@ -48,6 +49,7 @@ function Button({
           endIcon={endIcon}
           onClick={onClick}
           startIcon={startIcon}
+          fullWidth={fullWidth}
           sx={{
             '&.MuiButton-root': {
               background: theme.button.color[colorVariant].background,

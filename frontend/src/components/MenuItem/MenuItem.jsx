@@ -33,6 +33,7 @@ function MenuItem({
         '&.MuiMenuItem-root': {
           '&:hover': {
             backgroundColor: theme.menuItem.color[colorVariant].backgroundHovered,
+            fontWeight: 'bold',
           },
           '&.Mui-selected': {
             backgroundColor: theme.menuItem.color[colorVariant].backgroundSelected,
