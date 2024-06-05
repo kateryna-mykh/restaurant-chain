@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.katerynamykh.taskprofitsoft.backend.dto.MessageSavedNotificationDto;
 import com.katerynamykh.taskprofitsoft.backend.dto.restaurant.CreatedRestaurantRequestDto;
 import com.katerynamykh.taskprofitsoft.backend.dto.restaurant.DetaildRestaurantResponseDto;
 import com.katerynamykh.taskprofitsoft.backend.dto.restaurant.FilteredRestaurantsDto;
@@ -17,6 +18,7 @@ import com.katerynamykh.taskprofitsoft.backend.exception.SaveDuplicateException;
 import com.katerynamykh.taskprofitsoft.backend.mapper.RestaurantMapper;
 import com.katerynamykh.taskprofitsoft.backend.model.Restaurant;
 import com.katerynamykh.taskprofitsoft.backend.model.RestaurantChain;
+import com.katerynamykh.taskprofitsoft.backend.producer.RabbitMQProducer;
 import com.katerynamykh.taskprofitsoft.backend.repository.RestaurantChainRepository;
 import com.katerynamykh.taskprofitsoft.backend.repository.RestaurantRepository;
 import com.katerynamykh.taskprofitsoft.backend.repository.spec.RestaurantSpec;
@@ -26,6 +28,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.amqp.core.AmqpTemplate;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpHeaders;
@@ -44,12 +48,16 @@ public class RestaurantServiceImpl implements RestaurantService {
     private final RestaurantChainRepository chainRepository;
     private final RestaurantMapper mapper;
     private static final ObjectMapper jsonMapper;
+    @Value("${admin.emails}") 
+    final List<String> emails;
+    
     static {
         ObjectMapper mapper = new ObjectMapper();
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         mapper.setSerializationInclusion(Include.NON_NULL);
         jsonMapper = mapper;
     }
+    private final RabbitMQProducer rabbitProducer;   
 
     @Transactional
     @Override
@@ -62,8 +70,12 @@ public class RestaurantServiceImpl implements RestaurantService {
         RestaurantChain chain = chainRepository.findById(restaurantDto.restaurantChainId())
                 .orElseThrow(() -> new EntityNotFoundException(
                         "Can't find chain by id: " + restaurantDto.restaurantChainId()));
-        return mapper
-                .toDto(restaurantRepository.save(mapper.toModel(restaurantDto, chain.getId())));
+        Restaurant savedResaturant = restaurantRepository.save(mapper.toModel(restaurantDto, chain.getId()));
+        rabbitProducer.sendMessage(new MessageSavedNotificationDto(
+        		"New restaurant was created.", 
+        		jsonMapper.writeValueAsString(savedResaturant), 
+        		this.getClass().getSimpleName(), emails));
+        return mapper.toDto(savedResaturant);
     }
 
     @Override
