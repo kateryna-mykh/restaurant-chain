@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.katerynamykh.taskprofitsoft.backend.dto.MessageSavedNotificationDto;
 import com.katerynamykh.taskprofitsoft.backend.dto.restaurant.CreatedRestaurantRequestDto;
 import com.katerynamykh.taskprofitsoft.backend.dto.restaurant.DetaildRestaurantResponseDto;
 import com.katerynamykh.taskprofitsoft.backend.dto.restaurant.FilteredRestaurantsDto;
@@ -28,8 +27,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
-import org.springframework.amqp.core.AmqpTemplate;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpHeaders;
@@ -48,8 +45,7 @@ public class RestaurantServiceImpl implements RestaurantService {
     private final RestaurantChainRepository chainRepository;
     private final RestaurantMapper mapper;
     private static final ObjectMapper jsonMapper;
-    @Value("${admin.emails}") 
-    final List<String> emails;
+    private final RabbitMQProducer rabbitProducer;  
     
     static {
         ObjectMapper mapper = new ObjectMapper();
@@ -57,8 +53,7 @@ public class RestaurantServiceImpl implements RestaurantService {
         mapper.setSerializationInclusion(Include.NON_NULL);
         jsonMapper = mapper;
     }
-    private final RabbitMQProducer rabbitProducer;   
-
+   
     @Transactional
     @Override
     public RestaurantResponseDto save(CreatedRestaurantRequestDto restaurantDto) {
@@ -71,10 +66,8 @@ public class RestaurantServiceImpl implements RestaurantService {
                 .orElseThrow(() -> new EntityNotFoundException(
                         "Can't find chain by id: " + restaurantDto.restaurantChainId()));
         Restaurant savedResaturant = restaurantRepository.save(mapper.toModel(restaurantDto, chain.getId()));
-        rabbitProducer.sendMessage(new MessageSavedNotificationDto(
-        		"New restaurant was created.", 
-        		jsonMapper.writeValueAsString(savedResaturant), 
-        		this.getClass().getSimpleName(), emails));
+        
+        rabbitProducer.createAndSendMessage("New restaurant was created.", savedResaturant, this.getClass().getSimpleName());
         return mapper.toDto(savedResaturant);
     }
 

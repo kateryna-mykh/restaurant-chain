@@ -20,6 +20,8 @@ services:
       interval: 30s
       timeout: 30s
       retries: 3
+    networks:
+      - backend-java-network
   backend-app:
     depends_on:
       - postgres
@@ -33,5 +35,11 @@ services:
       SPRING_APPLICATION_JSON: '{
         "spring.datasource.url" : "jdbc:postgresql://postgres:$DB_DOCKER_PORT/chain_db",
         "spring.datasource.username" : "$POSTGRES_USER",
-        "spring.datasource.password" : "$POSTGRES_PASSWORD",
-        "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.PostgreSQLDialect"}'
+        "spring.datasource.password" : "$POSTGRES_PASSWORD"}'
+    networks:
+      - backend-java-network
+
+networks:
+  backend-java-network:
+    external: true
+    name: app_network
