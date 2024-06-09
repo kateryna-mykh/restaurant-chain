@@ -1,4 +1,4 @@
-package com.katerynamykh.taskprofitsoft.backend.producer;
+package com.katerynamykh.taskprofitsoft.backend.publisher;
 
 import com.katerynamykh.taskprofitsoft.backend.config.RabbitMQConfig;
 import com.katerynamykh.taskprofitsoft.backend.dto.MessageSavedNotificationDto;
@@ -8,18 +8,18 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class RabbitMQProducer {
+public class RabbitMQPublisher {
 	private final RabbitTemplate rabbitTemplate;
 
 	public void sendMessage(Object message) {
 		rabbitTemplate.convertAndSend(RabbitMQConfig.EXCHANGE_NAME, RabbitMQConfig.ROUTING_KEY, message);
 	}
 
-	public void createAndSendMessage(String subject, Object object, String fromService) {
+	public void createAndSendMessage(String subject, String body, String fromService) {
 		MessageSavedNotificationDto message = MessageSavedNotificationDto.builder()
 				.subject(subject)
 				.fromService(fromService)
-				.message(object.toString())
+				.message(body)
 				.receiverEmails(RabbitMQConfig.ADMIN_EMAIL)
 				.build();
 		sendMessage(message);
