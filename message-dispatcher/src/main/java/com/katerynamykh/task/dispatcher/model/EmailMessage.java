@@ -1,7 +1,6 @@
 package com.katerynamykh.task.dispatcher.model;
 
 import java.time.Instant;
-import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,7 +29,7 @@ public class EmailMessage{
 	private String fromService;
 
 	@Field(type = FieldType.Keyword)
-	private List<String> receiverEmails;
+	private String[] receiverEmails;
 	
 	@Field(type = FieldType.Keyword)
 	private String status;
@@ -45,6 +44,5 @@ public class EmailMessage{
 	private Instant updatedTime;
 	
 	@Field(type = FieldType.Integer)
-	private Integer sendAttempt = 0;//?
-
+	private Integer sendAttempt = 0;
 }
