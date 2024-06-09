@@ -4,12 +4,15 @@ import com.katerynamykh.taskprofitsoft.backend.config.RabbitMQConfig;
 import com.katerynamykh.taskprofitsoft.backend.dto.MessageSavedNotificationDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
 public class RabbitMQPublisher {
 	private final RabbitTemplate rabbitTemplate;
+	@Value("${admin.email}")
+	private final String[] adminEmails;
 
 	public void sendMessage(Object message) {
 		rabbitTemplate.convertAndSend(RabbitMQConfig.EXCHANGE_NAME, RabbitMQConfig.ROUTING_KEY, message);
@@ -20,7 +23,7 @@ public class RabbitMQPublisher {
 				.subject(subject)
 				.fromService(fromService)
 				.message(body)
-				.receiverEmails(RabbitMQConfig.ADMIN_EMAIL)
+				.receiverEmails(adminEmails)
 				.build();
 		sendMessage(message);
 	}

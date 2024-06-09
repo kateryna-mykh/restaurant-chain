@@ -8,4 +8,6 @@ public interface EmailMessageService {
 	EmailMessage save(MessageSavedNotificationDto messageDto);
 	
 	List<String> findAllNotSended(String status);
+	
+	public void processMessage(MessageSavedNotificationDto messageDto);
 }
