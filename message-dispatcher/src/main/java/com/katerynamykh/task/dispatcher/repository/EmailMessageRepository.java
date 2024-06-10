@@ -5,5 +5,5 @@ import java.util.List;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 
 public interface EmailMessageRepository extends ElasticsearchRepository<EmailMessage, String> {
-	List<EmailMessage> findAllByStatus(String status);
+    List<EmailMessage> findAllByStatus(String status);
 }

@@ -10,33 +10,33 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 @Service
 public class EmailMessageSender {
-	private final JavaMailSender mailSender;
-	@Value("${spring.mail.username}")
-	private String fromEmail;
+    private final JavaMailSender mailSender;
+    @Value("${SPRING_MAIL_USERNAME}")
+    private String fromEmail;
 
-	public void send(String[] to, String subject, String body) throws EmailSendingException {
-		SimpleMailMessage message = new SimpleMailMessage();
-		message.setFrom(fromEmail);
-		message.setTo(to);
-		message.setSubject(subject);
-		message.setText(body);
-		try {
-			mailSender.send(message);
-		} catch (Exception e) {
-			throw new EmailSendingException("Failed to send email", e);
-		}
-	}
+    public void send(String[] to, String subject, String body) throws EmailSendingException {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom(fromEmail);
+        message.setTo(to);
+        message.setSubject(subject);
+        message.setText(body);
+        try {
+            mailSender.send(message);
+        } catch (Exception e) {
+            throw new EmailSendingException("Failed to send email", e);
+        }
+    }
 
-	public void send(String to, String subject, String body) throws EmailSendingException {
-		SimpleMailMessage message = new SimpleMailMessage();
-		message.setFrom(fromEmail);
-		message.setTo(to);
-		message.setSubject(subject);
-		message.setText(body);
-		try {
-			mailSender.send(message);
-		} catch (Exception e) {
-			throw new EmailSendingException("Failed to send email", e);
-		}
-	}
+    public void send(String to, String subject, String body) throws EmailSendingException {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom(fromEmail);
+        message.setTo(to);
+        message.setSubject(subject);
+        message.setText(body);
+        try {
+            mailSender.send(message);
+        } catch (Exception e) {
+            throw new EmailSendingException("Failed to send email", e);
+        }
+    }
 }

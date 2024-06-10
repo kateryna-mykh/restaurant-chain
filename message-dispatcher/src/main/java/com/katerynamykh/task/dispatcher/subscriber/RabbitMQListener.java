@@ -10,10 +10,10 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 public class RabbitMQListener {
-	private final EmailMessageService emailService;
+    private final EmailMessageService emailService;
 
-	@RabbitListener(queues = RabbitMQConfig.QUEUE_NAME)
-	public void receiveMessage(MessageSavedNotificationDto message) {
-		emailService.processMessage(message);
-	}
+    @RabbitListener(queues = RabbitMQConfig.QUEUE_NAME)
+    public void receiveMessage(MessageSavedNotificationDto message) {
+        emailService.processMessage(message);
+    }
 }
