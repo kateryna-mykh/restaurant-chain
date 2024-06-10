@@ -17,6 +17,7 @@ import com.katerynamykh.taskprofitsoft.backend.exception.SaveDuplicateException;
 import com.katerynamykh.taskprofitsoft.backend.mapper.RestaurantMapper;
 import com.katerynamykh.taskprofitsoft.backend.model.Restaurant;
 import com.katerynamykh.taskprofitsoft.backend.model.RestaurantChain;
+import com.katerynamykh.taskprofitsoft.backend.publisher.RabbitMQPublisher;
 import com.katerynamykh.taskprofitsoft.backend.repository.RestaurantChainRepository;
 import com.katerynamykh.taskprofitsoft.backend.repository.RestaurantRepository;
 import com.katerynamykh.taskprofitsoft.backend.repository.spec.RestaurantSpec;
@@ -44,6 +45,8 @@ public class RestaurantServiceImpl implements RestaurantService {
     private final RestaurantChainRepository chainRepository;
     private final RestaurantMapper mapper;
     private static final ObjectMapper jsonMapper;
+    private final RabbitMQPublisher rabbitPublisher;
+
     static {
         ObjectMapper mapper = new ObjectMapper();
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
@@ -62,8 +65,12 @@ public class RestaurantServiceImpl implements RestaurantService {
         RestaurantChain chain = chainRepository.findById(restaurantDto.restaurantChainId())
                 .orElseThrow(() -> new EntityNotFoundException(
                         "Can't find chain by id: " + restaurantDto.restaurantChainId()));
-        return mapper
+
+        RestaurantResponseDto savedRestaurantDto = mapper
                 .toDto(restaurantRepository.save(mapper.toModel(restaurantDto, chain.getId())));
+        rabbitPublisher.createAndSendMessage("New restaurant was created.",
+                savedRestaurantDto.toString(), this.getClass().getSimpleName());
+        return savedRestaurantDto;
     }
 
     @Override
