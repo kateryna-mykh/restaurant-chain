@@ -11,23 +11,23 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class RabbitMQConfig {
-	public static final String EXCHANGE_NAME = "myExchange";
-	public static final String ROUTING_KEY = "myExchange_key";
+    public static final String EXCHANGE_NAME = "myExchange";
+    public static final String ROUTING_KEY = "myExchange_key";
 
-	@Bean
-	public DirectExchange messageDirectExchange() {
-		return new DirectExchange(EXCHANGE_NAME);
-	}
+    @Bean
+    public DirectExchange messageDirectExchange() {
+        return new DirectExchange(EXCHANGE_NAME);
+    }
 
-	@Bean
-	public MessageConverter jsonConverter() {
-		return new Jackson2JsonMessageConverter();
-	}
+    @Bean
+    public MessageConverter jsonConverter() {
+        return new Jackson2JsonMessageConverter();
+    }
 
-	@Bean
-	public AmqpTemplate tamplate(ConnectionFactory connectionFactory) {
-		final RabbitTemplate rabbitTamplate = new RabbitTemplate(connectionFactory);
-		rabbitTamplate.setMessageConverter(jsonConverter());
-		return rabbitTamplate;
-	}
+    @Bean
+    public AmqpTemplate tamplate(ConnectionFactory connectionFactory) {
+        final RabbitTemplate rabbitTamplate = new RabbitTemplate(connectionFactory);
+        rabbitTamplate.setMessageConverter(jsonConverter());
+        return rabbitTamplate;
+    }
 }

@@ -1,4 +1,4 @@
-package com.katerynamykh.taskprofitsoft.backend.dto;
+package com.katerynamykh.taskprofitsoft.backend.dto.message;
 
 import lombok.Builder;
 

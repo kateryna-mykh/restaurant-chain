@@ -45,15 +45,15 @@ public class RestaurantServiceImpl implements RestaurantService {
     private final RestaurantChainRepository chainRepository;
     private final RestaurantMapper mapper;
     private static final ObjectMapper jsonMapper;
-    private final RabbitMQPublisher rabbitPublisher;  
-    
+    private final RabbitMQPublisher rabbitPublisher;
+
     static {
         ObjectMapper mapper = new ObjectMapper();
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         mapper.setSerializationInclusion(Include.NON_NULL);
         jsonMapper = mapper;
     }
-   
+
     @Transactional
     @Override
     public RestaurantResponseDto save(CreatedRestaurantRequestDto restaurantDto) {
@@ -65,10 +65,12 @@ public class RestaurantServiceImpl implements RestaurantService {
         RestaurantChain chain = chainRepository.findById(restaurantDto.restaurantChainId())
                 .orElseThrow(() -> new EntityNotFoundException(
                         "Can't find chain by id: " + restaurantDto.restaurantChainId()));
-        Restaurant savedResaturant = restaurantRepository.save(mapper.toModel(restaurantDto, chain.getId()));
-        
-        rabbitPublisher.createAndSendMessage("New restaurant was created.", savedResaturant.toString(), this.getClass().getSimpleName());
-        return mapper.toDto(savedResaturant);
+
+        RestaurantResponseDto savedRestaurantDto = mapper
+                .toDto(restaurantRepository.save(mapper.toModel(restaurantDto, chain.getId())));
+        rabbitPublisher.createAndSendMessage("New restaurant was created.",
+                savedRestaurantDto.toString(), this.getClass().getSimpleName());
+        return savedRestaurantDto;
     }
 
     @Override

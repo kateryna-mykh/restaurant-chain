@@ -1,7 +1,7 @@
 package com.katerynamykh.taskprofitsoft.backend.publisher;
 
 import com.katerynamykh.taskprofitsoft.backend.config.RabbitMQConfig;
-import com.katerynamykh.taskprofitsoft.backend.dto.MessageSavedNotificationDto;
+import com.katerynamykh.taskprofitsoft.backend.dto.message.MessageSavedNotificationDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Value;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class RabbitMQPublisher {
 	private final RabbitTemplate rabbitTemplate;
-	@Value("${admin.email}")
+	@Value("${ADMIN_EMAIL}")
 	private final String[] adminEmails;
 
 	public void sendMessage(Object message) {
