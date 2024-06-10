@@ -58,7 +58,7 @@ Request
 ## How launch this project
 Execute all commands from `backend` project folder.
 1. Configure your database settings in the .env file.
-2. Build the project with Maven. (For now build with skipping tests `mvn clean install -DskipTests`)
+2. Build the project with Maven.
 3. Build and run with Docker Compose.
 
 Fill .env file with following environment variables:
@@ -70,7 +70,5 @@ DB_LOCAL_PORT=
 DB_DOCKER_PORT=
 SPRING_LOCAL_PORT=
 SPRING_DOCKER_PORT=
-
-ADMIN_EMAIL=
 ```
 

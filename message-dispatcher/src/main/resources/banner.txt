@@ -1,9 +1,0 @@
- ${AnsiColor.BRIGHT_YELLOW}
-   _   _   _   _   _   _   _   _   _   _   _   _   _   _   _   _   _   _   _   _   _   _   _   _   _   _   _   _   _   _   _   _   _   _   _  
-  / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ / \ 
- ( R | e | s | t | a | u | r | a | n | t | - | c | h | a | i | n | . | m | e | s | s | a | g | e | - | d | i | s | p | a | t | c | h | e | r )
-  \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ 
-
-${AnsiColor.DEFAULT}
-${application.banner.title} ${application.banner.version}
-Powered by Spring Boot ${spring-boot.version}
