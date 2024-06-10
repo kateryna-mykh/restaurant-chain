@@ -36,7 +36,11 @@ services:
         "spring.datasource.url" : "jdbc:postgresql://postgres:$DB_DOCKER_PORT/chain_db",
         "spring.datasource.username" : "$POSTGRES_USER",
         "spring.datasource.password" : "$POSTGRES_PASSWORD",
-        "admin.email" : "$ADMIN_EMAIL"}'
+        "admin.email" : "$ADMIN_EMAIL",
+        "spring.rabbitmq.host" : "rabbitmq",
+        "spring.rabbitmq.port" : "5672",
+        "spring.rabbitmq.username" : "guest",
+        "spring.rabbitmq.password" : "guest"}'
     networks:
       - backend-java-network
 
