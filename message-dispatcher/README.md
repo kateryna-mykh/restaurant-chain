@@ -6,7 +6,7 @@ Stores the message in its database and tries to send it to the mail server using
 
 ## Technologies
 * Java 17
-* Spring Boot, Spring Data JPA
+* Spring Boot
 * Docker
 * ElasticSearch
 * Kibana
