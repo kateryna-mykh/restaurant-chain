@@ -16,7 +16,7 @@ Stores the message in its database and tries to send it to the mail server using
 1. Configure your settings in the .env file.
 2. Build the project with Maven. (For now build with skipping tests `mvn clean install -DskipTests`)
 3. Build and run with Docker Compose.
-4. Build `backend` module. (also with skipping tests)
+4. Launch`backend` module.
 5. Use Postman endpoint POST /api/restaurants.
 
 Fill .env file with following environment variables:
