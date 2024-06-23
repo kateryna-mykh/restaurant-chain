@@ -36,9 +36,9 @@ const DetailedInfo = (props) => {
 
     useEffect(() => {
         if (currentMode === MODE_VIEW) {
-            dispatch(actionRestaurant.fetchRestaurant(JSON.stringify(params.id)));
+            dispatch(actionRestaurant.fetchRestaurant(params.id));
         }
-    }, []);
+    }, [currentMode, params.id, dispatch]);
 
     const handleSaveAndCreate = (isCreationFailed, event) => {
         // dispatch(actionRestaurant.addNewRestaurant(JSON.stringify(editState)));
@@ -50,6 +50,11 @@ const DetailedInfo = (props) => {
             setCurrentMode(MODE_EDIT);
         }
     };
+    
+    if (!restaurant) {
+        return <div>Loading...</div>;
+    }
+    
     return (
         <div>
             {Object.is(currentMode, MODE_VIEW) && <div style={{ textAlign: 'right', padding: '0 0 0 20px' }}>
@@ -60,13 +65,19 @@ const DetailedInfo = (props) => {
             </div>
             }
             {Object.is(currentMode, MODE_VIEW) &&
-                <div style={{ display: 'grid' }} >
+                <div style={{ display: 'grid', textAlign: 'center'}} >
                     <label>{formatMessage({ id: 'restaurant.info.location' })}</label>
+                    {restaurant.locationAddress}
                     <label>{formatMessage({ id: 'restaurant.info.manager' })}</label>
+                    {restaurant.manager}
                     <label>{formatMessage({ id: 'restaurant.info.seats' })}</label>
+                    {restaurant.seatsCapacity}
                     <label>{formatMessage({ id: 'restaurant.info.emploees' })}</label>
+                    {restaurant.employeesNumber}
                     <label>{formatMessage({ id: 'restaurant.info.chainId' })}</label>
+                    {restaurant.chainShortInfo.id}
                     <label>{formatMessage({ id: 'restaurant.info.menu' })}</label>
+                    {restaurant.menuItems.join(', ')}
                 </div>
             }
             {Object.is(currentMode, MODE_EDIT) &&
@@ -115,18 +126,4 @@ const DetailedInfo = (props) => {
     );
 }
 
-/*
-                    <label>{formatMessage({ id: 'restaurant.info.location' })}</label>
-                    {restaurant.locationAddress}
-                    <label>{formatMessage({ id: 'restaurant.info.manager' })}</label>
-                    {restaurant.manager}
-                    <label>{formatMessage({ id: 'restaurant.info.seats' })}</label>
-                    {restaurant.seatsCapacity}
-                    <label>{formatMessage({ id: 'restaurant.info.emploees' })}</label>
-                    {restaurant.employeesNumber}
-                    <label>{formatMessage({ id: 'restaurant.info.chainId' })}</label>
-                    {restaurant.restaurantChainId}
-                    <label>{formatMessage({ id: 'restaurant.info.menu' })}</label>
-                    {restaurant.menuItems}
-*/
 export default DetailedInfo;

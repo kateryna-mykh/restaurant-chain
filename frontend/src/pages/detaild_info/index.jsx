@@ -11,9 +11,7 @@ import configureStore from 'misc/redux/configureStore';
 const store = configureStore(rootReducer);
 
 function Index(props) {
-    const {
-        lang,
-    } = useLocationSearch();
+    const { lang } = useLocationSearch();
     const messages = useMemo(() => getMessages(lang), [lang]);
     return (
         <Provider store={store}>
