@@ -10,7 +10,7 @@ const initialState = {
     isLoading: false,
     isFailed: false,
     list: [],
-    obj: {},
+    obj: null,
     errorMessage: '',
 };
 
@@ -30,17 +30,14 @@ export default function Reducer(state = initialState, action) {
             };
         }
         case RECEIVE_RESTAURANT: {
-            const {
-                restaurant
-            } = action;
             return {
                 ...state,
                 isLoading: false,
-                obj: restaurant
+                obj: action.restaurant,
             };
         }
         case ERROR_RECEIVE_RESTAURANT: {
-            return { isFailed: true, isLoading: false, errorMessage: action.payload };
+            return { ...state, isFailed: true, isLoading: false, errorMessage: action.payload };
         }
         default: { return state; }
     }
